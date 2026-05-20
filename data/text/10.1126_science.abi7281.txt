@@ -1,0 +1,245 @@
+RESEARCH
+
+# RESEARCH ARTICLE
+
+## CARBON CAPTURE
+
+## A scalable metal-organic framework as a durable physisorbent for carbon dioxide capture
+
+Jian-Bin Lin$^{1,\dagger}$, Tai T. T. Nguyen$^{2}$, Ramanathan Vaidhyanathan$^{1,3}$, Jake Burner$^{4}$, Jared M. Taylor$^{1,5}$, Hana Durekova$^{4}$, Farid Akhtar$^{6}$, Roger K. Mah$^{1,5}$, Omid Ghaffari-Nik$^{7}$, Stefan Marx$^{8}$, Nicholas Fylstra$^{1}$, Simon S. Iremonger$^{1}$, Karl W. Dawson$^{1}$, Partha Sarkar$^{2}$, Pierre Hovington$^{7,*}$, Arvind Rajendran$^{2,*}$, Tom K. Woo$^{4*}$, George K. H. Shimizu$^{1,5*}$
+
+Metal-organic frameworks (MOFs) as solid sorbents for carbon dioxide $(\mathrm{CO}_{2})$ capture face the challenge of merging efficient capture with economical regeneration in a durable, scalable material. Zinc-based Calgary Framework 20 (CALF-20) physisorbs $\mathrm{CO}_{2}$ with high capacity but is also selective over water. Competitive separations on structured CALF-20 show not just preferential $\mathrm{CO}_{2}$ physisorption below $40\%$ relative humidity but also suppression of water sorption by $\mathrm{CO}_{2}$, which was corroborated by computational modeling. CALF-20 has a low enthalpic regeneration penalty and shows durability to steam (&gt;450,000 cycles) and wet acid gases. It can be prepared in one step, formed as composite materials, and its synthesis can be scaled to multikilogram batches.
+
+Capture of $\mathrm{CO}_{2}$ after fossil fuel combustion requires $\mathrm{CO}_{2}$ removal from a localized emission source but also regeneration and recycling of the capture system. Major challenges for the capture stage span materials design and development through to process engineering (1, 2). Flue gas has a low concentration of $\mathrm{CO}_{2}$ diluted in mostly $\mathrm{N}_{2}$ along with water and acid gases (3). Amine and solvent systems (4, 5) rely on contacting flue gas with a liquid that absorbs the $\mathrm{CO}_{2}$ through a combination of chemical and physical absorption. Although $\mathrm{CO}_{2}$ removal is effective, regeneration is energy intensive and can lead to chemical decomposition (6).
+
+Solid sorbents represent a step-change technology for carbon capture (7–10) and have been demonstrated at smaller scales (11). Solids can bind $\mathrm{CO}_{2}$ through either chemical or physical sorption (3, 7–10). In most cases, chemisorptive materials have higher capacity and selectivity for $\mathrm{CO}_{2}$ (12). However, factors that enhance $\mathrm{CO}_{2}$ binding often proportionally increase the energy needed to regenerate the sorbent and can enhance binding of competing gases. For the absolute $\mathrm{CO}_{2}$ uptake, the relevant parameter
+
+$^{1}$ Department of Chemistry, University of Calgary, Calgary, Alberta, Canada. $^{2}$ Department of Chemical and Materials Engineering, University of Alberta, Edmonton, Alberta, Canada. $^{3}$ Indian Institute of Science Education and Research, Dr. Homi Bhabha Road, Pashan, Pune, Maharashtra, 411008, India. $^{4}$ Department of Chemistry and Biomolecular Science, University of Ottawa, Ottawa, Ontario, Canada. $^{5}$ ZoraMat Solutions Inc., Calgary, Alberta, Canada. $^{6}$ Department of Materials Engineering, Luleå University of Technology, Luleå, Sweden. $^{7}$ Svante Inc., Vancouver, British Columbia, Canada. $^{8}$ BASF SE, Ludwigshafen am Rhein, Germany. $^{9}$ Corresponding author. Email: phovington@svanteinc.com (P.H.); arvind.rajendran@ualberta.ca (A.R.); twoo@uottawa.ca (T.K.W.); jshimizu@ucalgary.ca (G.K.H.S.). Present address: C-CART, CREAT Network, Memorial University of Newfoundland, St. John's, Newfoundland and Labrador, Canada.
+
+is working capacity under the operational cycling conditions to regenerate the solid sorbent (3). Selectivity over $\mathrm{N}_{2}$ is typically reported, but sorption of $\mathrm{CO}_{2}$ in the presence of water vapor is much less reported, especially for physisorptive capture systems (12–14). A physisorptive $\mathrm{CO}_{2}$ capture solid would offer much lower regeneration costs, but it must have sufficient working capacity and selectivity in an actual flue stream in which gases are present with stronger intermolecular attractive forces than those of $\mathrm{CO}_{2}$. Moreover, to translate to process productivity, the kinetics of sorption and release are as important as capacity.
+
+Nearly all classes of porous solids have potential as solid sorbents for $\mathrm{CO}_{2}$ capture (1–3, 7–10), including metal-organic frameworks (MOFs) (2, 3, 9, 12–14), in which chemical building blocks, pore sizes and shapes, surface functionalities, and even degrees of order can be varied to optimize $\mathrm{CO}_{2}$ capture ability. More robust MOFs (15, 16), including ones that are stable in the presence of water (17–19) and steam (20), have been reported, although stability to wet acid gases is less common (21–23). For sorbent powder to be a usable material, it must be capable of formation in macroscopic shape for rapid mass transfer and thermal management, be durable in that form, and be available at scale (hundreds of thousands of tonnes) and reasonable cost (24, 25).
+
+Solid sorbents optimized in an adsorption process have the potential to substantially decrease the $\mathrm{CO}_{2}$ capture cost compared with traditional amine absorption processes because of lower regeneration energy, less chemical decomposition versus the solvent capture system, extensive use of stainless-steel owing to the corrosivity of amine solvents, and large plant footprint (4–6). Optimization of the solid sorbent
+
+process must include high volumetric productivity in the presence of water (present in the flue gas) and the lowest regeneration energy. For regeneration, several processes are under evaluation, including vacuum swing, pressure swing, and temperature swing (26). Although cycling performance per sorbent volume or productivity is one of the main drivers of final $\mathrm{CO}_{2}$ capture cost, there are several other parameters that affect operating and capital expenses of $\mathrm{CO}_{2}$ capture. For solid sorbents, unlike solvent-based absorption, it is not feasible to continuously replace deactivated sorbents with fresh ones.
+
+Here we present Calgary Framework 20 (CALF-20), a MOF with high capacity and selectivity for $\mathrm{CO}_{2}$ despite a physisorptive mechanism and modest heat of adsorption. Its selectivity extends beyond $\mathrm{N}_{2}$ to capture $\mathrm{CO}_{2}$ in a wet gas. CALF-20 is exceptionally robust and stable to steam, wet acid gases, and even prolonged exposure to direct flue gas from natural gas combustion. Its single-step synthesis from commercially available components is highly scalable. The origin of the $\mathrm{CO}_{2}$ publicity, despite CALF-20 being highly water resistant, was studied by simulation. Structuring of CALF-20 was performed, as well as competitive breakthrough experiments in wet gas streams that aligned with pure-component isotherms, heats of adsorption, and molecular modeling. In particular, not only can CALF-20 physisorb $\mathrm{CO}_{2}$ up to and beyond $40\%$ RH, but the presence of $\mathrm{CO}_{2}$ actually suppresses water sorption. Finally, we present durability and $\mathrm{CO}_{2}$ capture data on the MOF that are based on industrial testing.
+
+## Synthesis, structure, and gas sorption
+
+CALF-20, $\left[\mathrm{Zn}_{2}(\mathrm{1},2,4\text{-triazolate})_{2}\right](\text{oxalate})$, was initially prepared solvothermally and single crystals obtained through the in situ degradation of a dihydroxybenzoquinone derivative (see supplementary materials). CALF-20 is composed of layers of 1,2,4-triazolate-bridged zinc(II) ions pillared by oxalate ions to form a three-dimensional (3D) lattice and 3D pore structure (Fig. 1, A to C). Channels of $2.73\,\AA$ by $2.91\,\AA$, $1.94\,\AA$ by $3.11\,\AA$, and $2.74\,\AA$ by $3.04\,\AA$ along [100], [011], and [011], respectively (factoring van der Waals radii), that permeate the MOF result in a $\sim 38\%$ void volume. The one crystallographically unique Zn center is five-coordinate with a distorted trigonal bipyramidal geometry $\left[\mathrm{Zn - O} = 2.022(2), 2.189(3)\right.$ $\mathring{\mathrm{A}};\left.\mathrm{Zn - N} = 2.007(2), 2.016(3), 2.091(3)\right.$ $\mathring{\mathrm{A}}]$. The N atoms in the 1,2 positions of the triazolate bridge Zn dimers are linked to the next dimer by the N atom in the 4-position. The Zn coordination is completed by two oxygen atoms of a chelating oxalate group, and there are no open coordination sites. The bulk powder shows the same phase (Fig. 1D). Detailed structural analyses on pillared zinc triazolates have shown that layers can exist
+
+Lin et al., Science 374, 1464–1469 (2021) 17 December 2021
+
+RESEARCH | RESEARCH ARTICLE
+
+![img-0.jpeg](img-0.jpeg)
+A
+
+![img-1.jpeg](img-1.jpeg)
+B
+
+![img-2.jpeg](img-2.jpeg)
+C
+
+![img-3.jpeg](img-3.jpeg)
+D
+Fig. 1. Single-crystal structure of CALF-20. (A) View of the two-dimensional zinc triazolate grid. (B) View orthogonal to (A) showing the pillaring of the zinc triazolate layers by oxalate anions. (C) View of the zinc coordination sphere (H atoms removed). (D) Powder x-ray pattern simulated from the single-crystal structure (top) and obtained experimentally.
+
+in different manifestations with varying degrees of buckling (27, 28). Indeed, since a provisional patent application was filed in 2014, a hydrated form of $\left[\mathrm{Zn}_{2}(\mathrm{1},2,4\text{-triazolate})_{2}(\text{oxalate})\right]$ has been reported (29). This structure has the same connectivity but slightly different unit cell and pore dimensions. The specific pore structure affects sorption properties, and modeling was carried out with our obtained crystal data.
+
+Gas adsorption experiments were performed for $\mathrm{CO}_{2}$ and $\mathrm{N}_2$ (Fig. 2A). The Langmuir surface area calculated from the $\mathrm{N}_2$ isotherm at $77\mathrm{K}$ was $528~\mathrm{m}^2~\mathrm{g}^{-1}$, and the uptake for $\mathrm{CO}_{2}$ was $4.07\mathrm{mmol~g}^{-1}$ at 1.2 bar and $293\mathrm{K}$. The zero-loading heat of adsorption for $\mathrm{CO}_{2}$ was $-39\mathrm{kJ}$ mol $^{-1}$ (fig. S6), and the calculated selectivity for $\mathrm{CO}_{2}/\mathrm{N}_{2}$ by ideal adsorbed solution theory was 230 for a $10:90\mathrm{CO}_{2}/\mathrm{N}_{2}$ mixture. CALF-20 structured readily as a $20\%$ polysulfone composite and retained the expected porosity (Fig. 2, B and C, and fig. S5). For $\mathrm{CO}_{2}$ capacity and selectivity over $\mathrm{N}_2$ as metrics, there are numerous other materials with noteworthy performance (30-36). The water sorption profile of CALF-20 was unusual in that, for a solid with good physisorptive capacity for $\mathrm{CO}_{2}$, it exhibited poor water uptake at low partial pressures (Fig. 2, D and E). Comparisons to zeolite 13X (37), as well as two other water-resistant MOFs, CAU-10 (38) and Al fumarate (39), are included in Fig. 2 and fig. S16. Moreover, higher-temperature
+
+water isotherms showed that water uptake decreased more readily at higher temperatures than did the corresponding $\mathrm{CO}_{2}$ isotherms.
+
+## Binding-site modeling
+
+To gain insights into the nature of $\mathrm{CO}_{2}$ binding in CALF-20 and its unusual water sorption behavior, we performed atomistic grand canonical Monte Carlo (GCMC) simulations (see supplementary materials). The experimental and simulated $\mathrm{CO}_{2}$ and $\mathrm{N}_{2}$ isotherms were in excellent agreement (see supplementary materials). Probability distributions of the guest molecules within the MOF allowed us to identify binding sites. The most probable $\mathrm{CO}_{2}$ binding, which lies in the middle of the CALF-20 pore (Fig. 3A), had a binding energy of $-34.5\mathrm{kJ mol}^{-1}$ based on the GCMC force field; the density functional theory (DFT) value with dispersion corrections was $-36.5\mathrm{kJ mol}^{-1}$. The interatomic distances displayed were consistent with physisorption; the shortest distance was $3.03\AA$ between the $\mathrm{CO}_{2}$ oxygen and a hydrogen of the triazole (fig. S8). Analysis of the binding energy revealed that the $\mathrm{CO}_{2}$-MOF interaction was dominated by attractive dispersion interactions $(85\%)$, with electrostatics contributing the balance.
+
+Water adsorption isotherms are more challenging to simulate given the polar nature of water, which enables potentially strong interactions with the framework and with itself. The experimental water isotherm had a general
+
+S-shape, where the water uptake was initially low until $\sim 10\%$ relative humidity (RH), at which point there was a steep rise until $\sim 30\%$ RH (Fig. 3B). These features indicated that water condensed in the pores, and they were reproduced in the simulated isotherm. After the initial steep rise in water uptake beyond $30\%$ RH, the experimental isotherm showed a more gradual increase in adsorption until reaching a saturation limit at $\sim 11\mathrm{mmol~g}^{-1}$. However, for the simulated isotherm, the steep rise continued until full saturation at $40\%$ RH and then flattened. The general S-shape and the saturation capacity of $\sim 11\mathrm{mmol~g}^{-1}$ were reproduced by the simulation.
+
+A snapshot from the pure water simulation at $20\%$ RH, where the water uptake was roughly half the saturation limit (Fig. 3C), revealed that the pores were either full of water molecules, forming a hydrogen-bonded network, or completely empty. In comparison, at $60\%$ RH, where uptake had fully saturated, all the pores were full of hydrogen-bonded water molecules (fig. S9). The equilibrium distribution at $20\%$ RH, where partially filled pores were not observed, suggested rapid condensation or evaporation of water. We extracted the water binding sites at $20\%$ RH with the highest probability from the GCMC simulations, and the top three binding sites, in order, are labeled i, ii, and, iii in Fig. 3D. The binding energies with the framework of the sites, $-17.5, -8.9$, and $-29.1\mathrm{kJ mol}^{-1}$, respectively, were calculated by placing a single water molecule in the site with no other guest molecule present. The two most probable binding sites had a relatively low binding energy and were oriented away from the framework such that there were no hydrogen-bonding interactions with the oxalate linkers. Water molecules in these sites were poised to form hydrogen-bonding interactions with other water molecules, which suggested that the main driver for the initial water uptake was the interaction with other water molecules. This result was consistent with the experimentally observed water-uptake properties of CALF-20 at low RH.
+
+## Breakthrough studies
+
+The intriguing $\mathrm{CO}_{2}$ and water isotherms prompted a series of dynamic breakthrough studies (Fig. 4) on the CALF-20-polysulfone composite (see supplementary materials). Competitive $\mathrm{CO}_{2} / \mathrm{N}_{2}$ studies, with $\mathrm{CO}_{2} / \mathrm{N}_{2}$ mixtures of 5/95, 15/85, and 30/70, respectively (Fig. 4, A and B), confirmed the selectivity suggested by the pure-component isotherms. In the $\mathrm{N}_{2}$ profiles, a sharp front, indicating complete breakthrough of $\mathrm{N}_{2}$, was observed at dimensionless time (ratio of experimental time to the time taken by a nonadsorbing tracer to travel through the column) $\bar{t} \sim 4$ in all three cases. The "roll-up" effect of $\mathrm{N}_{2}$, whereby the outlet composition of $\mathrm{N}_{2}$ was higher than its inlet value, until $\mathrm{CO}_{2}$ broke through is clearly
+
+Lin et al., Science 374, 1464-1469 (2021) 17 December 2021
+
+RESEARCH | RESEARCH ARTICLE
+
+![img-4.jpeg](img-4.jpeg)
+
+![img-5.jpeg](img-5.jpeg)
+
+![img-6.jpeg](img-6.jpeg)
+
+![img-7.jpeg](img-7.jpeg)
+
+Fig. 2. Equilibrium gas uptake data on pure CALF-20. (A) $\mathrm{CO}_{2}$ and $\mathrm{N}_{2}$ isotherms from 273 to $373\mathrm{K}$ on pure CALF-20. (B to D) Structured CALF-20 (80% MOF:20% polysulfone). (B) $\mathrm{CO}_{2}$ isotherms from 303 to $373\mathrm{K}$. (C) $\mathrm{N}_{2}$ isotherms from 303 to $353\mathrm{K}$. (D) $\mathrm{H}_{2}\mathrm{O}$ isotherms from $295\mathrm{K}$ to $373\mathrm{K}$. (E) A comparison of $\mathrm{H}_{2}\mathrm{O}$ isotherm on zeolite 13X (37), CAU-10 (38), Al fumarate (39) and structured CALF-20 at $295\mathrm{K}$. The isotherms of $\mathrm{CO}_{2}$ and $\mathrm{N}_{2}$ were measured by volumetry, and that of $\mathrm{H}_{2}\mathrm{O}$ was measured by gravimetry.
+
+![img-8.jpeg](img-8.jpeg)
+
+visible. The $\mathrm{CO}_{2}$ concentration profiles showed different breakthrough times for various $\mathrm{CO}_{2} / \mathrm{N}_{2}$ compositions (Fig. 4A). Higher $\mathrm{CO}_{2}$ composition in the feed led to shorter breakthrough times
+
+We measured the competitive adsorption of $\mathrm{CO}_{2}$ and $\mathrm{H}_2\mathrm{O}$ using a combination of gravimetry, a study that measured the loading of $\mathrm{CO}_{2} + \mathrm{H}_{2}\mathrm{O}$ by subjecting the sample to a moist
+
+stream of $\mathrm{CO}_{2}$ whose RH was controlled, and a breakthrough experiment that provided the competitive loading of $\mathrm{H}_2\mathrm{O}$ in the presence of $\mathrm{CO}_{2}$ (Fig. 4, B and C). The difference between the total loading from the gravimetry and the $\mathrm{H}_2\mathrm{O}$ loading from the breakthrough provided the competitive $\mathrm{CO}_{2}$ loading. Up to a value of $30\%$ RH, the $\mathrm{CO}_{2}$ loading was nearly unaffected (Fig. 4F), which was unexpected for a physisorptive
+
+material but corroborated by the atomistic simulations. The $\mathrm{CO}_{2}$ loading gradually decreased until it became negligible at $\mathrm{RH} &gt; 80\%$. Additionally, the distinct shift in the $\mathrm{H}_2\mathrm{O}$ isotherm in the presence of $\mathrm{CO}_{2}$, compared to its pure-component isotherm, also confirmed the suppression of water sorption by $\mathrm{CO}_{2}$.
+
+To further demonstrate the physisorption of $\mathrm{CO}_{2}$ by CALF-20 in wet environments, we measured the water breakthrough curves in air or $\mathrm{CO}_{2}$ at two different RHs (Fig. 4, D and E). With the air experiment as a background, the water breakthrough was actually accelerated in $\mathrm{CO}_{2}$, providing definitive support for the physisorptive preference of CALF-20 for $\mathrm{CO}_{2}$ over water below $40\%$ RH. The difference in water loading, exemplified by the area behind the breakthrough curve, between the two curves was pronounced. A comparison of both $\mathrm{CO}_{2}$ and $\mathrm{H}_2\mathrm{O}$ loading in competitive experiments (Fig. 4F and figs. S15 and S16) corroborated not only the sustained $\mathrm{CO}_{2}$ capacity in wet gas but also the ability to suppress water sorption.
+
+The nature of the water and $\mathrm{CO}_{2}$ binding from the single-component water simulations and dry $\mathrm{CO}_{2} / \mathrm{N}_{2}$ simulations presented in Fig. 3 was consistent with the preferential binding of $\mathrm{CO}_{2}$ over water observed at low RHs. Namely, $\mathrm{CO}_{2}$ has strong binding sites in the center of the CALF-20 pores that precluded the formation of a hydrogen-bonded network that was responsible for the large uptake of water at high RHs. To corroborate this model, we performed multicomponent simulations of $\mathrm{CO}_{2}, \mathrm{~N}_{2}$, and water at varying RH. Figure S10 shows the comparison of simulated water uptake at various RHs from a single-component water simulation to that of multicomponent simulations with 0.20 bar of $\mathrm{CO}_{2}$ and 0.80 bar of $\mathrm{N}_{2}$. The results were in good agreement with the experimental competitive isotherms shown in Fig. 4F. The simulations showed that without $\mathrm{CO}_{2}$, water uptake at $20\%$ RH is $6\mathrm{mmol/g}$, whereas in the presence of $\mathrm{CO}_{2}$, it was negligible. Only at $40\%$ RH did water uptake reach $6\mathrm{mmol/g}$ when $\mathrm{CO}_{2}$ was present. Calculated binding energies of most probable $\mathrm{CO}_{2}$ and $\mathrm{H}_2\mathrm{O}$ binding sites taken from the multicomponent $\mathrm{CO}_{2} / \mathrm{N}_{2} / \mathrm{H}_{2}\mathrm{O}$ simulations give $-17.5\mathrm{kJ mol^{-1}}$ for $\mathrm{H}_2\mathrm{O}$ and $-33.5\mathrm{kJ mol^{-1}}$ for $\mathrm{CO}_{2}$ (table S6). Calculated heats of adsorption, at zero loading and high loading (table S7), suggest that partially water-loaded pores were more attractive for subsequent water sorption than empty pores, and $\mathrm{CO}_{2}$ had a stronger zero-loading heat of adsorption than water. A binding site analysis of the mixed $\mathrm{CO}_{2} / \mathrm{N}_{2} / \mathrm{H}_{2}\mathrm{O}$ simulations is presented in the supplementary materials.
+
+The low water-affinity yet $\mathrm{CO}_{2}$-phillic behavior of CALF-20 was enabled by its pore structure. Although a pore that is ideal for $\mathrm{CO}_{2}$ is, of course, targeted in carbon capture, it is much less a focus that a pore be nonideal for water. Notably, a key feature of CALF-20 was the absence of any
+
+Lin et al., Science 374, 1464-1469 (2021) 17 December 2021
+
+RESEARCH | RESEARCH ARTICLE
+
+strongly interacting functionality with $\mathrm{CO}_{2}$. Although this property would be expected to moderate the affinity of the MOF for $\mathrm{CO}_{2}$, the less specific dispersion interactions cumulatively compensate. As previously mentioned, dispersion interactions account for $&gt;85\%$ of the binding energy in the most favorable $\mathrm{CO}_{2}$ binding site. The boiling point of $\mathrm{H}_2\mathrm{O}$ is $157^{\circ}\mathrm{C}$ higher than that of $\mathrm{CO}_{2}$, so it is not expected that $\mathrm{CO}_{2}$ would preferentially physisorb, but we can connect the competitive sorption in Fig. 4F with modeling in fig. S10. Interactions between guest molecules (40, 41), or in this case, the lack thereof as $\mathrm{CO}_{2}$ blocked cooperative $\mathrm{H}_2\mathrm{O}$ binding, could tip subtle balances in binding enthalpies. The pore itself is the critical element in performing a sorptive function (42). Other MOFs with low water affinity such as CAU-10 (38) and Al fumarate (39) have been reported and studied for $\mathrm{CO}_{2}$ capture from wet gas. These MOFs have good $\mathrm{CO}_{2} / \mathrm{N}_{2}$ selectivity and reasonably low water affinity, as indicated by stepped water isotherms. However, CAU-10 loses $\mathrm{CO}_{2}$ capacity above a RH value of $20\%$, and aluminum fumarate loses $17\%$ $\mathrm{CO}_{2}$ capacity at $14\%$ RH (fig. S16). However, CALF-20 has a higher $\mathrm{CO}_{2}$ capacity and retains it up to and beyond $40\%$ RH. Also, neither shows the suppression of water sorption by $\mathrm{CO}_{2}$ that is observed with CALF-20.
+
+# Flue gas sorption and scaling
+
+Industrially, materials must absorb $\mathrm{CO}_{2}$ from postcombustion flue gases at $100^{\circ}\mathrm{C}$ containing water vapor and acid gases, and endure stresses during regeneration as the sorbent goes through a temperature swing, pressure swing, or vacuum swing process. CALF-20 has been run through stability assessments from multiple academic, government, and industry partners and shows robust performance, as confirmed by retention of structure and gas adsorption properties. The retention of $\mathrm{CO}_{2}$ capacity after being repeatedly heated to dry air at $150^{\circ}\mathrm{C}$ in the thermal gravimetric analysis (Fig. 5A) showed excellent stability (6, 43). This feature is key to high sorbent lifetime, as there is residual $\mathrm{O}_{2}$ in the flue gas and during conditioning of the bed where air can oxidize reactive groups.
+
+Powder x-ray diffraction (Fig. 5B) and $\mathrm{N}_2$ sorption isotherms (Fig. 5C) are shown after a week of exposure to $150^{\circ}\mathrm{C}$ steam. CALF-20 was also tested for retention of structure and porosity (figs. S12 and S13) after treatment with 20 parts per million (ppm) $\mathrm{SO}_2$ and $100\mathrm{ppm}$ $\mathrm{NO}_2$ at $20^{\circ}\mathrm{C}$ in separate experiments. We subjected CALF-20 to a real flue gas stream $(50^{\circ}\mathrm{C},$ flow of $100\mathrm{cm}^3\mathrm{min}^{-1})$ from natural gas combustion containing $7.3\%$ $\mathrm{H}_2\mathrm{O},$ $7.1\%$ $\mathrm{O}_2,$ $147\mathrm{ppm}$ CO, $78\mathrm{ppmNO},$ and $13\mathrm{ppmNO}_2$ see supplementary materials, fig. S3, and table S4). Under these flowing flue gas conditions, powdered CALF-20 lost only $1.3\%$ of its capac
+
+![img-9.jpeg](img-9.jpeg)
+
+![img-10.jpeg](img-10.jpeg)
+
+![img-11.jpeg](img-11.jpeg)
+Fig. 3. Most probable $\mathrm{CO}_{2}$ binding site determined from the single-component $\mathrm{CO}_{2}$ GCMC simulation at 0.15 atm. (A) Select distances between heavy atoms of the CALF-20 framework and the $\mathrm{CO}_{2}$ atoms are highlighted. These are the shortest distance between atoms of the framework and any atom of the $\mathrm{CO}_{2}$ molecule. (B) Experimental and simulated single-component water isotherms at $293\mathrm{K}$. Simulated adsorption results refer to the values obtained starting from empty pores, whereas the desorption results refer to the values obtained by starting the simulation with the pores saturated with water. (C) A snapshot from a $20\%$ RH simulation of water in CALF-20. (D) The three most probable $\mathrm{H}_2\mathrm{O}$ binding sites determined from the single-component water simulation at $20\%$ RH. For (A), (C), and (D), ball-and-stick representations are used for the guest, whereas a tube representation is used for the framework. Atom colors are the same as shown in Fig. 1B.
+
+![img-12.jpeg](img-12.jpeg)
+
+ity after 6 days, as confirmed by gravimetric $\mathrm{CO}_{2}$ uptake in a 15/85 mixture of $\mathrm{CO}_{2} / \mathrm{N}_{2}$. A process demonstration unit using the Svante VeloxoTherm process was built on the basis of rotating beds and fast cycles ($\sim 1$ min) at 0.1 tonne per day $\mathrm{CO}_{2}$ capacity, and it was deployed to test the CALF-20 lifetime with simulated cement flue gas. This simulated flue gas was generated by enriching real flue gas from a natural gas boiler with pure $\mathrm{CO}_{2}$ and air to bring $\mathrm{CO}_{2}$, water, and $\mathrm{O}_{2}$ concentrations to cement kiln flue gas composition (17% $\mathrm{CO}_{2}$, 10% $\mathrm{O}_{2}$, 5% $\mathrm{H}_{2}\mathrm{O}$, balance $\mathrm{N}_{2}$, at $45^{\circ}\mathrm{C}$). The gas analyzer recorded around 60 ppm NO and 12 ppm $\mathrm{NO}_{2}$ in the generated flue gas that was fed to the CALF-20 beds. The process was continuously tested for over 2000 hours with expected key performance indicators and no appreciable performance loss, as can be seen in fig. S17 (44). Furthermore, the process was able to achieve US Department of Energy target $\mathrm{CO}_{2}$ purity of 95%.
+
+For large-scale applications, it is important that the scale-up be feasible from an economic and technical viewpoint (45). Analysis of the
+
+cost driver for different MOF syntheses reveals that the costs of the raw materials, especially for the linker and less commonly for the metal, are often prohibitive. In addition, synthetic process conditions can have a substantial impact on the economics—for example, the necessity of high-pressure equipment is not only expensive but also results in costly safety precautions to protect employees and the environment. For CALF-20, none of these disadvantageous conditions apply (46). The raw materials are commercially available on a large scale from qualified vendors. Both linkers are low-cost bulk chemicals with large global production capacity (47): 200,000 metric tonnes per annum (MTPA) for oxalic acid, found mainly in pharmaceutical, textile and mining industries; 10,000 MTPA for triazoles, used mainly in the agricultural sector as a building block for azole-based fungicides. In addition, the reaction could be carried out in a water/methanol mixture, where the organic solvent represents $&lt; 25$ wt % with ongoing improvements. These conditions are particularly advantageous from a safety and environmental aspect. Further, in large-scale
+
+Lin et al., Science 374, 1464-1469 (2021) 17 December 2021
+
+RESEARCH | RESEARCH ARTICLE
+
+![img-13.jpeg](img-13.jpeg)
+
+![img-14.jpeg](img-14.jpeg)
+
+![img-15.jpeg](img-15.jpeg)
+
+![img-16.jpeg](img-16.jpeg)
+
+![img-17.jpeg](img-17.jpeg)
+
+Fig. 4. Competitive dynamic column breakthrough (DCB) and equilibrium measurements on structured CALF-20 at 295 K and 97 kPa. (A) Competitive DCB of CO₂ and N₂ at different compositions. (B) Competitive CO₂ breakthrough curves measured at various RH values. (C) Competitive H₂O breakthrough curves at various RH values corresponding to the curves shown in (B). (D) A comparison of breakthrough curves obtained from experiments with Air + H₂O and that with CO₂ + H₂O at 13% RH. (E) A comparison of breakthrough curves obtained from experiments with Air + H₂O and that with CO₂ + H₂O at 47% RH. (F) Competitive CO₂ loadings (red triangle) and competitive H₂O loadings (blue circle) at various RH values. The loading of pure H₂O isotherm (green square) is shown as a reference. The breakthrough curves are plotted in dimensionless time, which is the ratio of the actual time to the average retention time taken of a nonadsorbed component. Also, there is a break in the abscissa of breakthrough curves.
+
+![img-18.jpeg](img-18.jpeg)
+
+batch synthesis, CALF-20 can obtain an unusually high solid content (total amount of dried MOF per total amount of solvents used) of &gt;35%. The high yield of &gt;90%, the reasonable reaction time, and the very high solid content result in an exceptional space-time yield (STY) for the precipitation step of 550 kg/m³ day. In comparison, the STYs for zeolites are in the range of 50 to 150 kg/m³ day (48). Critically, the CO₂ uptake of CALF-20 was retained through a wide range of scaling and structuring. Figure 5D shows a 3 million-fold difference in scale with matching CO₂ isotherms.
+
+# Outlook
+
+An ideal adsorbent for the postcombustion CO₂ capture should exhibit several properties, including (i) high CO₂ adsorption capacity; (ii) fast adsorption/desorption kinetics; (iii) high CO₂ radioactivity over N₂, O₂, and ability to function in wet gas; (iv) mild regeneration conditions; (v) the ability to be formed into structures, e.g., beads, laminates, or monoliths; (vi) chemical, mechanical, and thermal stability during adsorption-desorption cycling; and (vii) low cost and scalability of production. We have shown that CALF-20 can meet all of these criteria and help make industrial-scale CO₂ capture cost effective and reliable (44). Other MOFs have better reported properties in one or more of the aforementioned criteria, but not in all of them. For example, most reported MOFs cannot tolerate even ambient moisture or steam despite having very high CO₂ capacity or high CO₂/N₂ selectivity. The other important factor to consider is cost and scalability of synthesis. Most MOFs need aprotic solvents (such as dimethyl formamide or diethyl formamide) or contain expensive and noncommercial-grade organic linkers. With CALF-20, the components are commercially available at low cost and large volume, and water and methanol are the solvents used to synthesize this MOF.
+
+In terms of gas separations, there is an increasing body of evidence showing that simple metrics such as selectivity and working capacity correlate poorly with ultimate process performance (49–53). A recent study that screened &gt;5000 MOFs (54) showed that sorbent screening should include detailed process modeling and optimization. The Svante VeloxoTherm capture process used direct steam to rapidly desorb all the captured CO₂. In comparison to a traditional temperature swing process, the steam regeneration step of the VeloxoTherm process provided concentration swing in addition to heat, which allowed the extraction of the entire quantity of physisorbed CO₂ through its cyclic working capacity. Beyond steam stability, key aspects of the CALF-20 adsorbent synergizing with this process are its low water affinity and its ability to rapidly physisorb CO₂ in a wet gas, facilitating faster cycling, higher productivity, and ultimately resulting in a smaller plant footprint. In the Svante process with CALF-20, less energy is required to remove moisture in the drying cycle, and it also bears a higher moisture tolerance, which allows the capture cycle to recommence more rapidly.
+
+Although materials can have one or more exceptional features, the key point is to merge those properties with process engineering conditions that best exploit them, such as capture conditions and available waste energy or heat for regeneration. The high uptakes at lower partial pressures of CO₂ make CALF-20
+
+Lin et al., Science 374, 1464–1469 (2021) 17 December 2021
+
+RESEARCH | RESEARCH ARTICLE
+
+![img-19.jpeg](img-19.jpeg)
+
+![img-20.jpeg](img-20.jpeg)
+
+![img-21.jpeg](img-21.jpeg)
+Fig. 5. CALF-20 scalability and stability. (A) Cycling of heating and introduction of  $\mathrm{CO}_{2}$  showing 30 cycles heated to  $150^{\circ}\mathrm{C}$ . The left y axis is truncated to show the  $\mathrm{CO}_{2}$  mass gain on each cycle. CALF-20 survived more than 450,000 steam treatments in another test, but  $\mathrm{CO}_{2}$  uptake was only measured on the terminal sample. (B) Powder x-ray diffractograms and treatment with steam and running gas sorption shown in (C)  $\mathbf{N}_2$  isotherms at 77 K run on steam-treated samples and compared to pristine CALF-20. (D)  $\mathrm{CO}_{2}$  isotherms on 3 million-fold different scale batch preparations of CALF-20, showing retention of the  $\mathrm{CO}_{2}$  capacity. Comparisons with simulated uptake from the crystal structure and the structured CALF-20 scaled by a factor of 0.2 to account for  $20\%$  polysulfone are also shown.
+
+![img-22.jpeg](img-22.jpeg)
+
+a more suitable sorbent for a temperature or concentration swing process or potentially a pressure or vacuum swing at elevated temperatures. Independent of the regeneration process, the competitive nature of  $\mathrm{CO}_{2}$  and  $\mathrm{H}_2\mathrm{O}$  will enhance sorbent efficiency as coadsorption of water is reduced. Factoring its scalable preparation and durability, CALF-20 should derisk the use of MOFs for large-scale gas separation in industrial settings, and in particular, the challenge of postcombustion  $\mathrm{CO}_{2}$  capture (55, 56). In terms of carbon capture and climate change, efficient capture is only a step, albeit a very important one, in reducing greenhouse gases. With the integration of better materials into advanced processes, this derisking should lead to additional and larger demonstration projects for critical testing of MOFs in  $\mathrm{CO}_{2}$  capture and other strategic challenges.
+
+# REFERENCES AND NOTES
+
+1. "Accelerating Breakthrough Innovation in Carbon Capture, Utilization, and Storage" (U.S. Department of Energy, 2017).
+2. Z. Hu, Y. Wang, B. B. Shah, D. Zhao, Adv. Sustainable Syst. 3, 1800080 (2018).
+3. K. Sumida et al., Chem. Rev. 112, 724-781 (2012).
+4. B. Dutcher, M. Fan, A. G. Russell, ACS Appl. Mater. Interfaces 7, 2137-2148 (2015).
+5. M. Wang, A. S. Joel, C. Ramshaw, D. Eimer, N. M. Musa, Appl. Energy 158, 275-291 (2015).
+6. C. Gouedard, D. Picqa, F. Launay, P.-L. Carrette, Int. J. Greenh. Gas Control 10, 244-270 (2012).
+
+7. M. Pardakhti et al., ACS Appl. Mater. Interfaces 11, 34533-34559 (2019).
+8. L. A. Darunte, K. S. Walton, D. S. Sholl, C. W. Jones, Curr. Opin. Chem. Eng. 12, 82-90 (2016).
+9. C. A. Trickett et al., Nat. Rev. Mater. 2, 17045 (2017).
+10. A.E. Creamer, B. Gao, Environ. Sci. Technol. 50, 7276-7289 (2016).
+11. J. C. Abanades et al., Int. J. Greenh. Gas Control 40, 126-166 (2015).
+12. D. G. Madden et al., Philos. Trans. A, Math. Phys. Eng. Sci. 375, 20160025 (2017).
+13. P. G. Boyd et al., Nature 576, 253-256 (2019).
+14. E. González-Zamora, I. A. Ibarra, Mater. Chem. Front. 1, 1471-1484 (2017).
+15. J. H. Cavka et al., J. Am. Chem. Soc. 130, 13850-13851 (2008).
+16. A. J. Howarth et al., Nat. Rev. Mater. 1, 15018 (2016).
+17. J. M. Kolle, M. Fayaz, A. Sayari, Chem. Rev. 121, 7280-7345 (2021).
+18. S. Yuan et al., Adv. Mater. 30, e1704303 (2018).
+19. J. Duan, W. Jin, S. Kitagawa, Coord. Chem. Rev. 332, 48-74 (2017).
+20. E. J. Kim et al., Science 369, 392-396 (2020).
+21. D. F. Sava Gallis, D. J. Vogel, G. A. Vincent, J. M. Rimsza, T. M. Nenoff, ACS Appl. Mater. Interfaces 11, 43270-43277 (2019).
+22. S. Bhattacharyya et al., Chem. Mater. 30, 4089-4101 (2018).
+23. G. W. Peterson, J. J. Mahle, J. B. DeCoste, W. O. Gordon, J. A. Rossin, Angew. Chem. Int. Ed. 55, 6235-6238 (2016).
+24. P. A. Julien, C. Mottillo, T. Frisco, Green Chem. 19, 2729-2747 (2017).
+25. S. Wang, C. Serre, ACS Sustain. Chem. &amp; Eng. 7, 11911-11927 (2019).
+26. M. Bui et al., Energy Environ. Sci. 11, 1062-1176 (2018).
+27. R. B. Lin, D. Chen, Y. Y. Lin, J. P. Zhang, X. M. Chen, Inorg. Chem. 51, 9950-9955 (2012).
+28. Y. Y. Lin, Y. B. Zhang, J. P. Zhang, X. M. Chen, Cryst. Growth Des. 8, 3673-3679 (2008).
+29. X.-F. Wei, J. Miao, L.-L. Shi, Synth. React. Inorg. Met.-Org. Nano-Met. Chem. 46, 365-369 (2016).
+30. S. R. Caskey, A. G. Wong-Foy, A. J. Matzger, J. Am. Chem. Soc. 130, 10870-10871 (2008).
+31. J. An, S. J. Geib, N. L. Rosi, J. Am. Chem. Soc. 132, 38-39 (2010).
+
+32. P. Nugent et al., Nature 495, 80-84 (2013).
+33. T. M. McDonald et al., Nature 519, 303-308 (2015).
+34. P. M. Bhatt et al., J. Am. Chem. Soc. 138, 9101-9307 (2016).
+35. S. Nandi et al., J. Am. Chem. Soc. 139, 1734-1737 (2017).
+36. S. Xiang et al., Nat. Commun. 3, 954 (2012).
+37. N. S. Wilkins, J. A. Sawada, A. Rajendran, Adsorption 26, 765-779 (2020).
+38. V. B. López-Cervantes et al., Polyhedron 155, 163-169 (2018).
+39. J. A. Coelho et al., Ind. Eng. Chem. Res. 55, 2134-2143 (2016).
+40. K. S. Walton et al., J. Am. Chem. Soc. 130, 406-407 (2008).
+41. R. Vaidhyanathan et al., Science 330, 650-653 (2010).
+42. S. Kitagawa, R. Matsuda, Coord. Chem. Rev. 251, 2490-2509 (2007).
+43. M. Jahandar Lashaki, S. Khiavi, A. Sayari, Chem. Soc. Rev. 48, 3320-3405 (2019).
+44. P. Hovington, O. Ghaffari-Nik, L. Mariac, A. Liu, B. Henkel, S. Marx, Rapid Cycle Temperature Swing Adsorption Process Using Solid Structured Sorbent for  $\mathrm{CO}_{2}$  capture from Cement Flue Gas, Proceedings of the 15th Greenhouse Gas Control Technologies Conference, 15-18 March 2021.
+45. M. Rubio-Martinez et al., Chem. Soc. Rev. 46, 3453-3480 (2017).
+46. J. M. Taylor, R. K. Mah, G. K. H. Shimizu, Synthesis of Zinc MOF Materials, PCT/CA2019/050530, filed 24 April 2019.
+47. S. N. Bizzari, M. Blagoev, CEH Marketing Research Report, Chemical Economics Handbook, SRI Consulting, April 2010.
+48. A. U. Czaja, N. Trukhan, U. Müller, Chem. Soc. Rev. 38, 1284-1293 (2009).
+49. A. K. Rajagopalan, A. M. Avila, A. Rajendran, Int. J. Greenh. Gas Control 46, 76-85 (2016).
+50. J. Park et al., Ind. Eng. Chem. Res. 59, 7097-7108 (2020).
+51. K. T. Leperi, Y. G. Chung, F. You, R. Q. Snurr, ACS Sustain. Chem. &amp; Eng. 7, 11529-11539 (2019).
+52. M. Khurana, S. Farooq, Ind. Eng. Chem. Res. 55, 2447-2460 (2016).
+53. A. H. Farmahini, S. Krishnamurthy, D. Friedrich, S. Brandani, L. Sarkisov, Chem. Rev. 121, 10666-10741 (2021).
+54. T. D. Burns et al., Environ. Sci. Technol. 54, 4536-4544 (2020).
+55. A. Samanta, A. Zhao, G. K. H. Shimizu, P. Sarkar, R. Gupta, Ind. Eng. Chem. Res. 51, 1438-1463 (2012).
+56. R. L. Siegelman, E. J. Kim, J. R. Long, Nat. Mater. 20, 1060-1072 (2021).
+
+# ACKNOWLEDGMENTS
+
+Funding: This research was undertaken thanks in part to funding from Alberta Innovates Technology Futures (Strategic Research Grant), the Natural Sciences and Engineering Research Council (NSERC) of Canada (CREATE Grant), the US Department of Energy's (DOE) office of Fossil Energy (FE) DE-FOA-0001792, GreenSTEM from Alberta Jobs, Economy, and Innovation, Carbon Management Canada's Carbon Capture and Conversion Institute, MITACS, Innovate Calgary, the Canada First Research Excellence Fund (Global Research Initiative in Sustainable Low Carbon Unconventional Resources), and a Parex Innovation Fellowship to GKHS. We also thank Compute Canada for computing resources. Author contributions: Methodology and Investigation; J.-B.L., T.T.T.N., R.V., J.M.T., N.J.F., R.K.M., O.G.-N., S.S.I., K.W.D., P.S., S.M.; Formal Analysis: J.-B.L., T.T.T.N., J.B., H.D., O.G.-N., A.R., T.K.W., G.K.H.S.; Funding acquisition/Supervision/Project administration: A.R., T.K.W., P.H., G.K.H.S.; Writing: J.-B.L., T.T.T.N., A.R., T.K.W., and G.K.H.S. wrote the first draft. All authors contributed to the final draft. Competing interests: Two patents (CA2904546A1 and EP3784824A1) related to CALF-20 are licensed to Svante Inc. and ZoraMat Solutions Inc. for different fields of use. J.-B.L., R.V., R.K.M., J.M.T., S.S.I., K.W.D., and G.K.H.S. receive royalties from the license. T.T.T.N., H.D., J.B., F.A., S.M., N.J.F., P.S., A.R., T.K.W. have no competing interests. Data and materials availability: The CIF file for CALF-20 is available at the Cambridge Crystallographic Data Centre with deposition number CCDC 2084733. All other data, excepting the large-scale synthesis of CALF-20, which is patent-pending, are available in the manuscript or the supplementary materials. Samples of CALF-20 are available for data reproduction purposes from BASF/Svante under a material transfer agreement via P.H. (phovington@svanteinc.com).
+
+# SUPPLEMENTARY MATERIALS
+
+science.org/doi/10.1126/science.abi7281
+Materials and Methods
+Figs. S1 to S17
+Tables S1 to S7
+References (57-74)
+26 March 2021; accepted 19 October 2021
+10.1126/science.abi7281
+
+Lin et al., Science 374, 1464-1469 (2021) 17 December 2021

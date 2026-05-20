@@ -1,0 +1,215 @@
+Materials Views
+
+ADVANCED MATERIALS
+
+www.MaterialsViews.com
+
+www.advmat.de
+
+# Protecting Metal–Organic Framework Crystals from Hydrolytic Degradation by Spray-Dry Encapsulating Them into Polystyrene Microspheres
+
+Arnau Carné-Sánchez, Kyriakos C. Stylianou, Carlos Carbonell, Majid Naderi, Inhar Imaz,* and Daniel Maspoch*
+
+Metal-organic frameworks (MOFs) are an emerging class of porous materials comprising metal components and organic ligands. They are characterized by extremely large surface areas $(S_{\mathrm{BET}})$ and high structural/compositional flexibility that confer them with potential for myriad applications, including gas sorption and separation,[1] catalysis,[2] sensing,[3] and biomedicine.[4] Seeking to exploit this exceptional porosity, researchers have spent the past 20 years bringing MOFs ever closer to real industrial applications. For instance, several fast, low-cost methods are currently being developed for industrial-scale synthesis and commercial distribution of MOFs.[5] However, major challenges must be overcome before MOFs find real-world utility. Among these is to improve their low hydrolytic stability, which prevents their use and storage in water-containing environments such as atmospheric conditions. Indeed, many polycarboxylate-based MOFs with high $S_{\mathrm{BET}}$ [e.g., MOF-5 and Hong-Kong University of Science and Technology-1 (HKUST-1)] and exceptional promise for capture and storage of gasses (e.g., $\mathrm{CO}_{2}$, $\mathrm{SO}_{2}$, or $\mathrm{CH}_4$) are water labile.[6] Water molecules attack, and coordinate to, the metal ions in the constituent clusters of the MOFs, hydrolyzing the metal–ligand bonds and consequently, displacing the ligands. This leads to collapse of the MOFs,[7] ultimately compromising their sorption performance.[8]
+
+The strategies that have been reported for enhancing the water stability of MOFs, or protecting them against water, include incorporation of hydrophobic ligands into their structures;[9] encapsulation of hydrophobic guest molecules (e.g., fluorinated molecules,[10] polyoxometalates,[11] and carbon nanotubes[12] in their pores; and functionalization of their surfaces via ligand replacement[13] or with carbon coatings, using thermal treatment.[14] One very attractive approach is to coat the MOF crystals with organic polymers to produce MOF@ polymer composites, which exhibit greater structural stability
+
+in water-containing media than do the corresponding MOFs alone.[15]
+
+Herein we present a one-step, alternative, rapid, and scalable spray-drying (SD) synthesis of MOF@polymer composites with enhanced hydrolytic stabilities. We recently reported that SD enables continuous in situ synthesis of MOFs (hollow spherical MOF superstructures and MOF nanocrystals).[16] Here, we exploit SD to encapsulate preformed MOF crystals in a polymeric matrix to generate microscale MOF@polymer spheres (Figure 1a). Our method does not require any purification or filtration steps, since the composites are obtained directly in a dried, pure form. In these composites, the polymer protects the embedded MOF crystals against water molecules, without substantially decreasing their initial sorption capacity, and increases their water resistance in terms of porosity properties.
+
+For proof-of-concept we chose HKUST-1 as the water-sensitive MOF, and polystyrene (PS) as the organic polymer. We chose PS because it is strongly hydrophobic and water-resistant. And we chose HKUST-1 because it is a porous MOF, with a large $S_{\mathrm{BET}} (&lt; 1400\mathrm{m}^2\mathrm{g}^{-1})$ [17] and is considered among the best MOFs for $\mathrm{CH}_4$ storage at room temperature.[18] However, despite the promise of HKUST-1 for many industrial applications, it is clearly limited by its poor hydrolytic stability. Previous ${}^{1}\mathrm{H}$ and ${}^{13}\mathrm{C}$ NMR studies have revealed that HKUST-1 breaks down in the presence of water.[19] Moreover, in one study using water–vapor isotherms, a single isotherm of HKUST-1 run at $298\mathrm{K}$ led to an approximately $50\%$ decrease in the $S_{\mathrm{BET}}$.[20] Furthermore, the crystal structure and sorption capacity of HKUST-1 (which is deep blue) are dramatically affected upon its exposure to humidity, leading to the generation of new, nonporous phases (which are light blue) via protonation of 1,3,5-benzenetricarboxylic acid (BTC) ligands and/or formation of $\mathrm{Cu(II)}$ hydroxide.[21]
+
+Our synthesis of HKUST-1@PS began with preparation of a stable colloidal suspension of HKUST-1 crystals $(10\mathrm{mg}\mathrm{mL}^{-1}; S_{\mathrm{BET}} = 1430\mathrm{m}^2\mathrm{g}^{-1}$; average size: $150\mathrm{nm})$ in dimethylformamide (see Figure S1, Supporting Information) and a solution of PS $(10\mathrm{mg}\mathrm{mL}^{-1})$ in dichloromethane (DCM). Then, $30~\mathrm{mL}$ of the HKUST-1 colloid was mixed with $150~\mathrm{mL}$ of the PS solution. This mixture was atomized using a two-fluid nozzle at a feed rate of $4.5\mathrm{mL}\mathrm{min}^{-1}$, a flow rate of $336~\mathrm{mL}\mathrm{min}^{-1}$ and an inlet temperature of $130^{\circ}\mathrm{C}$, using a B-290 Mini Spray Dryer (BÜCHI Labortechnique). After $40\mathrm{min}$ of continuous spraying, $1.7\mathrm{g}$ of a blue powder was recovered (yield: $95\%$). The sample was then washed with ethanol and dried at $120^{\circ}\mathrm{C}$ under vacuum. This product was analyzed through field-emission scanning electron microscopy (FESEM), which indicated that
+
+![img-0.jpeg](img-0.jpeg)
+
+A. Carné-Sánchez, Dr. K. C. Stylianou, C. Carbonell, Dr. I. Imaz, Prof. D. Maspoch
+ICN2 (ICN-CSIC), Institut Catala de Nanociencia i Nanotecnologia, Esfera UAB
+08193 Bellaterra, Spain
+E-mail: inhar.imaz@icn.cat; daniel.maspoch@icn.cat
+
+M. Naderi
+Surface Measurement Systems, Ltd.
+London HA0 4PE, UK
+Prof. D. Maspoch
+Institución Catalana de Recerca i Estudis Avançats (ICREA)
+08100 Barcelona, Spain
+
+DOI: 10.1002/adma.201403827
+
+Adv. Mater. 2015, 27, 869-873
+
+© 2014 WILEY-VCH Verlag GmbH &amp; Co. KGaA, Weinheim
+
+wileyonlinelibrary.com
+
+ADVANCED MATERIALS
+
+www.advmat.de
+
+Materials Views
+
+www.MaterialsViews.com
+
+![img-1.jpeg](img-1.jpeg)
+a)
+
+![img-2.jpeg](img-2.jpeg)
+b)
+
+![img-3.jpeg](img-3.jpeg)
+c)
+Figure 1. a) Schematic of the spray-drying synthesis of HKUST-1@PS composites. b) Representative FESEM image of HKUST-1@PS_18% and a discrete composite sphere (inset). Scale bars: 10 µm and 2 µm (inset). c) From bottom to the top: XRPD of the simulated patterns for HKUST-1, HKUST-1@PS_18, and the HKUST-1@PS_18 incubated overnight in either water or 10% HCl (v/v) solution.
+
+it comprised smooth microspheres of HKUST-1@PS composites (average size: 3.6 ± 1.7 µm) (Figure 1b) and did not contain any free HKUST-1. X-ray powder diffraction (XRPD) analysis of these spheres revealed a perfect match with the HKUST-1 pattern (Figure 1c). The exclusive presence of microspheres and the match in XRPD patterns evidenced that HKUST-1 crystals were indeed entrapped within the polymeric matrix of PS. This entrapment was further confirmed by EDX (Figure S2, Supporting Information) and by embedding these HKUST-1@PS spheres in a polymeric resin, cutting this resin into nanometric slices (average thickness: 100 nm) using a microtome, and then analyzing the slices by FESEM. The images showed numerous holes, mainly in the core of the microspheres, further proving the encapsulation of HKUST-1 crystals. We reasoned that the holes had formed during the slicing process, when the crystals, which were in the same size range as the slices themselves (Figure 2b), were pushed out by the mechanical force of cutting.
+
+The content of HKUST-1 in the composite was estimated by dissolving the PS spheres in DCM and recovering the crystals by centrifugation. The crystals were dried and weighed, from which a HKUST-1 content of 18% w/w (hereafter, w_{HKUST-1}/w_{composite}) in the composite (hereafter, HKUST-1@PS_18) was determined. This percentage is similar to the initial value (20% w/w), confirming that SD is very efficient for encapsulating MOF crystals. In addition, N₂ sorption measurements (done at 77 K and 1 bar) of these HKUST-1 crystals proved that they had retained their sorption capacity (S_BET = 1301 m² g⁻¹) after encapsulation.
+
+Having determined that the HKUST-1 had retained its porosity during formation of the composite, we then evaluated the composites for protection against hydrolysis and for sorption capacity inside the matrix. To study the former, a sample of HKUST-1@PS_18 was incubated in liquid water (pH 6.7) and acidic aqueous solution (pH &lt; 1) at 298 K and atmospheric pressure with stirring overnight. In all cases, the incubated
+
+composites maintained the same spherical morphology (as confirmed by FESEM), and their XRPD patterns coincided with that expected for HKUST-1 (Figure 1c and Figure S3, Supporting Information). On the contrary, when bare HKUST-1 crystals were incubated in liquid water under identical conditions, they broke down into a new, nonporous phase that comprised BTC and copper oxo-species (Figure S4, Supporting Information).[22] Remarkably, the crystals that had been incubated in the acidic solution dissolved completely within a few minutes. Thus, we concluded that PS effectively protects HKUST-1 crystals from hydrolytic degradation. However, based on the N₂ sorption studies, we found that the protection offered by PS implies reduced access to MOF pores. Since PS capsules are nonporous (but still permeable to gas and vapors by solubilization-diffusion process – general mechanism in dense polymer – at an extremely slow rate) (Figure S5, Supporting Information), we attributed the nonporous character of the HKUST-1@PS_18 to the thick external layer of PS (Figure 2b), which did not allow the N₂ molecules to diffuse down to the HKUST-1 crystals embedded mainly in the core of the composite.
+
+We then sought to assess the hydrolytic stability and porosity of HKUST-1@PS composites of diverse compositions, seeking to find an HKUST-1/PS ratio that would provide both porosity (as measured by N₂ sorption) and water protection. Thus, we systematically synthesized a series of composites in which we varied the amount of HKUST-1 crystal used in the SD synthesis (w/w: 33%, 50%, 63%, and 80%). Under the conditions studied, the composite with a content of 63% w/w offered the optimal balance between porosity and protection. As expected, a greater amount of HKUST-1 led to greater filling of the PS matrix and to a more homogenous distribution of crystals within the spherical PS matrix. Consequently, in the composites with higher HKUST-1 content, there were more HKUST-1 crystals located near the polymeric surface. This trend was evidenced by analyzing thin slices of each composite by FESEM (Figure 2b and Figure S6, Supporting Information). It was also supported by the FESEM images of the bare composites, in which we observed that greater surface roughness correlated to higher HKUST-1 content clear evidence that the embedded crystals were localized increasingly closer to the surface (Figure 2a). Importantly, we observed complete coating of the HKUST-1 crystals in all cases except for HKUST-1@PS_80, in which the low relative amount of PS meant that a high percentage of HKUST-1 crystals remained at the surface and could not be entrapped. This structure dictated the hydrolytic stability of the composite: incubation of HKUST-1@PS_80 in liquid water (pH 6.7) at 298 K and atmospheric pressure with stirring overnight led to complete degradation of the HKUST-1 crystals, as evidenced by an absence of any peaks attributable to HKUST-1 in the XRPD spectrum of the resulting product (Figure S7, Supporting Information). Contrariwise, the other composites remained stable under the same conditions (Figure 2c).
+
+We further studied the porosity of the water-stable composites (HKUST-1@PS_33, HKUST-1@PS_50, and HKUST-1@PS_63), through N₂ sorption measurements done at 77 K. Remarkably, all were porous to N₂. The S_BET values increased with increasing content of HKUST-1: 32 m² g⁻¹ for HKUST-1@PS_33; 277 m² g⁻¹ for HKUST-1@PS_50; and 757 m² g⁻¹ for HKUST-1@PS_63. Given that PS is nonporous to N₂,
+
+wileyonlinelibrary.com
+
+© 2014 WILEY-VCH Verlag GmbH &amp; Co. KGaA, Weinheim
+
+Adv. Mater. 2015, 27, 869-873
+
+Materials Views
+
+www.MaterialsViews.com
+
+ADVANCED MATERIALS
+
+www.advmat.de
+
+![img-4.jpeg](img-4.jpeg)
+a)
+
+![img-5.jpeg](img-5.jpeg)
+
+![img-6.jpeg](img-6.jpeg)
+
+![img-7.jpeg](img-7.jpeg)
+b)
+
+![img-8.jpeg](img-8.jpeg)
+
+![img-9.jpeg](img-9.jpeg)
+
+![img-10.jpeg](img-10.jpeg)
+Figure 2. a) FESEM images of isolated spheres of the composites at increasing amounts of HKUST-1 (w/w) (from left to right): 33%, 50%, and 63%. Scale bars: 2 µm. b) FESEM images of the microtomic slice of HKUST-1@PS_33 (left), HKUST-1@PS_50 (middle), and HKUST-1@PS_63 (right), showing their interior and highlighting the thick polymeric shell (dotted line). Scale bars: 2 µm. c) From bottom to the top: XRPD of the simulated pattern of HKUST-1, and the composites HKUST-1@PS_33, HKUST-1@PS_50, and HKUST-1@PS_63 incubated overnight in water. d) From bottom to the top: N₂ isotherms at 77 K calculated per gram of HKUST-1 in HKUST-1@PS_33, HKUST-1@PS_50, HKUST-1@PS_63, and HKUST-1.
+
+![img-11.jpeg](img-11.jpeg)
+
+we attributed the sorption to the entrapped HKUST-1 crystals; therefore, these S_BET values can be expressed in m² per grams HKUST-1: S_BET: 97 m² g⁻¹ for HKUST-1@PS_33; S_BET: 554 m² g⁻¹ for HKUST-1@PS_50; and S_BET: 1202 m² g⁻¹ for HKUST-1@PS_63 (Figure 2d). From these values, we found that the sorption performance retention (SPR) values (expressed as a percentage relative to the initial HKUST-1 - S_BET: 1430 m² g⁻¹) were 7% (HKUST-1@PS_33), 39% (HKUST-1@PS_50), and 84% (HKUST-1@PS_63). The observed increase in porosity correlates well with the presence of thinner PS shell layers and higher ratios of HKUST-1 crystals to PS. Thus, it appears that thin PS layers are accessible enough for the N₂ molecules to diffuse down to the embedded HKUST-1 crystals and that these crystals are internally accessible, presumably due to the low content of PS.
+
+Considering the excellent SPR of HKUST-@PS_63, we also studied its CO₂ and CH₄ sorption capacity. Type I CO₂ and CH₄ isotherms were collected at 295 K and 0.96 bar on HKUST-1 and on HKUST-1@PS_63. The former absorbed 93.9 cm³ g⁻¹ of CO₂ and 16.5 cm³ g⁻¹ of CH₄, and the latter 61.6 of CO₂ and 13.0 cm³ g⁻¹ of CH₄ (expressed in cm³ per grams
+
+HKUST-1: 97.8 cm³ g⁻¹ and 20.7 cm³ g⁻¹ (Figure 3a,b). We attributed the slightly higher values (in grams of HKUST-1) for the composites to the moderate CO₂ (4.38 cm³ g⁻¹) and CH₄ (2.62 cm³ g⁻¹) sorption capacity already exhibited by the bare PS spheres. These results revealed that the composites are porous to nonpolar molecules (N₂ and CH₄) and polar molecules (CO₂) and exhibit most of the sorption of standard HKUST-1.
+
+To study the hydrolytic stability and porosity of HKUST-1 when encapsulated into PS microspheres, we incubated a sample of HKUST-1@PS_63 in liquid water (pH 6.7) at 298 K and atmospheric pressure under stirring overnight (the same experiment we had previously done for HKUST-1@PS_18). Similarly to what we had earlier observed with HKUST-1@PS_18, the HKUST-1@PS_63 spheres did not undergo any morphological changes and their XRPD pattern was consistent with the pattern expected for HKUST-1. Importantly, these water-stability results correlated with the sorption performance. The N₂ isotherm at 77 K revealed that the efficacy of the composite was almost fully conserved: the postincubation SPR value was 72% (Figure 3c). Contrariwise, under identical conditions, bare HKUST-1 crystals completely lost their sorption capabilities, again breaking down into the nonporous phase comprising BTC and copper oxo-species (vide supra).
+
+The aforementioned result prompted us to compare the long-term hydrolytic stability of nonencapsulated HKUST-1 crystals to that of HKUST-1@PS_63, by exposing each one to high relative humidity (RH). The two materials were placed in an incubation chamber at 80% RH and 300 K (Figure S8, Supporting Information). Samples of each material were taken at different time-points during incubation, and then studied by N₂ isotherms and by XRPD (Figure 3d and Figures S9 and S10, Supporting Information). The S_BET of HKUST-1 decreased by 56% after 8 h incubation, by 78% after 24 h, and by 96% after 1 week (final value: 64.0 m² g⁻¹). In contrast, the composite was much more resistant to the same conditions: its S_BET (expressed in grams of HKUST-1) decreased from 1202 to 1111 m² g⁻¹ after 8 h (SPR = 77%; relative to the initial HKUST-1 crystals - S_BET: 1430 m² g⁻¹), whereas after one week its S_BET decreased to 782 m² g⁻¹ (SPR = 55%). Interestingly, even after 1 month of incubation, the composite retained some of its initial sorption capacity, showing a S_BET of 417 m² g⁻¹ (SPR = 29%).
+
+We also confirmed the hydrolytic stability of HKUST-1@PS_63 by separately measuring its CH₄ sorption and CO₂ sorption after 1 month of incubation at 80% RH. In both cases, type I isotherms collected at 295 K and 0.96 bar revealed that it still adsorbed 34.5 cm³ g⁻¹ of CO₂ and 6.40 cm³ g⁻¹ of CH₄ (expressed relative to grams of HKUST-1: 54.76 and
+
+Adv. Mater. 2015, 27, 869-873
+
+© 2014 WILEY-VCH Verlag GmbH &amp; Co. KGaA, Weinheim
+
+wileyonlinelibrary.com
+
+ADVANCED MATERIALS
+
+www.advmat.de
+
+Materials Views
+
+www.MaterialsViews.com
+
+![img-12.jpeg](img-12.jpeg)
+
+![img-13.jpeg](img-13.jpeg)
+
+![img-14.jpeg](img-14.jpeg)
+
+![img-15.jpeg](img-15.jpeg)
+
+![img-16.jpeg](img-16.jpeg)
+
+Figure 3. a,b) $\mathrm{CO}_{2}$ and $\mathrm{CH}_4$ adsorption (solid symbols) and desorption (outlined symbols) isotherms collected at $295\mathrm{K}$ for HKUST-1 (blue circles), HKUST-1@PS_63 (red squares), and PS (brown circles). In the case of HKUST-1@PS_63, expressed in grams of HKUST-1@PS_63. c) $\mathsf{N}_2$ isotherms at $77\mathrm{K}$ of HKUST-1 (blue) and HKUST-1@PS_63 (red) before (circles) and after (diamonds) incubation in water. Photo of the incubated samples: HKUST-1 (left) and HKUST-1@PS_63 (right) (inset). d) Change in $S_{\mathrm{BET}}$ of HKUST-1 (black) and HKUST-1@PS_63 measured per gram of composite (red) and per gram of HKUST-1 (blue). Photo of the samples postincubation: HKUST-1 (right) and HKUST-1@PS_63 (left). e) Water uptake in HKUST-1 after three consecutive cycles, 1st (black), 2nd (blue), and 3rd (red). f) Water uptake in HKUST-1@PS_63 after three consecutive cycles, 1st (black), 2nd (blue), and 3rd (red).
+
+![img-17.jpeg](img-17.jpeg)
+
+10.16 cm³ g⁻¹, respectively; SPR = 58% and 63% of its original sorption capacity, respectively) (Figures S12 and S13, Supporting Information).
+
+Finally, we investigated the water-vapor sorption properties of HKUST-1@PS_63. It is well-known that HKUST-1 shows a high water sorption affinity and uptake (reported water uptake at $298\mathrm{K}$ and $\mathrm{P / P^0} = 0.9$ ranged from $0.37\mathrm{gH_2O g^{-1}}$ HKUST-1 to $0.64\mathrm{gH_2O g^{-1}}$ HKUST-1), but it loses a substantial percentage ($\approx 16\%$) of its water sorption capacity after each successive adsorption/desorption cycle because it is not very stable in water vapors.[23,20b] These observations are in agreement with gravimetric water sorption measurements that we performed on our bare HKUST-1 (Figure 3e and Figure S13, Supporting Information). In them, we found: (i) the typical two-step adsorption process;[20b,23c] (ii) a maximum water uptake of $0.39\mathrm{gH_2O g^{-1}}$ HKUST-1; (iii) the previously observed hysteresis
+
+in the desorption branch (0.13 g H₂O g HKUST-1 is not desorbed after completing the desorption) due to chemisorption and/or the partial decomposition of HKUST-1 (Figure S13, Supporting Information);[20b] and (iv) loses 33% and 48% of its maximum water uptake after the second and third water adsorption/desorption cycles, respectively, also due to its hydrolytic degradation (Figure 3e).[23c] Importantly, the same measurements performed on HKUST-1@PS_63 showed the same type of adsorption isotherm with a similar maximum water uptake of $0.27\mathrm{gH_2O g^{-1}}$ HKUST-1@PS_63 (expressed in grams H₂O per grams HKUST-1: 0.43 g H₂O g HKUST-1; Figure 3f). However, the desorption branch did not present hysteresis (Figure S14, Supporting Information), indicating that all the water molecules had desorbed from the composite. This difference can be attributed to the higher water stability of HKUST-1@PS_63, suggesting that the hysteresis observed in HKUST-1 is mainly due to its hydrolytic degradation. The potential use of HKUST-1 incorporated in the composite as a water adsorbent was further confirmed by performing three consecutive water adsorption/desorption cycles. In contrast to HKUST-1, the composite maintained its water sorption uptake over the three cycles (Figure 3f), in which values of $0.47\mathrm{gH_2O g^{-1}}$ HKUST-1 and $0.44\mathrm{gH_2O g^{-1}}$ HKUST-1 were obtained in the second and third cycles, respectively.
+
+In summary, we have demonstrated that SD encapsulation of crystals of the water-labile MOF HKUST-1 into PS microspheres is a straightforward, rapid, and continuous method to protect the compound against liquid water and water vapors. Our method does not require any filtration or purification steps. Although encapsulation always implies a compromise between the protection offered by PS, and the pore accessibility of the encapsulated porous material, SD has enabled us to fine-tune the HKUST-1/PS ratio to achieve optimal tradeoff in our HKUST-1@PS composites: they are resistant to liquid or vapor water yet retain most of the sorption capacity of HKUST-1. As in MOF mix matrix membranes,[24] the permeability of the organic polymer in the composite should be one of the key factors to understand and enhance the gas and vapor transport towards the embedded MOF crystals. Here, for example, further experimentation aimed to study the water uptake kinetics is currently underway. Nevertheless, this method should enable modular fabrication of various functional composites, based on the ever-expanding pool of MOFs and organic polymers, for a wide array of industrial applications such as $\mathrm{CO}_{2}$ capture from flue gas streams, heat pumps, or adsorption chillers.
+
+wileyonlinelibrary.com
+
+© 2014 WILEY-VCH Verlag GmbH &amp; Co. KGaA, Weinheim
+
+Adv. Mater. 2015, 27, 869-873
+
+Materials Views
+
+ADVANCED MATERIALS
+
+www.MaterialsViews.com
+
+www.advmat.de
+
+# Supporting Information
+
+Supporting Information is available from the Wiley Online Library or from the author.
+
+# Acknowledgements
+
+We thank the MINECO (Spain) for financial support through Project Nos. MAT2012-30994, CTQ2011-16009-E, and EC FP7 ERC-Co 61594. I.I. thanks the MINECO for a RyC contract and K.C.S. thanks the EU for a Marie Curie Fellowship.
+
+Received: August 21, 2014
+
+Revised: November 18, 2014
+
+Published online: December 10, 2014
+
+[1] a) H. Furukawa, N. Ko, Y. B. Go, N. Aratani, S. B. Choi, E. Choi, A. O. Yazaydin, R. Q. Snurr, M. O'Keeffe, J. Kim, O. M. Yaghi, Science 2010, 329, 424; b) E. D. Bloch, W. L. Queen, R. Krishna, J. M. Zadrozny, C. M. Brown, J. R. Long, Science 2012, 335, 1606.
+[2] L. Ma, J. M. Falkowski, C. Abney, W. Lin, Nat. Chem. 2010, 2, 838.
+[3] Y. Takashima, V. M. Martínez, S. Furukawa, M. Kondo, S. Shimomura, H. Uehara, M. Nakahama, K. Sugimoto, S. Kitagawa, Nat. Commun. 2011, 2, 168.
+[4] P. Horcajada, R. Gref, T. Baati, P. K. Allan, G. Maurin, P. Couvreur, G. Ferey, R. E. Morris, C. Serre, Chem. Rev. 2012, 112, 1232.
+[5] a) M. Gaab, N. Trkhan, S. Maurer, R. Gummaraju, U. Müller, Microporous Mesoporous Mater. 2012, 157, 131; b) Y.-K. Seo, J. W. Yoon, J. S. Lee, U.-H. Lee, Y. K. Hwang, C.-H. Jun, P. Horcajada, C. Serre, J.-S. Chang, Microporous Mesoporous Mater. 2012, 157, 137; c) G. Majano, J. Pérez-Ramírez, Adv. Mater. 2013, 25, 1052.
+[6] J. J. Low, A. I. Benin, P. Jakubczak, J. F. Abrahamian, S. A. Faheem, R. R. Willis, J. Am. Chem. Soc. 2009, 131, 15834; b) D. Saha, Z. Bao, F. Jia, S. Deng, Environ. Sci. Technol. 2010, 44, 1820; c) S. Ye, X. Jiang, L.-W. Ruan, B. Liu, Y.-M. Wang, J.-F. Zhu, L.-G. Qiu, Microporous Mesoporous Mater. 2013, 179, 191.
+[7] a) J. A. Greathouse, M. D. Allendorf, J. Am. Chem. Soc. 2006, 128, 10678; b) S. S. Han, S.-H. Choi, A. C. T. van Duin, Chem. Commun. 2010, 46, 5713; c) L. Bellarosa, J. M. Castillo, T. Vlugt, S. Calero, N. López, Chem. Eur. J. 2012, 18, 12260; d) M. De Toni, R. Jonchiere, P. Pullumbi, F.-X. Coudert, A. H. Fuchs, ChemPhysChem 2012, 13, 3497; e) J. B. DeCoste, G. W. Peterson, H. Jasuja, T. G. Glover, Y.-G. Huang, K. S. Walton, J. Mater. Chem. A 2013, 1, 5642.
+[8] S. S. Kaye, A. Dailly, O. M. Yaghi, J. R. Long, J. Am. Chem. Soc. 2007, 129, 14176.
+[9] a) T. Wu, L. Shen, M. Luebbers, C. Hu, Q. Chen, Z. Ni, R. I. Masel, Chem. Commun. 2010, 46, 6120; b) H. Jasuja, Y.-G. Huang, K. S. Walton, Langmuir 2012, 28, 16874.
+[10] J. B. Decoste, G. W. Peterson, M. W. Smith, C. A. Stone, C. R. Willis, J. Am. Chem. Soc. 2012, 134, 1486.
+[11] D. Mustafa, E. Breynaert, S. R. Bajpe, J. A. Martens, C. E. A. Kirschhock, Chem. Commun. 2011, 47, 8037.
+[12] S. J. Yang, J. Y. Choi, H. K. Chae, J. H. Cho, K. S. Nahm, C. R. Park, Chem. Mater. 2009, 21, 1893.
+[13] X. Liu, Y. Li, Y. Ban, Y. Peng, H. Jin, H. Bux, L. Xu, J. Caro, W. Yang, Chem. Commun. 2013, 49, 9140.
+[14] S. J. Yang, C. R. Park, Adv. Mater. 2012, 24, 4010.
+[15] a) M. D. Rowe, C.-C. Chang, D. H. Thamm, S. L. Kraft, J. F. Harmon, A. P. Vogt, B. S. Sumerlin, S. G. Boyes, Langmuir 2009, 25, 9487; b) W. J. Rieter, K. M. L. Taylor, W. Lin, J. Am. Chem. Soc. 2007, 129, 9852.
+[16] A. Carne-Sanchez, I. Imaz, M. Cano-Sarabia, D. Maspoch, Nat. Chem. 2013, 5, 203.
+[17] S. S.-Y. Chui, S. M.-F. Lo, J. P. H. Charmant, A. G. Orpen, I. D. Williams, Science 1999, 283, 1148.
+[18] Y. Peng, V. Krungleviciute, I. Eryazici, J. T. Hupp, O. K. Farha, T. Yildirim, J. Am. Chem. Soc. 2013, 135, 11887.
+[19] F. Gul-E-Noor, B. Jee, A. Poppl, M. Hartmann, D. Himsl, M. Bertmer, Phys. Chem. Chem. Phys. 2013, 13, 7783.
+[20] a) J. M. Castillo, T. J. H. Vlugt, S. Calero, J. Phys. Chem. C 2008, 112, 15934; b) P. Kusgens, M. Rose, I. Senkovska, H. Frode, A. Henschel, S. Siegle, S. Kaskel, Microporous Mesoporous Mater. 2009, 120, 325.
+[21] G. Majano, O. Martin, M. Hammes, S. Smeets, C. Baerlocher, J. Pérez-Ramírez, Adv. Funct. Mater. 2014, 24, 3855.
+[22] G. W. Peterson, G. W. Wagner, J. Balboa, J. Mahle, C. J. Sewell, C. J. Karwacki, J. Phys. Chem. C 2009, 113, 13906
+[23] a) T. Uemura, Y. Kadowaki, C. R. Kim, T. Fukushima, D. Hiramatsu, S. Kitagawa, Chem. Mater. 2011, 23, 1736; b) J. Canivet, A. Fateeva, Y. Guo, B. Coasne, D. Farrusseng, Chem. Soc. Rev. 2014, 43, 5594. c) H. Furukawa, F. Gandara, Y.-B. Zhang, J. Jiang, W. L. Queen, M. R. Hudson, O. M. Yaghi, J. Am Chem. Soc. 2014, 136, 4369.
+[24] a) H. B. Tanh Jeazet, C. Staudt, C. Janiak, Dalton Trans. 2012, 41, 14003; b) T. Rodenas, M. van Dalen, E. García-Pérez, P. Serra-Crespo, B. Zornoza, F. Kapteijn, J. Gascon, Adv. Funct. Mater. 2014, 24, 249.
+
+Adv. Mater. 2015, 27, 869-873
+
+© 2014 WILEY-VCH Verlag GmbH &amp; Co. KGaA, Weinheim
+
+wileyonlinelibrary.com

@@ -1,0 +1,188 @@
+[
+  {
+    "source_file": "10.1002_adma.201203383.txt",
+    "doi": "10.1002/adma.201203383",
+    "title": "MFU-4: a metal-organic framework for highly effective H2/D2 separation",
+    "year": 2012,
+    "material": "MFU-4 (Zn-based metal-organic framework)",
+    "surface_area": {
+      "value": null,
+      "unit": null
+    },
+    "pore_volume": {
+      "value": null,
+      "unit": null
+    },
+    "pore_size": {
+      "value": 3.88,
+      "unit": "Å"
+    },
+    "gases": [
+      "H2",
+      "D2"
+    ],
+    "temperature": {
+      "value": 50,
+      "unit": "K"
+    }
+  },
+  {
+    "source_file": "10.1002_adma.201403827.txt",
+    "doi": "10.1002/adma.201403827",
+    "title": "Protecting Metal–Organic Framework Crystals from Hydrolytic Degradation by Spray-Dry Encapsulating Them into Polystyrene Microspheres",
+    "year": 2015,
+    "material": "HKUST-1@PS_63",
+    "surface_area": {
+      "value": 1202,
+      "unit": "m2/g"
+    },
+    "pore_volume": {
+      "value": null,
+      "unit": null
+    },
+    "pore_size": {
+      "value": null,
+      "unit": null
+    },
+    "gases": [
+      "CO2",
+      "CH4",
+      "N2",
+      "H2O"
+    ],
+    "temperature": {
+      "value": 295,
+      "unit": "K"
+    }
+  },
+  {
+    "source_file": "10.1002_anie.200903153.txt",
+    "doi": "10.1002/anie.200903153",
+    "title": "Breathing transitions in MIL-53(Al) metal-organic framework upon xenon adsorption",
+    "year": 2009,
+    "material": "MIL-53(Al)",
+    "surface_area": {
+      "value": null,
+      "unit": null
+    },
+    "pore_volume": {
+      "value": null,
+      "unit": null
+    },
+    "pore_size": {
+      "value": null,
+      "unit": null
+    },
+    "gases": [
+      "xenon"
+    ],
+    "temperature": {
+      "value": 195,
+      "unit": "K"
+    }
+  },
+  {
+    "source_file": "10.1002_anie.202107179.txt",
+    "doi": "10.1002/anie.202107179",
+    "title": "Editing Light Emission with Stable Crystalline Covalent Organic Frameworks via Wall Surface Perturbation",
+    "year": 2021,
+    "material": "Covalent Organic Frameworks (COFs)",
+    "surface_area": {
+      "value": 1116,
+      "unit": "m2/g"
+    },
+    "pore_volume": {
+      "value": 0.52,
+      "unit": "cm3/g"
+    },
+    "pore_size": {
+      "value": 2.1,
+      "unit": "nm"
+    },
+    "gases": [
+      "N2"
+    ],
+    "temperature": {
+      "value": null,
+      "unit": null
+    }
+  },
+  {
+    "source_file": "10.1002_chem.201404377.txt",
+    "doi": "10.1002/chem.201404377",
+    "title": "Mixed Metal MIL-100(Sc,M) (M=Al, Cr and Fe) for Lewis Acid Catalysis and Tandem C-C Bond Formation and Alcohol Oxidation",
+    "year": 2015,
+    "material": "MIL-100(Sc,Fe)",
+    "surface_area": {
+      "value": 0.58,
+      "unit": "cm3/g"
+    },
+    "pore_volume": {
+      "value": 0.93,
+      "unit": "cm3/g"
+    },
+    "pore_size": {
+      "value": null,
+      "unit": null
+    },
+    "gases": [
+      "N2"
+    ],
+    "temperature": {
+      "value": 77,
+      "unit": "K"
+    }
+  },
+  {
+    "source_file": "10.1002_ejic.201101099.txt",
+    "doi": "10.1002/ejic.201101099",
+    "title": "Synthesis, structural characterization, and catalytic performance of a vanadium-based metal-organic framework (COMOC-3)",
+    "year": 2012,
+    "material": "COMOC-3 (VIVO(O2C-C10H6-CO2))",
+    "surface_area": {
+      "value": null,
+      "unit": null
+    },
+    "pore_volume": {
+      "value": null,
+      "unit": null
+    },
+    "pore_size": {
+      "value": null,
+      "unit": null
+    },
+    "gases": [],
+    "temperature": {
+      "value": 250,
+      "unit": "°C"
+    }
+  },
+  {
+    "source_file": "10.1007_BF03214948.txt",
+    "doi": "10.1007/BF03214948",
+    "title": "One-pot N-alkylation of primary amines to secondary amines by gold clusters supported on porous coordination polymers",
+    "year": 2009,
+    "material": "Au/Al-MIL53",
+    "surface_area": {
+      "value": null,
+      "unit": null
+    },
+    "pore_volume": {
+      "value": null,
+      "unit": null
+    },
+    "pore_size": {
+      "value": null,
+      "unit": null
+    },
+    "gases": [
+      "N2",
+      "O2",
+      "H2"
+    ],
+    "temperature": {
+      "value": 100,
+      "unit": "°C"
+    }
+  }
+]

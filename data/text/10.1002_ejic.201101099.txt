@@ -1,0 +1,250 @@
+OPEN ACCESS OPUS AUGSBURG
+
+Universität Augsburg Universitätsbibliothek
+
+# Synthesis, structural characterization, and catalytic performance of a vanadium-based metal-organic framework (COMOC-3)
+
+Ying-Ya Liu, Karen Leus, Maciej Grzywa, David Weinberger, Katrien Strubbe, Henk Vrielinck, Rik Van Deun, Dirk Volkmer, Veronique Van Speybroeck, Pascal Van Der Voort
+
+Angaben zur Veröffentlichung / Publication details:
+
+Liu, Ying-Ya, Karen Leus, Maciej Grzywa, David Weinberger, Katrien Strubbe, Henk Vrielinck, Rik Van Deun, Dirk Volkmer, Veronique Van Speybroeck, and Pascal Van Der Voort. 2011. "Synthesis, structural characterization, and catalytic performance of a vanadium-based metal-organic framework (COMOC-3)." European Journal of Inorganic Chemistry 2012 (16): 2819-27. https://doi.org/10.1002/ejic.201101099.
+
+Nutzungsbedingungen / Terms of use:
+
+licgercopyright
+
+Dieses Dokument wird unter folgenden Bedingungen zur Verfügung gestellt: / This document is made available under the conditions:
+
+Deutsches Urheberrecht
+
+Weitere Informationen finden Sie unter: / For more information see:
+
+https://www.uni-augsburg.de/de/organisation/bibliothek/publizieren-zitieren-archivieren/public/
+
+^{}[]
+
+# Synthesis, Structural Characterization, and Catalytic Performance of a Vanadium-Based Metal-Organic Framework (COMOC-3)
+
+Ying-Ya Liu, $^{[a]}$  Karen Leus, $^{[a]}$  Maciej Grzywa, $^{[b]}$  David Weinberger, $^{[c]}$  Katrien Strubbe, $^{[c]}$  Henk Vrielinck, $^{[d]}$  Rik Van Deun, $^{[e]}$  Dirk Volkmer, $^{[b]}$  Veronique Van Speybroeck, $^{[f]}$  and Pascal Van Der Voort*[a]
+
+A vanadium 2,6-naphthalenedicarboxylate,  $\mathrm{V}^{\mathrm{III}}(\mathrm{OH})(\mathrm{O}_2\mathrm{C}-$ $\mathrm{C_{10}H_6 - CO_2})\cdot \mathrm{H}_2\mathrm{O}$ , denoted as COMOC-3as (COMOC = Center for Ordered Materials, Organometallics and Catalysis, Ghent University), has been synthesized under hydrothermal conditions by means of both a solvothermal and a microwave synthesis procedure. The structure shows the topology of an aluminium 2,6-naphthalenedicarboxylate, the so-called MIL69 (MIL = Materials of the Institute Lavoisier). After calcination at  $250^{\circ}\mathrm{C}$  in air, the  $\mathrm{V}^{\mathrm{III}}$  center was oxidized to  $\mathrm{V}^{\mathrm{IV}}$  with the structure of  $\mathrm{V}^{\mathrm{IV}}\mathrm{O}(\mathrm{O}_2\mathrm{C}-\mathrm{C}_{10}\mathrm{H}_6-\mathrm{CO}_2)$  (COMOC-3).
+
+The oxidation process was verified by cyclic voltammetry and EPR spectroscopy. The crystallinity was investigated by variable-temperature XRD. The title compound is stable against air and moisture. The catalytic performance of COMOC-3 was examined in the liquid-phase oxidation of cyclohexene. COMOC-3 exhibited similar catalytic performance to MIL-47  $\left[\mathrm{VO}\left(\mathrm{O}_{2} \mathrm{C}-\mathrm{C}_{6} \mathrm{H}_{4}-\mathrm{CO}_{2}\right)\right]$ . The compound is reusable and maintains its catalytic activity through several runs.
+
+# Introduction
+
+Metal-organic frameworks (MOFs) are crystalline materials with structures that are constructed by metal ions or clusters coordinated to di-, tri-, or multidentate ligands. The strong coordination interactions between metal and ligand and the infinite three-dimensional structures ensure the good chemical stability of the MOFs and allow for rational design and synthesis. Among the large MOF family, one group of compounds[1] shares chains of trans corner-sharing octahedra  $\{\mathrm{MO}_6\}$  ( $\mathrm{M} = \mathrm{V}, \mathrm{Cr}, \mathrm{Al}, \mathrm{Fe}, \mathrm{Ga}, \mathrm{Sc},$  and In),
+
+[ a] Ghent University, Dept. of Inorganic and Physical Chemistry, COMOC: Center for Ordered Materials, Organometallics and Catalysis, Krijgslaan 281-S3, 9000 Ghent, Belgium E-mail: pascal.vandervoort@ugent.be
+[ b] Solid State and Materials Chemistry, Institute of Physics, Augsburg University, Universitaetsstrasse 1, 86159 Augsburg, Germany
+[ c] Ghent University, Dept. of Inorganic and Physical Chemistry, Research Group of Electrochemistry, Krijgslaan 281-S3, 9000 Ghent, Belgium
+[ d] Ghent University, Dept. of Solid State Sciences, Electron Magnetic Resonance Research Group, Krijgslaan 281-S1, 9000 Ghent, Belgium
+[ e] Ghent University, Dept. of Inorganic and Physical Chemistry, Coordination Chemistry Group, Krijgslaan 281-S3, 9000 Ghent, Belgium
+[ f] Ghent University, Center for Molecular Modelling, Technology Park 903, 9052 Zwijnaarde, Belgium
+
+which are cross-linked by dicarboxylate linkers. Upon removal or desorption of guest species, they show a remarkable porosity. Two representative compounds are MIL-53[1a] [Al(OH)(BDC); BDC = terephthalate or 1,4-benzenedicarboxylate, MIL = Materials of the Institute Lavoisier] and MIL-47[1c] [VO(BDC)], which were originally developed by Ferey's group. They have been studied for  $\mathrm{CO}_{2}$  capture,[2] sorption of several small molecules,[3] and catalysis.[4] This series of MOFs contains 1D channels. By changing the channel sizes and metal types, they can be designed and modified for different catalytic reactions. For example, MIL-53(Al) has been studied as a catalyst for N-methylation of primary aromatic and aliphatic amines with dimethyl carbonate (DMC).[5]
+
+Our group has made efforts in the synthesis of vanadium-based MOFs (V-MOFs) for catalysis,[4e,6] because vanadium is an important active species in (selective) oxidation reactions. Both vanadate anions[7] and vanadium carboxylate compounds[8] have been widely studied as efficient catalysts for oxidation reactions. For example, an oxovanadium complex,  $\mathrm{[VO(Hhpic)_2]}$ $(\mathrm{H}_2\mathrm{hpic} = 3$  -hydroxypicolinic acid), catalyzed a highly selective oxidation of benzylamines to the corresponding  $N$  -benzylidene)benzylamines under atmospheric molecular oxygen.[9] However, as with most of the homogeneous catalysts, the recycling of the catalyst is difficult. Imidazolium-type ionic liquids were used in this case as solvent to attain recycling of the catalyst.
+
+Contrary to vanadium-functionalized zeolites and zeotypes, vanadium MOFs have the metal ions embedded in the crystalline network, which adds to the rigidity of the
+
+framework and minimizes the risk of excessive metal leaching. On the other hand, MOFs usually have a lower thermal and chemical stability than zeolite substrates. Thermogravimetric analyses (TGA) of MOFs demonstrate that most MOFs start to decompose at temperatures above  $300^{\circ}\mathrm{C}$ . However, this is a temperature that is far above most (liquid-phase) catalytic reaction temperatures. Moreover, in a liquid-phase reaction, some solvents or reagents could lead to a structural collapse of the MOF at a certain temperature. The challenge is therefore to find a MOF that exhibits both good catalytic performance and good stability. A very recent example was reported by Yaghi's group,[10] they utilize MIL-47 and the newly reported MOF-48 (an isostructure of MIL-47 with functionalized methyl groups) to catalyze methane to acetic acid with  $\mathrm{K}_2\mathrm{S}_2\mathrm{O}_8$  as the oxidant. The yield was approximately  $70\%$  (with a selectivity of  $80\%$ ) for MIL-47, and the catalytic performance was enhanced by the functionalization of methyl groups on the MOF structure.
+
+The selective oxidation of (cyclo)alkenes constitutes an important class of reactions in which MOFs can act as heterogeneous catalysts.[11] Different product distributions can be obtained by changing the active metal center in the MOF. For example, MFU-1, a cobalt-containing MOF with unsaturated metal sites gives  $27.5\%$  conversion in the cyclohexene oxidation with tert-butyl hydroperoxide (TBHP) as oxidant after  $22\mathrm{h}$ . 2-Cyclohexene-1-one is the major product. These results indicate that the MFU-1-catalyzed cyclohexene oxidation favors a radical pathway and allylic oxidation products (Scheme 1).[12] On the other hand, when catalyzing the same reaction with aqueous  $\mathrm{H}_2\mathrm{O}_2$  as oxidant, a nickel(II) dihydroxylterephthalate compound (denoted as Ni-DHTP) gives cyclohexene oxide as the primary product and 2-cyclohexen-1-ol as a major product (Scheme 1), thereby indicating that epoxidation is the major reaction pathway.[13] Our own recent studies showed that MIL-47, a vanadium-based MOF with 1D channel and saturated vanadium sites, has a catalytic activity and selectivity in the epoxidation of cyclohexene (Scheme 1) that is comparable to the homogeneous  $[\mathrm{VO}(\mathrm{acac})_2]$  (acac = acetylacetonate) catalyst, although we have clearly proven that the epoxidation reactions on MIL-47 occur heterogeneously.[4b,4e,6] MIL-47 is reusable and maintains its catalytic activity over several runs without losing its crystalline structure. In general, the liquid-phase oxidation of cyclohexene can produce one or more of the following products as shown in Scheme 1. In our earlier studies, both experimental and theoretical studies proved that the catalytic process begins with formation of defects on the structure, through which activated vanadium centers are created, which play the key role in the catalytic process.[6] As a consequence, part of our strategy has centered on synthesizing new isorecticular vanadium MOFs with variable pore sizes. As chains of trans corner-sharing octahedra  $\{\mathrm{MO}_6\}$  have been reported to be present in different MOFs, this finding leads us to assume this type of chains is rigid enough to act as a building unit. By replacing the benzene dicarboxylate linker with extended linkers, we expect to ob
+
+tain a MIL-47 analogue with variable channel size. Our recent work shows that by replacing the  $\mathrm{H}_2\mathrm{BDC}$  linker with  $\mathrm{H}_2\mathrm{NDC}$  (2,6-naphthalenedicarboxylic acid) and  $\mathrm{H}_2\mathrm{BPDC}$  (biphenyl-4,4'-dicarboxylic acid) linkers, we were able to synthesize two porous V-MOFs with MIL-47 topology but larger channel dimension,[14] which are isostructural to DUT-4 and -5;[15] and one V-MOF with MIL-69[16] topology in a nonporous form.
+
+![img-0.jpeg](img-0.jpeg)
+Scheme 1. Oxidation of cyclohexene 1 towards the main reaction products: (a) epoxidation to cyclohexene oxide (2) and consecutive ring opening to cyclohexane-1,2-diol (3); (b) radical pathway to tert-butyl 2-cyclohexen-1-yl peroxide (4), and (c) allylic oxidation to 2-cyclohexene-1-one (5).
+
+In this article, we focus on a vanadium 2,6-naphthalenedicarboxylate,  $\mathrm{V}^{\mathrm{IV}}\mathrm{O}(\mathrm{O}_2\mathrm{C} - \mathrm{C}_{10}\mathrm{H}_6 - \mathrm{CO}_2)$ , denoted as COMOC-3 (COMOC = Center for Ordered Materials, Organometallics and Catalysis, Ghent University). This compound is a V-MOF that features MIL-69 topology. Here we report the synthesis and characterization of this compound. The as-synthesized compound is  $\mathrm{V}^{\mathrm{III}}(\mathrm{OH})(\mathrm{O}_2\mathrm{C} - \mathrm{C}_{10}\mathrm{H}_6-$ $\mathrm{CO}_{2})\cdot \mathrm{H}_{2}\mathrm{O}$ , in which the  $\mathrm{V}^{\mathrm{III}}$  center can be oxidized to  $\mathrm{V}^{\mathrm{IV}}$  by calcination in air. The oxidation process is verified by cyclic voltammetry and EPR spectroscopy. Furthermore, we studied the catalytic performance in the liquid-phase oxidation of cyclohexene (Scheme 1) by using  $5.5\mathrm{M}$  TBHP in decane as the oxidant. The results indicate that although it is a nonporous material, it has good thermal and chemical stability. Finally, COMOC-3 has a very high vanadium loading, which provides good catalytic performance and reusability.
+
+# Results and Discussion
+
+Vanadium 2,6-naphthalenedicarboxylate  $\{\mathrm{COMOC - 3}$ $[\mathrm{VO}(\mathrm{O}_2\mathrm{C} - \mathrm{C}_{10}\mathrm{H}_6 - \mathrm{CO}_2)]\}$  can be synthesized either by solvothermal procedures or by an ultrafast procedure using microwave irradiation without loss of crystallinity or purity of the samples (see the Experimental Section for both procedures).
+
+# Structural Determinations of  $\mathbf{V}^{\mathrm{III}}(\mathrm{OH})(\mathrm{NDC})\cdot \mathrm{H}_2\mathrm{O}$  (COMOC-3as)
+
+Preliminary powder X-ray diffraction studies showed the  $\mathrm{V}^{\mathrm{III}}(\mathrm{OH})(\mathrm{NDC})\cdot \mathrm{H}_2\mathrm{O}$  (COMOC-3as) compound to be isostructural to Al(OH)(NDC)  $\cdot \mathrm{H}_2\mathrm{O}$  (MIL-69). The COMOC-3as compound crystallizes in the monoclinic crystal system
+
+with the space group  $C2/c$  (no. 15). The asymmetric unit consists of one vanadium, four oxygen, and six carbon atoms. An ORTEP-style plot of the asymmetric unit with atom labels is shown in Figure S1 of the Supporting Information. The atomic coordinates and bond lengths are given in Table S1 of the Supporting Information. The Rietveld refinement plots for COMOC-3as are shown in Figure S2 of the Supporting Information.
+
+As shown in Figure 1, the structure of COMOC-3as is three-dimensional; the slightly twisted octahedral  $\mathrm{V}^{\mathrm{III}}$  ions are bridged by hydroxide groups to form  $\{\mathrm{V - O - V}\}_{\infty}$  chains along the  $c$  axis. 2,6-Naphthalenedicarboxylate linkers interconnect the  $\mathrm{V}^{\mathrm{III}}$  ions along the square plane. One-dimensional channels run along the  $c$  axis and host water molecules. TGA and elemental analysis confirm that one water molecule is trapped inside the channels per V center (vide infra). However, the channel is too narrow in diameter to allow the entrance of nitrogen molecules.  $\mathbf{N}_2$ -sorption measurements of COMOC-3 at  $77\mathrm{K}$  therefore show no sorption behavior, which confirms a closed (nonporous) structure. Variable-temperature X-ray diffraction (VT-XRD) characterization (Figure 2) of COMOC-3 also verified that the structure of COMOC-3 is rigid upon removal of water molecules. Meanwhile, the nonporous structure provides this compound with a good thermal stability. Unlike the other porous vanadium-based MOFs, the freshly made sample can be stored in air for months.
+
+![img-1.jpeg](img-1.jpeg)
+
+![img-2.jpeg](img-2.jpeg)
+Figure 1. Ball-and-stick representation of COMOC-3as.  $\{\mathrm{VO}_6\}$  building units are shown as gray polyhedra. Top: Hydrogen atoms are omitted for clarity. Bottom: View of the structure along the  $b$  axis (bottom).
+
+It has been proven that for most vanadium MOFs, high-temperature calcination under an oxygen atmosphere can oxidize the vanadium center without destroying the MOF structure. The representative example of vanadium MOF is MIL-47, which shows a crystal-to-crystal transformation
+
+![img-3.jpeg](img-3.jpeg)
+
+![img-4.jpeg](img-4.jpeg)
+Figure 2. Top: VT-XRD pattern of COMOC-3 with the selected temperatures. Bottom: Variation of XRD intensities as a function of temperature; the black line corresponds to the selected XRD pattern at certain stages.
+
+upon calcination in air. However, the porous structure and the sensitivity upon exposure to air render an in-depth study of the structural changes difficult. COMOC-3 is a nonporous variety in the MIL-47 series of analogues. Due to the rigidity of the framework, it can be a good reference sample to study in catalytic reactions.
+
+After calcination at  $250^{\circ}\mathrm{C}$  for  $6\mathrm{h}$ , the  $\mathrm{V}^{\mathrm{III}}$  center were fully oxidized to  $\mathrm{V}^{\mathrm{IV}}$  yet maintained the original topology. The color was observed to change from yellowish green of as-synthesized materials to bright green for the calcined sample (Figure S3 in the Supporting Information). This process was characterized by VT-XRD, EPR spectroscopy, and cyclic voltammetry (CV). As shown in Figure 2, VT-XRD analysis showed that the COMOC-3 framework is stable up to  $400^{\circ}\mathrm{C}$ . However, loss of water molecules (ca.  $80^{\circ}\mathrm{C}$ ) and the oxidation of the vanadium center (ca.  $290^{\circ}\mathrm{C}$ ) resulted in slight shifts of the XRD pattern, which indicate a deformation of the original framework. After  $400^{\circ}\mathrm{C}$ , the intensity of the pattern started to drop, which indicates the beginning of the decomposition of the framework. After  $450^{\circ}\mathrm{C}$ , the formation of  $\mathrm{V}_2\mathrm{O}_5$  was observed, which was also identified as the final residue from the TGA experiment. It is hard to analyze the valence change in the vanadium ions in the structure; several characterization methods were performed to study the oxidation process.
+
+# EPR Spectra of COMOC-3as and COMOC-3 Compounds
+
+Figure 3 shows the EPR spectra of the MOF structure before and after calcination. The difference is immediately clear: whereas COMOC-3 exhibits a very intense broad EPR line at  $g = 1.960$  (342.3 mT at 9.387 GHz microwave frequency, typical for  $\mathrm{V}^{\mathrm{IV}}$ ,  $4\mathrm{d}^{1}$  configuration), the spectrum of COMOC-3as is practically absent, or in any case much weaker (by a factor of at least 50). Since the vanadium salt used for synthesis is  $\mathrm{V}^{\mathrm{III}}\mathrm{Cl}_3$ , we conclude that during synthesis the vast majority of V ions enter the structure in the trivalent oxidation state ( $4\mathrm{d}^{2}$  configuration, EPR-silent in low-symmetry ligand field) and that calcination oxidizes them to  $\mathrm{V}^{\mathrm{IV}}$ . The absence of a  $^{51}\mathrm{V}$  hyperfine structure - often observed in EPR spectra of isolated vanadyl species - is, as in the case of MIL-47,[8] most probably a result of the high concentration of paramagnetic ions in the structure (spin-spin interactions).
+
+![img-5.jpeg](img-5.jpeg)
+Figure 3. EPR spectra of COMOC-3as and COMOC-3 measured at room temperature.
+
+# Electrochemical Properties
+
+Cyclic voltammetry (CV) studies have been performed on both as-synthesized and calcined samples in a  $0.1\mathrm{M}$ $\mathrm{[Bu_4N][ClO_4] / MeCN}$  solution, as well as on a Pt electrode in  $0.1\mathrm{M}$ $\mathrm{[Bu_4N][ClO_4] / MeCN}$  solution that contained either  $\mathrm{VCl}_3$  or  $[\mathrm{VO(acac)}_2]$ . The electrochemical behavior has been studied in the potential range between  $0\mathrm{V}$  versus  $\mathrm{Ag / AgCl}$  and  $+1.6\mathrm{V}$  versus  $\mathrm{Ag / AgCl}$ . The CV curves are displayed in Figure 4 (a and b). Figure 4 (a) compares the voltammograms at the uncalcined sample COMOC-3as and the Pt electrode in a solution that contained  $0.15\mathrm{M}$ $\mathrm{VCl}_3$ . At both electrodes, two oxidation peaks can be distinguished: the first one at a potential of about  $0.8\mathrm{V}$ , the second one around  $1.1\mathrm{V}$ . In Figure 4 (b), the behavior of the calcined COMOC-3 is compared with that of Pt in a  $0.17\mathrm{M}$  solution of  $[\mathrm{VO(acac)}_2]$ . On the basis of the figure, it follows that now only one oxidation peak at approximately  $1.1\mathrm{V}$  is observed. In a blank measurement, a cyclic voltammogram was recorded at a Pt electrode in the  $[\mathrm{Bu}_4\mathrm{N}][\mathrm{ClO}_4] / \mathrm{MeCN}$  solution that showed no oxidation peaks in the selected po
+
+tential range. The peaks in Figure 4 may hence be attributed to the oxidation of vanadium species. More specifically, the peak at  $0.8\mathrm{V}$  (Figure 4, a) is associated with the oxidation of  $\mathrm{V}^{\mathrm{III}}$  to  $\mathrm{V}^{\mathrm{IV}}$ , whereas the peak at  $1.1\mathrm{V}$ , which is present in both parts a and b of Figure 4 can be attributed to the oxidation of  $\mathrm{V}^{\mathrm{IV}}$  to  $\mathrm{V}^{\mathrm{V}}$ . Both curves of the MOF samples match quite well with the voltammograms of the vanadium species in solution, which indicates that the calcined sample consists entirely of  $\mathrm{V}^{\mathrm{IV}}$ , whereas the as-synthesized sample contains  $\mathrm{V}^{\mathrm{III}}$ .
+
+![img-6.jpeg](img-6.jpeg)
+
+![img-7.jpeg](img-7.jpeg)
+Figure 4. Cyclic voltammetry scan of (a) COMOC-3as and  $\mathrm{VCl}_3$  ( $\mathrm{V}^{\mathrm{III}}$  reference) and (b) COMOC-3 with  $[\mathrm{VO}(\mathrm{acac})_2]$  ( $\mathrm{V}^{\mathrm{IV}}$  reference). At Pt-disc electrode in a  $0.1\mathrm{M}$ $[\mathrm{Bu}_4\mathrm{N}][\mathrm{ClO}_4] / \mathrm{MeCN}$  solution. Scan rate  $(\nu) = 0.02\mathrm{Vs}^{-1}$ .
+
+The EPR and electrochemical characterizations together indicate that COMOC-3as mostly contains  $\mathrm{V}^{3+}$ . After calcination at a certain temperature,  $\mathrm{V}^{3+}$  is fully oxidized to  $\mathrm{V}^{4+}$  in the form of COMOC-3.
+
+# Thermal Behavior
+
+As shown in Figure S4 in the Supporting Information, the TGA curve recorded under dynamic air atmosphere displays a well-developed plateau, which reveals an initial weight loss of  $5.1\%$  at  $45 - 93^{\circ}\mathrm{C}$  (theor.  $6.0\%$ ), which corresponds to the release of the water molecules; the second
+
+weight loss starts at  $278^{\circ}\mathrm{C}$  and indicates a structure decomposition. The remaining residue is about  $27.8\%$ , which corresponds to  $\mathrm{V}_2\mathrm{O}_5$  (theor.  $27.7\%$ ). This matches perfectly with the proposed formula. It should be noted that the apparent differences in thermal stability of COMOC-3 in VTXRD and TGA are due to the different heating procedures.
+
+# Catalytic Reactivity Test
+
+The catalytic performance of COMOC-3 was evaluated in the liquid-phase oxidation of cyclohexene. The heterogeneity of the reaction and reusability of the catalyst were both studied for this oxidation reaction. The test reaction was handled at  $50^{\circ}\mathrm{C}$  in chloroform under argon protection in a closed system with  $5.5\mathrm{M}$  TBHP in decane as the oxidant. The ratio of reactant and oxidant was 1:2; the COMOC-3 catalyst had a loading of  $0.42\mathrm{mmol}$  vanadium sites.
+
+Figure 5 shows the cyclohexene conversion and product distribution during the first run. The catalytic reaction was followed for about  $7\mathrm{h}$ . At  $7\mathrm{h}$ , the maximum conversion was reached  $(38\%)$ , which was similar for the porous MIL-47-catalyzed reaction under the same conditions.[6] Cyclohexene oxide (2) was observed as the major product, with selectivity up to  $82\%$  at  $7\mathrm{h}$ , thus indicating that the reaction favors the epoxidation pathway. As the reaction was carried in a closed, water-free system, further formation of cyclohexane-1,2-diol (3) was negligible. tert-Butyl-2-cyclohexenyl-1-peroxide (4) was present as a byproduct formed through radical pathways. GC monitoring gave no signal corresponding to the formation of 2-cyclohexene-1-one (5). After reaction, the catalyst was recovered from the solution mixture and calcined at  $250^{\circ}\mathrm{C}$  for  $5\mathrm{h}$ . Afterwards, the catalyst was ready to use for the second run. In the second run, the catalyst still maintained good catalytic activity on the basis of the turnover number (TON) and turnover frequency (TOF) values calculated at  $7\mathrm{h}$ : 39.0 and  $5.6\mathrm{h}^{-1}$  for the first run; 30.7 and  $4.4\mathrm{h}^{-1}$  for the second.
+
+![img-8.jpeg](img-8.jpeg)
+Figure 5. Product distribution in the oxidation of cyclohexene during the first run. The products are labeled as shown in Scheme 1.
+
+Earlier studies proposed reaction pathways for cyclohexene oxidation and possible byproduct formation as shown in Scheme 1. Because the structure of COMOC-3 is indeed a closed form of MIL-47 and a product distribution is similar to that for the MIL-47-catalyzed cyclohexene oxidation reaction, we can safely assume that the reaction mechanism is the same as discussed in earlier work. In short, the conclusion of this earlier work was that several catalytic pathways coexist and compete with each other in the MIL-47-catalyzed reaction.[10] However, every catalytic cycle started with the breaking of at least one V-carboxylate bond to coordinate with the peroxide. So the catalytic active sites are created by formation of structural defects on the surface of the catalyst.
+
+# Heterogeneity Test
+
+To rule out the idea that the catalysis occurs homogeneously, a hot filtration experiment was performed under the same reaction conditions. After  $1\mathrm{h}$  of reaction, the solid catalyst was removed from the reaction mixture by filtration at the reaction temperature and the resulting liquid was monitored further at the same reaction temperature for an additional  $6\mathrm{h}$ . The product distribution was monitored by GC analysis for comparison with the COMOC-3-catalyzed reaction. As shown in Figure 6, after filtering off the catalyst, the cyclohexene oxide formation remained stable and unchanged (value around  $10\%$ ), thus indicating that the formation of cyclohexene oxide is heterogeneous and stops completely after removal of the catalysts (with catalyst, the formation of cyclohexene oxide reaches over  $30\%$  after  $7\mathrm{h}$  of reaction; see Figure 6). In addition, X-ray fluorescence (XRF) measurements were used to quantify the leaching amount of vanadium species. In the initial run, only  $0.62\%$  vanadium was detected, whereas for the second run, no leaching was detected. The small amount of leached V sites were mainly due to the formation of the defects on the surfaces. During the second run, no leaching was detected,
+
+![img-9.jpeg](img-9.jpeg)
+Figure 6. Time conversion plot of cyclohexene oxide with normal catalytic run and removal of the catalyst after  $1\mathrm{h}$  reaction.
+
+which also indicates that no new defects were created. These results together with the hot filtration experiment verify the heterogeneity of the COMOC-3 in liquid-phase catalysis.
+
+# Physical Characterization of Fresh and Used Catalyst
+
+Figure 7 displays the XRPD patterns of COMOC-3 before and after catalysis and after regeneration. The patterns indicate that after one catalytic run of  $7\mathrm{h}$ , the intensity dropped severely and reflection peaks were broadened. This indicates that the exterior surface of COMOC-3 was either covered by other phases or partially destroyed. After recalcination at  $250^{\circ}\mathrm{C}$  for  $5\mathrm{h}$ , the COMOC-3 phase reappeared as the major phase. However, a  $\mathrm{V_4O_9}$  phase (PDF no. 23-0720) also forms with two additional reflections observed at 10.8 and  $21.5^{\circ}$ . Apparently, the surface activation and bond breaking during the catalytic run combined with the oxidizing atmosphere of the calcinations process forms this (surface) phase.
+
+![img-10.jpeg](img-10.jpeg)
+Figure 7. XRD patterns of fresh, used, and regenerated COMOC-3 catalyst: (a) fresh COMOC-3; (b) COMOC-3 after catalytic run; (c) COMOC-3 after catalysis, recalcined (* is due to the background of the silica sample holder at  $32.9^{\circ}$ ).
+
+The catalysts before and after catalysis and after regeneration by calcination were also analyzed by FTIR spectroscopy. Figure 8 shows the FTIR spectra of COMOC-3 before and after catalysis and after regeneration in the region of  $1750 - 500\mathrm{cm}^{-1}$  [Figure S5 in the Supporting Information presents the full range of FTIR spectra  $(4000 - 400\mathrm{cm}^{-1})$ ]. The general features of the FTIR spectra for Figure 8a-c are almost identical throughout the mid-IR region; the bands near 1601 and  $1533\mathrm{cm}^{-1}$  correspond to the asymmetric stretching of  $-\mathrm{COO}$  groups, whereas bands at 1493 and  $1420\mathrm{cm}^{-1}$  correspond to the symmetric stretching of  $-\mathrm{COO}$  groups.
+
+After catalysis (shown in Figure 8, b), COMOC-3 reveals a strong absorption band at  $1693\mathrm{cm}^{-1}$  assigned to the O-H vibrations of  $-\mathrm{COOH}$  groups. This observation confirms that a number of coordination bonds between vanadium and carboxyl groups are broken during the catalytic reaction, thus forming the  $-\mathrm{COOH}$  groups. This observation corresponds well with the simulation results based on the
+
+![img-11.jpeg](img-11.jpeg)
+Figure 8. FTIR spectra of (a) fresh COMOC-3; (b) COMOC-3 after catalytic run; and (c) COMOC-3 after catalysis, recalcined.
+
+MIL-47-catalyzed cyclohexene oxidation.[6] However, after regeneration by calcinations (Figure 8, c), the O-H vibrations weaken again, and the catalyst regains its catalytic activity.
+
+Figure 8 (b) also displays a new band at  $1339~\mathrm{cm}^{-1}$  that corresponds to the  $-\mathrm{OOH}$  vibrations of TBHP.[17] Some new absorption bands also appear in the region of  $3000-2500~\mathrm{cm}^{-1}$ , which are assigned to the asymmetric and symmetric stretching of the methyl groups from TBHP. The observations indicate that TBHP was absorbed onto the surface of the catalyst. After calcination (Figure 8, c), the above-mentioned bands disappear, thus indicating the full removal of absorbed TBHP.
+
+# Conclusion
+
+The work reported here focuses on the synthesis, detailed characterization, and catalytic study of vanadium 2,6-naphthalenedicarboxylate,  $\mathrm{V}^{\mathrm{IV}}\mathrm{O}(\mathrm{O}_2\mathrm{C}-\mathrm{C}_{10}\mathrm{H}_6-\mathrm{CO}_2)$ , denoted as COMOC-3. The structure, refined by Rietveld refinement, is a MIL-69 [Al(OH)(NDC)] analogue. The as-synthesized V-MOF with  $\mathrm{V}^{3+}$  can be fully oxidized to  $\mathrm{V}^{4+}$  yet the topology remains. The oxidation process was verified by cyclic voltammetry and EPR spectroscopy, whereas the rigidity of the structure was characterized by TGA and variable-temperature XRD. The results showed that the compound has a good thermal and chemical stability. The catalytic performance of COMOC-3 was studied in cyclohexene liquid-phase oxidation. In a  $7\mathrm{h}$  reaction, the conversion of cyclohexene was  $38\%$ , and selectivity towards cyclohexene oxide was  $82\%$ . This catalytic performance is comparable to that of porous MIL-47 (which shares the same  $[\mathrm{VO}_6]$  building unit) as catalyst under the same reaction conditions, which indicates that the structural defects created during the catalytic process contribute to the catalytic performance. In this case, due to the nonporous structure of COMOC-3, catalysis can only take place at the surface. The catalytic cycle starts with the breaking of at least one V-carboxylate bond to coordinate with the peroxide. More
+
+over, the catalyst shows negligible leaching of vanadium sites  $(0.62\%)$  after the first run, and no leaching was detected in the second run. The catalyst can be partially regenerated upon calcination, although also a  $\mathrm{V_4O_9}$  phase also appears. The catalytic performance is still maintained as evidenced by the TON and TOF values calculated at  $7\mathrm{h}$ : 39.0 and  $5.6\mathrm{h}^{-1}$  for the first run; 30.7 and  $4.4\mathrm{h}^{-1}$  for the second. The FTIR and XRD comparison of fresh, used, and recalcined sample further indicate the regeneration of the catalyst.
+
+# Experimental Section
+
+General Remarks: All starting materials were commercially available reagents of analytical grade and used without further purification.
+
+Microwave-assisted synthesis was carried out with a microwave synthesizer (Discover, CEM Inc.). FTIR spectra were recorded in the region of  $400 - 4000\mathrm{cm}^{-1}$  with a Bruker EQUINOX 55 FTIR spectrometer. Elemental analyses  $(\mathrm{C},\mathrm{H},\mathrm{N})$  were carried out with a Thermo Scientific Flash 2000 CHNS-O analyzer. TGA of COMOC-3 was measured with an SDT 2960 Simultaneous DSC-TGA analyzer (TA instruments) in the temperature range of  $25-$ $600^{\circ}\mathrm{C}$  at a heating rate of  $2^{\circ}\mathrm{Cmin}^{-1}$  in air flow. XRPD patterns were measured with a Thermo Scientific ARL X'Tra X-ray diffractometer operated at  $40\mathrm{kV}$ ,  $40\mathrm{mA}$  for  $\mathrm{Cu - K_a}$ $(\lambda = 1.5418\AA)$ . Variable-temperature XRPD patterns were collected with a Bruker D8 Discover X-ray diffractometer with linear detector; the XRD patterns were recorded from room temperature to  $540^{\circ}\mathrm{C}$  with a temperature ramp of  $0.2^{\circ}\mathrm{Cs}^{-1}$  in  $\mathrm{N}_2 / \mathrm{O}_2$ $(10\%)$  flow.
+
+An ultrafast GC (Thermo) equipped with a flame-ionization detector (FID) and a diphenyl  $(5\%)$ /polydimethylsiloxane  $(95\%)$  column with  $10\mathrm{m}$  length and  $0.10\mathrm{mm}$  internal diameter was used to follow the conversions of the products during the catalytic tests. Helium was used as carrier gas and the flow rate was programmed as  $0.8\mathrm{mLmin}^{-1}$ .
+
+X-ray fluorescence (XRF) measurements were performed with an ARTAX (Bruker) Peltier cooled silicon drift detector and an Mo X-ray source. The detector was placed above the surface of the solution. Spectra were accumulated over  $100\mathrm{s}$ . Electron paramagnetic resonance (EPR) spectra of dry powders were recorded at room temperature with a Bruker ESP300E X-band (ca.  $9.38\mathrm{GHz}$ ) spectrometer equipped with a HP5350B frequency counter and an ER035M gaussmeter.
+
+Structure Refinement: For XRPD crystal-structure studies, a microcrystalline sample was ground using an agate mortar and pestle and was deposited into the hollow of a zero-background sample holder. Diffraction data were collected at room temperature in the  $2\theta$  range of  $6 - 90^{\circ}$  with  $0.02^{\circ}$  steps and with a scan speed of  $700~\mathrm{sstep^{-1}}$  with a Seifert XRD 3003 TT diffractometer and a Meteor 1D detector operated at  $40\mathrm{kV}$ ,  $40\mathrm{mA}$  for  $\mathrm{Cu}$  target ( $\lambda = 1.5418\AA$ ). Extractions of the peak positions, pattern indexing determination, and refinement of the lattice parameters were carried out with the PROSZKI package.[18] The space group was established by the Checkcell program. Since COMOC-3as V(OH)(NDC) had similar unit-cell parameters and the same space group as  $(\mathrm{C_{12}H_7AlO_3})_n / n(\mathrm{H_2O})$ ,[18] the aluminum compound was chosen as a starting structural model for a Rietveld refinement. Due to the poor quality of the data and background determination problems, the background was subtracted before refinement. The Rietveld re
+
+finement was carried out with the Jana2006 program.[19] Weak geometric restraints on bond lengths were used during the refinement process. Experimental details and crystal data for COMOC-3as V(OH)(NDC) $\mathrm{H}_2\mathrm{O}$  are listed in Table 1. The final Rietveld refinement plots are presented in Figure S2 in the Supporting Information.
+
+Table 1. Crystal data and structure refinement summary for V(OH)(NDC)  $\mathrm{H}_2\mathrm{O}$ .
+
+|   | V(OH)(NDC)·H2O  |
+| --- | --- |
+|  Empirical formula | VC12O6  |
+|  Mr | 291.1  |
+|  Crystal system | monoclinic  |
+|  Space group | C2/c (no. 15)  |
+|  a [Å] | 24.985(4)  |
+|  b [Å] | 7.5077(6)  |
+|  c [Å] | 6.7797(8)  |
+|  β [°] | 107.68(2)  |
+|  V [Å3] | 1211.7(2)  |
+|  Z | 4  |
+|  Dinitial [g cm-3] | 1.5946  |
+|  2θ [°] | 6-90  |
+|  Number of observations | 4200  |
+|  M20 | 18.20 (0.0001, 20)  |
+|  F20 | 37.94(0.017, 20)  |
+|  Rvir | 4.18  |
+|  RF(obs) | 7.89  |
+
+CCDC-847283 (for V(OH)(NDC)  $\mathrm{H}_2\mathrm{O}$ ) contains the supplementary crystallographic data for this paper. These data can be obtained free of charge from The Cambridge Crystallographic Data Centre via www.ccdc.cam.ac.uk/data_request/cif.
+
+# Synthesis of COMOC-3as  $\mathrm{V(OH)(NDC)_2O_3}$
+
+Method 1: Hydrothermal Synthesis: COMOC-3as can be synthesized under a broad range of molar ratios from 1:0.25 to approximately 1:1 (VCl $_3$ /H $_2$ NDC) in water. A typical synthesis route would be as follows: VCl $_3$  (0.187 g) and H $_2$ NDC (0.063 g) were mixed together in H $_2$ O (4 mL). The mixture was transferred into a 15 mL Pyrex tube and heated to 200 °C for 2 d. After cooling to room temperature, the resulting mixture was a blue solution and green yellowish powder mixture. The green-yellowish fine powder was removed by filtration and first washed thoroughly with pyridine to remove the excess linker, then washed with acetone to get a fully dried material at room temperature under vacuum. Yield: 0.032 g, 36.8% based on H $_2$ NDC. [V(OH)(C $_{12}$ H $_6$ O $_4$ )]H $_2$ O (300.1): calcd. C 48.02, H 3.02; found C 49.06, H 2.96. FTIR (KBr):  $\tilde{\nu} = 3572$  (w), 3503 (w), 3271.0 (br), 1606.3 (s), 1555.6 (s), 1496.3 (s), 1427.5 (s), 1109.2 (w), 773.6 (m), 527.7 (s) cm $^{-1}$ .
+
+Method 2: Microwave-Assisted Synthesis:  $\mathrm{VCl}_3$ $(0.094\mathrm{g})$  and  $\mathrm{H}_2\mathrm{NDC}$ $(0.102\mathrm{g})$  were added into  $\mathrm{H}_2\mathrm{O}$ $(2.5\mathrm{mL})$ , heated up to  $190^{\circ}\mathrm{C}$  under microwave irradiation for  $30\mathrm{min}$  with stirring. The maximum irradiation power was set to  $100\mathrm{W}$ , with powermax on (air cooling during the irradiation). The sample was filtered off and first washed thoroughly with pyridine to remove the excessive linker, then washed with acetone to get a fully dried material at room temperature under vacuum; yield  $0.069\mathrm{g}$ ,  $38.5\%$  based on vanadium.
+
+COMOC-3 VO(NDC) was prepared by calcining COMOC-3as at  $250^{\circ}\mathrm{C}$  for  $6\mathrm{h}$  in air.
+
+Electrochemical Study: Cyclic voltammetry (CV) studies were performed in a three-electrochemical cell with a platinum gauze as the counterelectrode and a  $\mathrm{Ag / AgCl / 3mCl^{-}}$  [0.21 V versus standard
+
+hydrogen electrode (SHE)] electrode as the reference. The working electrode consisted of a Pt plate that was surface-modified with either a layer of COMOC-3as or COMOC-3. This surface modification was obtained by dripping several drops of well-dispersed MOF slurry in acetonitrile onto the Pt surface after which the solvent was evaporated. The electrochemical measurements at these electrodes were performed in an acetonitrile solution with 0.1 M tetrabutylammonium perchlorate ([Bu₄N][ClO₄]) as the supporting electrolyte.
+
+The reference voltammograms were recorded at an unmodified platinum working electrode in a solution of 0.1 M [Bu₄N][ClO₄] in acetonitrile with 0.15 M VCl₃ added (Vᴴᴴ reference) or 0.17 M [VO(acac)₂] (Vᴴᴴ reference).
+
+The measurements were performed at room temperature with a computer-controlled potentiostat (EG&amp;G Model 263A).
+
+Catalytic Reaction: The oxidation of cyclohexene reaction was carried out in a 100 mL glass reactor equipped with a reflux condenser and an argon balloon. All the operations were done with a Schlenk line with inert argon atmosphere. In a typical run of catalytic reaction, the reactor was loaded with COMOC-3 (0.116 g based on V), cyclohexene (5 mL, 5 mmol), TBHP in decane (18 mL), chloroform (30 mL), and 1,2,4-trichlorobenzene (6.2 mL) as internal standard. The molar ratio cyclohexene/oxidant was 1:2. All the catalytic tests were performed at a temperature of 50 °C. Blank reactions at this temperature showed no catalytic conversion of cyclohexene. The progress of the reaction was monitored by analyzing aliquots taken out from the reaction mixture at different time intervals. Each sample was diluted with ethyl acetate (500 μL) and subsequently analyzed with GC-FID. After a catalytic run, the catalyst was recovered by filtration, washed with acetone, and vacuum dried, calcined at 250 °C for 5 h, then ready to use for the next run.
+
+The filtrate was analyzed by XRF to determine the leached vanadium. The system was calibrated by measuring the XRF spectra of different aqueous-based solutions of [VO(acac)₂] and Co(NO₃)₂·6H₂O with known V/Co ratios.[⁴⁶]
+
+The hot filtration was carried out following the same procedure as in a catalytic run, except after 1 h reaction, the reaction mixture was filtered through a Celite pad, and washed with dry chloroform (5 mL). The filtrate was then transferred back into a new glass reactor to continue the catalytic reactions.
+
+Supporting Information (see footnote on the first page of this article): Crystal data, the Rietveld refinement plot, optical photographs of the samples, and FTIR spectra of samples before and after catalysis are presented in the Supporting Information.
+
+## Acknowledgments
+
+The authors like to thank Department of Solid State Sciences, Ghent University for XRF and variable-temperature XRD measurements. Y.-Y. L. gratefully acknowledges the Research Fund of Ghent University (BOF) for the financial support. K. L. is grateful to the Flemish Government for a Long Term Structural Methusalem grant (grant number 01M00409 funding by. Furthermore, this research is co-funded by Ghent University, GOA grant number 01G00710, the European Research Council [FP7(2007-2013) ERC grant nnumber 240483].
+
+lelle, M. Henry, T. Bataille, G. Ferey, Chem. Eur. J. 2004, 10, 1373-1382; c) K. Barthelet, J. Marrot, D. Riou, G. Ferey, Angew. Chem. Int. Ed. 2002, 41, 281-284; d) T. R. Whitfield, X. Q. Wang, L. M. Liu, A. J. Jacobson, Solid State Sci. 2005, 7, 1096-1103; e) A. J. Jacobson, M. Vougo-Zanda, J. Huang, E. Anokhina, X. Q. Wang, Inorg. Chem. 2008, 47, 11535-11542; f) E. V. Anokhina, M. Vougo-Zanda, X. Q. Wang, A. J. Jacobson, J. Am. Chem. Soc. 2005, 127, 15000-15001; g) T. Loiseau, C. Volkringer, N. Guillou, G. Ferey, E. Elkaim, A. Vimont, Dalton Trans. 2009, 2241-2249; h) J. P. S. Mowat, S. R. Miller, A. M. Z. Slawin, V. R. Seymour, S. E. Ashbrook, P. A. Wright, Microporous Mesoporous Mater. 2011, 142, 322-333.
+[2] a) G. Maurin, N. A. Ramsahye, S. Bourrelly, P. L. Llewellyn, C. Serre, T. Loiseau, T. Devic, G. Ferey, J. Phys. Chem. C 2008, 112, 514-520; b) J. F. M. Denayer, V. Finsy, L. Ma, L. Alaerts, D. E. De Vos, G. V. Baron, Microporous Mesoporous Mater. 2009, 120, 221-227; c) J. Gascon, E. S. Stavitski, E. A. Pidko, S. Couck, T. Remy, E. J. M. Hensen, B. M. Weckhuysen, J. Denayer, F. Kapteijn, Langmuir 2011, 27, 3970-3976; d) P. L. Llewellyn, L. Hamon, T. Devic, A. Ghoufi, G. Clet, V. Guillerm, G. D. Pirngruber, G. Maurin, C. Serre, G. Driver, W. van Beek, E. Jolimaitre, A. Vimont, M. Daturi, G. Ferey, J. Am. Chem. Soc. 2009, 131, 17490-17499.
+[3] a) P. Trens, T. K. Trung, N. Tanchoux, S. Bourrelly, P. L. Llewellyn, S. Loera-Serna, C. Serre, T. Loiseau, F. Fajula, G. Ferey, J. Am. Chem. Soc. 2008, 130, 16926-16932; b) G. De Weireld, L. Hamon, C. Serre, T. Devic, T. Loiseau, F. Millange, G. Ferey, J. Am. Chem. Soc. 2009, 131, 8775-8777; c) G. Maurin, N. Rosenbach, A. Ghoufi, I. Deroche, P. L. Llewellyn, T. Devic, S. Bourrelly, C. Serre, G. Ferey, Phys. Chem. Chem. Phys. 2010, 12, 6428-6437; d) P. Trens, T. K. Trung, I. Deroche, A. Rivera, Q. Y. Yang, P. Yot, N. Ramsahye, S. D. Vinot, T. Devic, P. Horcajada, C. Serre, G. Maurin, Microporous Mesoporous Mater. 2011, 140, 114-119.
+[4] a) D. Farrusseng, U. Ravon, G. Chaplais, C. Chizallet, B. Seyyedi, F. Bonino, S. Bordiga, N. Bats, ChemCatChem 2010, 2, 1235-1238; b) K. Leus, I. Muylaert, V. Van Speybroeck, G. B. Marin, P. Van der Voort, Scientific Bases for the Preparation of Heterogeneous Catalysts: Proceedings of the 10th International Symposium 2010, 175, 329-332; c) J. Gascon, U. Aktay, M. D. Hernandez-Alonso, G. P. M. van Klink, F. Kapteijn, J. Catal. 2009, 261, 75-87; d) D. Farrusseng, U. Ravon, M. Savonnet, S. Aguado, M. E. Domine, E. Janneau, Microporous Mesoporous Mater. 2010, 129, 319-329; e) K. Leus, I. Muylaert, M. Vandichel, G. B. Marin, M. Waroquier, V. Van Speybroeck, P. Van der Voort, Chem. Commun. 2010, 46, 5085-5087.
+[5] H. Garcia, A. Dhakshinamoorthy, M. Alvaro, Appl. Catal. A 2010, 378, 19-25.
+[6] K. Leus, M. Vandichel, Y.-Y. Liu, I. Muylaert, J. Musschoot, S. Pyl, H. Vrielinck, F. Callens, G. B. Marin, C. Detavernier, P. V. Wiper, Y. Z. Khimyak, M. Waroquier, V. Van Speybroeck, P. Van Der Voort, J. Catal. 2011, DOI: 10.1016/j.jcat.2011.1009.1014.
+[7] G. B. Shul'pin, Y. N. Kozlov, Org. Biomol. Chem. 2003, 1, 2303-2306.
+[8] J. A. L. da Silva, J. J. R. F. da Silva, A. J. L. Pombeiro, Coord. Chem. Rev. 2011, 255, 2232-2248.
+[9] S. Kodama, J. Yoshida, A. Nomoto, Y. Ueta, S. Yano, M. Ueshima, A. Ogawa, Tetrahedron Lett. 2010, 51, 2450-2452.
+[10] A. Phan, A. U. Czaja, F. Gandara, C. B. Knobler, O. M. Yaghi, Inorg. Chem. 2011, 50, 7388-7390.
+[11] A. Dhakshinamoorthy, M. Alvaro, H. Garcia, Catal. Sci. Technol. 2011, 1, 856-867.
+[12] M. Tonigold, Y. Lu, A. Mavrandonakis, A. Puls, R. Staudt, J. Möllmer, J. Sauer, D. Volkmer, Chem. Eur. J. 2011, 17, 8671-8695.
+[13] J. S. Lee, S. B. Halligudi, N. H. Jang, D. W. Hwang, J. S. Chang, Y. K. Hwang, Bull. Korean Chem. Soc. 2010, 31, 1489-1495.
+[14] Unpublished results.
+
+- [15] I. Senkovska, F. Hoffmann, M. Froba, J. Getzschmann, W. Bohlmann, S. Kaskel, *Microporous Mesoporous Mater.* 2009, *122*, 93–98.
+- [16] T. Loiseau, C. Mellot-Draznieks, H. Muguerra, G. Ferey, M. Haouas, F. Taulelle, *C. R. Chim.* 2005, *8*, 765–772.
+- [17] D. Mucha, W. Lasocha, *J. Appl. Crystallogr.* 1994, *27*, 201–202.
+- [18] W. Lasocha, K. Lewinski, *J. Appl. Crystallogr.* 1994, *27*, 437–438.
+- [19] V. Petricek, M. Dusek, L. Palatinus, *Jana2006, The Crystallographic Computing System*, 2006 .
+
+Received: October 11, 2011
+
+Published Online: December 16, 2012
