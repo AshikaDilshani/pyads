@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pyads"
+version = "0.1.0"
+description = "Adsorption PDF extraction and CIF analysis pipeline."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "PyPDF2==3.0.1",
+  "pandas>=2.2.3",
+  "python-dotenv==1.0.0",
+  "requests==2.31.0",
+  "mistralai>=1.0.0",
+  "openpyxl==3.1.5",
+  "gemmi>=0.7.5",
+  "pymatgen>=2025.10.7",
+  "ase>=3.28.0",
+]
+
+[project.scripts]
+pyads = "runner:main"
+
+[tool.setuptools]
+packages = ["pyads"]

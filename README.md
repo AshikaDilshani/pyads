@@ -12,9 +12,9 @@ End-to-end adsorption paper processing pipeline:
 ## Outputs
 
 - `data/text/` - OCR text files.
-- `adsorption_data.json` - structured adsorption records.
-- `adsorption_data.xlsx` - Excel version of the structured records.
-- `usage_summary.json` - Mistral token usage for extraction.
+- `data/extracted/adsorption_data.json` - structured adsorption records.
+- `data/extracted/adsorption_data.xlsx` - Excel version of the structured records.
+- `data/extracted/usage_summary.json` - Mistral token usage for extraction.
 - `cif_file/*.cif` - downloaded CIF files.
 - `cif_file/cif_download_report.csv` - CIF search/download report.
 - `cif_file/cif_analysis_report.csv` - CIF validity and material-match report.
@@ -25,8 +25,10 @@ End-to-end adsorption paper processing pipeline:
 Install dependencies in the Python environment you will use to run the project:
 
 ```powershell
-python -m pip install -r requirements.txt
+python -m pip install -e .
 ```
+
+Use an activated environment (venv/conda) before installing so the `pyads` command is available in that shell.
 
 Create `.env` from `.env.example` and set:
 
@@ -39,7 +41,7 @@ Do not commit `.env`.
 If Python keeps using the wrong environment, run with the full environment path, for example:
 
 ```powershell
-C:\Users\2929642\AppData\Local\anaconda3\envs\adsorption\python.exe runner.py
+C:\Users\2929642\AppData\Local\anaconda3\envs\adsorption\python.exe -m pip install -e .
 ```
 
 ## Inputs
@@ -49,9 +51,17 @@ Supported PDF input folders:
 - `data/pdfs/`
 - `PDF/`
 
-The CIF downloader uses `adsorption_data.json` by default because JSON avoids Excel file-locking problems from OneDrive or an open spreadsheet. Excel output is still written for manual review.
+The CIF downloader uses `data/extracted/adsorption_data.json` by default because JSON avoids Excel file-locking problems from OneDrive or an open spreadsheet. Excel output is still written for manual review.
 
 ## Run The Full Pipeline
+
+From the project root folder, run:
+
+```powershell
+pyads
+```
+
+This is equivalent to:
 
 ```powershell
 python runner.py
@@ -60,12 +70,12 @@ python runner.py
 Useful options:
 
 ```powershell
-python runner.py --limit 1
-python runner.py --skip-ocr
-python runner.py --skip-extraction
-python runner.py --skip-cif-download
-python runner.py --skip-cif-analysis
-python runner.py --second-pass
+pyads --limit 1
+pyads --skip-ocr
+pyads --skip-extraction
+pyads --skip-cif-download
+pyads --skip-cif-analysis
+pyads --second-pass
 ```
 
 `--second-pass` enables the stricter Mistral validation pass. It is off by default to reduce rate-limit errors and token usage.
@@ -73,9 +83,9 @@ python runner.py --second-pass
 Examples:
 
 ```powershell
-python runner.py --skip-ocr --limit 1
-python runner.py --skip-ocr --skip-extraction
-python runner.py --skip-ocr --skip-extraction --skip-cif-download
+pyads --skip-ocr --limit 1
+pyads --skip-ocr --skip-extraction
+pyads --skip-ocr --skip-extraction --skip-cif-download
 ```
 
 ## Run CIF Tools Manually
@@ -83,7 +93,7 @@ python runner.py --skip-ocr --skip-extraction --skip-cif-download
 Download CIF files for all extracted materials:
 
 ```powershell
-python cif_file_finder.py --input adsorption_data.json
+python cif_file_finder.py --input data/extracted/adsorption_data.json
 ```
 
 Search one manually entered material:
@@ -124,6 +134,6 @@ Keep live API tests separate as manual integration tests. Integration tests need
 - Keep unit tests offline and deterministic.
 - Mock external services in tests.
 - Keep API keys in `.env`, never in source code.
-- Prefer `adsorption_data.json` for downstream processing to avoid locked Excel files.
+- Prefer `data/extracted/adsorption_data.json` for downstream processing to avoid locked Excel files.
 - Commit source code, tests, README, requirements, and small fixtures only.
 - Do not commit generated outputs, `.env`, `__pycache__/`, or large downloaded datasets.

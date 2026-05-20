@@ -23,7 +23,7 @@ from cif_file_finder import find_cif_for_material, make_session, read_input_tabl
 
 
 PROJECT_ROOT = Path(__file__).resolve().parent
-DEFAULT_CIF_INPUT_JSON = PROJECT_ROOT / "adsorption_data.json"
+DEFAULT_CIF_INPUT_JSON = EXTRACTION_DIR / "adsorption_data.json"
 
 
 def run_ocr() -> None:
