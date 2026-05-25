@@ -20,8 +20,5 @@ dependencies = [
   "ase>=3.28.0",
 ]
 
-[project.scripts]
-pyads = "runner:main"
-
 [tool.setuptools]
 packages = ["pyads"]
