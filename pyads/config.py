@@ -14,6 +14,29 @@ ENV_PATH = PROJECT_ROOT / ".env"
 ENV_EXAMPLE_PATH = PROJECT_ROOT / ".env.example"
 
 
+def _candidate_env_paths():
+    """
+    Load env files from both execution context and project folder.
+    This helps when users run an installed entrypoint from a cloned repo.
+    """
+    cwd = Path.cwd()
+    candidates = [
+        cwd / ".env",
+        cwd / ".env.example",
+        ENV_PATH,
+        ENV_EXAMPLE_PATH,
+    ]
+    unique = []
+    seen = set()
+    for path in candidates:
+        key = str(path.resolve()) if path.exists() else str(path)
+        if key in seen:
+            continue
+        seen.add(key)
+        unique.append(path)
+    return unique
+
+
 def _has_dotenv_assignments(path):
     if not path.exists():
         return False
@@ -58,13 +81,14 @@ def _read_legacy_api_key(path):
 def _load_env_files():
     """
     Load environment files in precedence order:
-    1) .env (local/private)
-    2) .env.example (clone-friendly fallback)
+    1) cwd/.env
+    2) cwd/.env.example
+    3) project/.env
+    4) project/.env.example
     """
-    if _has_dotenv_assignments(ENV_PATH):
-        load_dotenv(ENV_PATH, override=False)
-    if _has_dotenv_assignments(ENV_EXAMPLE_PATH):
-        load_dotenv(ENV_EXAMPLE_PATH, override=False)
+    for path in _candidate_env_paths():
+        if _has_dotenv_assignments(path):
+            load_dotenv(path, override=False)
 
 
 def _normalize_api_key(value):
@@ -86,6 +110,19 @@ def _normalize_api_key(value):
     return key
 
 
+def _resolve_api_key():
+    values = [
+        os.getenv("MISTRAL_API_KEY"),
+        os.getenv("MISTRAL_API"),
+        *(_read_legacy_api_key(path) for path in _candidate_env_paths()),
+    ]
+    for value in values:
+        normalized = _normalize_api_key(value)
+        if normalized:
+            return normalized
+    return None
+
+
 def _path_from_env(name, default):
     path = Path(os.getenv(name, default))
     if path.is_absolute():
@@ -103,12 +140,7 @@ def _default_pdf_dir():
 _load_env_files()
 
 
-MISTRAL_API_KEY = _normalize_api_key(
-    os.getenv("MISTRAL_API_KEY")
-    or os.getenv("MISTRAL_API")
-    or _read_legacy_api_key(ENV_PATH)
-    or _read_legacy_api_key(ENV_EXAMPLE_PATH)
-)
+MISTRAL_API_KEY = _resolve_api_key()
 LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO")
 PDF_DIR = _path_from_env("PDF_DIR", _default_pdf_dir())
 TEXT_DIR = _path_from_env("TEXT_DIR", PROJECT_ROOT / "data" / "text")
