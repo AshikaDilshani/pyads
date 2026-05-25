@@ -25,18 +25,32 @@ python -m venv .venv
 python -m pip install -e .
 ```
 
-3. Create `.env` from `.env.example` and set your API key:
+3. (One-time) enable the `pyads` command in PowerShell:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\setup_pyads_command.ps1
+```
+
+Then open a new terminal.
+
+4. Create `.env` from `.env.example` and set your API key:
 
 ```text
 MISTRAL_API_KEY=your_mistral_api_key_here
 ```
 
-4. Put your PDF files in either `data/pdfs/` or `PDF/`.
+5. Put your PDF files in either `data/pdfs/` or `PDF/`.
 
-5. Run:
+6. Run:
 
 ```powershell
 pyads
+```
+
+If `pyads` is not recognized in your shell, use:
+
+```powershell
+python -m pyads
 ```
 
 (Equivalent: `python runner.py`)
