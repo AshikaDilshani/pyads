@@ -361,7 +361,7 @@ def process_text_files(
 ):
     setup_logging()
     if not MISTRAL_API_KEY:
-        raise RuntimeError("MISTRAL_API_KEY is not set.")
+        raise RuntimeError("MISTRAL_API_KEY is not set. Add it to .env or .env.example.")
 
     text_dir = Path(text_dir)
     text_files = sorted(text_dir.glob("*.txt"))
@@ -414,7 +414,7 @@ def validate_existing_outputs(
 ):
     setup_logging()
     if not MISTRAL_API_KEY:
-        raise RuntimeError("MISTRAL_API_KEY is not set.")
+        raise RuntimeError("MISTRAL_API_KEY is not set. Add it to .env or .env.example.")
 
     records = json.loads(Path(input_json).read_text(encoding="utf-8"))
     client = Mistral(api_key=MISTRAL_API_KEY)

@@ -42,7 +42,9 @@ def _ocr_usage_dict(pdf_response):
 def extract_text_from_pdf(pdf_path, return_usage=False):
     """Extract text from a PDF using Mistral OCR API."""
     if not MISTRAL_API_KEY:
-        logging.error("MISTRAL_API_KEY not set.")
+        logging.error(
+            "MISTRAL_API_KEY not set. Define it in .env or .env.example as MISTRAL_API_KEY=..."
+        )
         return (None, {}) if return_usage else None
     try:
         client = Mistral(api_key=MISTRAL_API_KEY)
