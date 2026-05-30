@@ -1,7 +1,6 @@
-"""Module entrypoint for `python -m pyads`."""
+"""Module entry point: allows `python -m pyads` to run the pipeline."""
 
-from runner import main
-
+from pyads.runner import main
 
 if __name__ == "__main__":
     main()

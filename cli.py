@@ -1,15 +1,10 @@
-"""
-CLI for pyads.
+"""Console entry point for pyads (alias for pyads.runner).
+
+This file exists for users who prefer `python cli.py` over `python runner.py`.
+All pipeline logic lives in pyads.runner.
 """
 
-import argparse
-
-def main():
-    parser = argparse.ArgumentParser(description="pyads CLI")
-    # Add arguments here
-    args = parser.parse_args()
-    # Placeholder for CLI logic
+from pyads.runner import main
 
 if __name__ == "__main__":
     main()
-
