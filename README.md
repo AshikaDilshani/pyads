@@ -294,7 +294,8 @@ Every output record carries `"schema_version": 1`.  Downstream consumers
 (databases, data pipelines) can use this to detect when the schema changes
 and apply the appropriate migration logic.
 
-See [DESIGN.md](DESIGN.md) for the full reasoning behind each decision.
+See [DESIGN.md](DESIGN.md) for the full reasoning behind each decision, and
+[RESULTS.md](RESULTS.md) for verified pipeline output on three published papers.
 
 ---
 
