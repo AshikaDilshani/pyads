@@ -245,6 +245,20 @@ pass rejected it.  Use this to prioritise manual review.
 
 ---
 
+## Sample data
+
+`data/samples/` contains realistic pipeline output for a ZIF-8 CO₂ adsorption
+paper, useful for understanding the output format without running the full pipeline:
+
+| File | Description |
+|---|---|
+| `sample_ocr.txt` | Simulated OCR text from a scientific paper |
+| `sample_adsorption_data.json` | Extracted record with confidence scores |
+| `sample_cif_download_report.csv` | COD download result for ZIF-8 |
+| `sample_cif_analysis_report.csv` | gemmi + pymatgen analysis of the CIF |
+
+---
+
 ## Architecture notes
 
 Key design decisions and the reasoning behind them:
@@ -279,6 +293,8 @@ produce a meaningless match.
 Every output record carries `"schema_version": 1`.  Downstream consumers
 (databases, data pipelines) can use this to detect when the schema changes
 and apply the appropriate migration logic.
+
+See [DESIGN.md](DESIGN.md) for the full reasoning behind each decision.
 
 ---
 

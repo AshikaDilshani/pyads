@@ -1,0 +1,45 @@
+[
+  {
+    "schema_version": 1,
+    "source_file": "sample_ocr.txt",
+    "doi": "10.1039/c3ce40583f",
+    "title": "Selective CO2 capture by ZIF-8 at low partial pressures",
+    "year": 2014,
+    "material": "ZIF-8",
+    "surface_area": {
+      "value": 1621.0,
+      "unit": "m2/g"
+    },
+    "pore_volume": {
+      "value": 0.636,
+      "unit": "cm3/g"
+    },
+    "pore_size": {
+      "value": 11.4,
+      "unit": "A"
+    },
+    "gases": [
+      "CO2",
+      "N2"
+    ],
+    "isotherm_temperatures": [
+      {"value": 273, "unit": "K"},
+      {"value": 298, "unit": "K"},
+      {"value": 77,  "unit": "K"}
+    ],
+    "confidence": {
+      "overall": "high",
+      "fields": {
+        "doi":                    "high",
+        "title":                  "high",
+        "year":                   "high",
+        "material":               "high",
+        "surface_area":           "high",
+        "pore_volume":            "high",
+        "pore_size":              "high",
+        "gases":                  "high",
+        "isotherm_temperatures":  "high"
+      }
+    }
+  }
+]

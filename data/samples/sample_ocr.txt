@@ -1,0 +1,20 @@
+Highly porous ZIF-8 for selective CO2 capture at ambient conditions
+
+Abstract
+A zinc-based zeolitic imidazolate framework (ZIF-8) was synthesised by
+solvothermal reaction of Zn(NO3)2·6H2O with 2-methylimidazole in DMF at
+120 °C for 24 h. The activated material was characterised by PXRD, SEM,
+TGA, and N2 physisorption. The BET surface area was determined to be
+1621 m²/g and the total pore volume was 0.636 cm³/g, with a dominant
+pore size of 11.4 Å (cavity diameter 11.6 Å, window diameter 3.4 Å).
+
+CO2 adsorption isotherms were collected at 273 K and 298 K up to 1 bar.
+The CO2 uptake at 298 K and 1 bar was 1.34 mmol/g. N2 adsorption at
+77 K confirmed permanent microporosity. CO2/N2 selectivity was estimated
+at 4.5 using ideal adsorption solution theory (IAST).
+
+DOI: 10.1039/c3ce40583f
+Title: Selective CO2 capture by ZIF-8 at low partial pressures
+Year: 2014
+Material: ZIF-8
+Journal: CrystEngComm, 16, 2014
