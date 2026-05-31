@@ -1,0 +1,23 @@
+[MAIN]
+jobs = 1
+
+[FORMAT]
+max-line-length = 120
+
+[DESIGN]
+max-args = 9
+max-locals = 22
+
+[TYPECHECK]
+ignored-modules = gemmi,pymatgen,ase
+
+[SIMILARITIES]
+min-similarity-lines = 8
+ignore-comments = yes
+ignore-docstrings = yes
+ignore-imports = yes
+
+[MESSAGES CONTROL]
+disable = C0301,
+          R0917,
+          R1710
