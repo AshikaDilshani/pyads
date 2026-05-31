@@ -23,6 +23,7 @@ from pyads.config import (
     TEXT_DIR,
     VALIDATION_MAX_CHARS,
 )
+from pyads.confidence import compute_confidence
 
 
 SCHEMA_TEXT = """
@@ -387,24 +388,30 @@ def process_text_files(
     for text_path in text_files:
         logging.info("Extracting structured data from %s", text_path.name)
         full_text = _read_text(text_path)
-        record, usage = extract_data_from_text(full_text[:max_chars], text_path.name, client, model)
+        first_record, usage = extract_data_from_text(
+            full_text[:max_chars], text_path.name, client, model
+        )
         _add_usage(usage_total["first_pass"], usage)
         _add_usage(usage_total["total"], usage)
 
+        record = first_record
         if second_pass:
             logging.info("Running strict validation pass for %s", text_path.name)
             try:
-                record, usage = validate_record_from_text(record, full_text, client, model, validation_max_chars)
+                record, usage = validate_record_from_text(
+                    first_record, full_text, client, model, validation_max_chars
+                )
                 _add_usage(usage_total["second_pass"], usage)
                 _add_usage(usage_total["total"], usage)
             except Exception as error:  # pylint: disable=broad-exception-caught
                 if not _is_rate_limit_error(error):
                     raise
                 logging.warning(
-                    "Skipping strict validation for %s because the Mistral API rate limit was exceeded.",
+                    "Skipping strict validation for %s due to Mistral rate limit.",
                     text_path.name,
                 )
 
+        record["confidence"] = compute_confidence(first_record, record)
         records.append(record)
 
     outputs = save_outputs(records, usage_total, output_dir)

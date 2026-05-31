@@ -215,6 +215,73 @@ pydocstyle pyads/
 
 ---
 
+## Extraction confidence
+
+Every record in `adsorption_data.json` includes a `confidence` key produced
+by comparing the first LLM pass against the second (validation) pass:
+
+```json
+"confidence": {
+  "overall": "high",
+  "fields": {
+    "doi": "high",
+    "material": "high",
+    "surface_area": "low",
+    "pore_volume": "high",
+    ...
+  }
+}
+```
+
+**Confidence levels:**
+- `"high"` — both passes agreed on the same non-null value.
+- `"medium"` — the validation pass *added* a value the first pass missed.
+- `"low"` — the passes disagreed (value or unit changed, or one rejected the other's result).
+- `"absent"` — the field was not found in the paper (null in both passes).
+
+If `surface_area` is `"low"`, it usually means the first pass extracted a
+value with the wrong unit (e.g. cm³/g instead of m²/g) and the validation
+pass rejected it.  Use this to prioritise manual review.
+
+---
+
+## Architecture notes
+
+Key design decisions and the reasoning behind them:
+
+**Two-pass extraction with strict validation.**
+A single LLM call frequently confuses units (e.g. puts total pore volume in
+the `surface_area` field).  A second "correction" prompt that re-reads the
+evidence and applies explicit unit rules catches these errors.  The
+`confidence` field records whether the two passes agreed, giving users a
+reliable signal for which records need checking.
+
+**COD as the CIF source.**
+The Crystallography Open Database is fully open-access with a JSON REST API,
+no API key, and machine-readable results.  CCDC and ICSD require licences.
+COD covers >500,000 structures and is sufficient for MOF/COF literature.
+
+**Three-library CIF analysis (gemmi + pymatgen + ase).**
+Each library has different failure modes on real-world CIF files.  gemmi
+validates syntax and extracts cell parameters; pymatgen computes composition,
+density, space group, and XRD patterns; ase provides a second read check.
+Using all three increases robustness and catches malformed files that pass
+one parser but not another.
+
+**Material-name match scoring.**
+Downloaded CIFs are scored against the requested material name using token
+overlap and sequence similarity rather than exact string matching.  This
+handles common variations (e.g. "ZIF-8" vs "Zeolitic imidazolate
+framework-8") and rejects generic names ("MOF", "material") that would
+produce a meaningless match.
+
+**Schema versioning.**
+Every output record carries `"schema_version": 1`.  Downstream consumers
+(databases, data pipelines) can use this to detect when the schema changes
+and apply the appropriate migration logic.
+
+---
+
 ## Python version
 
 Python 3.11 or newer is required (see `pyproject.toml`).
