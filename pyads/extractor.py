@@ -1,6 +1,4 @@
-"""
-Extract structured adsorption data from OCR text files using Mistral LLM.
-"""
+"""Extract structured adsorption data from OCR text files using Mistral LLM."""
 
 import argparse
 import json
@@ -80,11 +78,13 @@ Evidence from OCR text:
 Strict correction rules:
 - Keep DOI, title, year, and material only if supported by the evidence.
 - surface_area is BET surface area only. Valid units are area units such as m2/g, m^2/g, or m²/g.
-- If surface_area has cm3/g, cm³/g, cc/g, nm, A, Å, K, C, or °C units, it is wrong. Set surface_area to null unless a real BET area is present.
+- If surface_area has cm3/g, cm³/g, cc/g, nm, A, Å, K, C, or °C units, it is wrong.
+  Set surface_area to null unless a real BET area is present.
 - If a value with cm3/g or cm³/g is a total pore volume, put it in pore_volume.
 - Pore size should use length units such as nm or Å.
 - Extract every isotherm adsorption temperature reported in the evidence, for example 77 K; 87 K; 195 K; 273 K; 298 K.
-- Do not include synthesis, activation, calcination, hydrothermal, or catalytic reaction temperatures unless they are explicitly adsorption/isotherm measurement temperatures.
+- Do not include synthesis, activation, calcination, hydrothermal, or catalytic reaction
+  temperatures unless they are explicitly adsorption/isotherm measurement temperatures.
 - Do not guess missing values. Use null or an empty list when unsupported.
 - Return JSON only.
 """.strip()
@@ -98,6 +98,7 @@ KEYWORD_PATTERN = re.compile(
 
 
 def setup_logging():
+    """Configure root logging from the LOG_LEVEL config value."""
     logging.basicConfig(
         level=getattr(logging, LOG_LEVEL.upper(), logging.INFO),
         format="%(asctime)s - %(levelname)s - %(message)s",
@@ -106,6 +107,7 @@ def setup_logging():
 
 def _empty_record(source_file):
     return {
+        "schema_version": 1,
         "source_file": source_file,
         "doi": None,
         "title": None,
@@ -272,7 +274,7 @@ def _chat_json_with_retries(client, model, prompt, system_message, retries=2, ba
     for attempt in range(retries + 1):
         try:
             return _chat_json(client, model, prompt, system_message)
-        except Exception as error:
+        except Exception as error:  # pylint: disable=broad-exception-caught
             if not _is_rate_limit_error(error) or attempt >= retries:
                 raise
             delay = base_delay * (attempt + 1)
@@ -281,6 +283,7 @@ def _chat_json_with_retries(client, model, prompt, system_message, retries=2, ba
 
 
 def extract_data_from_text(text, source_file, client, model):
+    """Send OCR text to Mistral and return a normalised adsorption record."""
     prompt = (
         PROMPT_TEMPLATE
         .replace("{{SCHEMA}}", SCHEMA_TEXT)
@@ -297,6 +300,7 @@ def extract_data_from_text(text, source_file, client, model):
 
 
 def validate_record_from_text(record, text, client, model, max_chars=VALIDATION_MAX_CHARS):
+    """Run a strict second-pass correction and return a normalised record."""
     source_file = record.get("source_file") or "unknown.txt"
     prompt = (
         STRICT_VALIDATION_PROMPT
@@ -336,6 +340,7 @@ def _flatten_record(record):
 
 
 def save_outputs(records, usage, output_dir):
+    """Write records to JSON/Excel and usage to JSON; return a dict of output paths."""
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -359,6 +364,7 @@ def process_text_files(
     limit=None,
     second_pass=True,
 ):
+    """Extract adsorption records from all .txt files in text_dir and save outputs."""
     setup_logging()
     if not MISTRAL_API_KEY:
         raise RuntimeError("MISTRAL_API_KEY is not set. Add it to .env or .env.example.")
@@ -391,7 +397,7 @@ def process_text_files(
                 record, usage = validate_record_from_text(record, full_text, client, model, validation_max_chars)
                 _add_usage(usage_total["second_pass"], usage)
                 _add_usage(usage_total["total"], usage)
-            except Exception as error:
+            except Exception as error:  # pylint: disable=broad-exception-caught
                 if not _is_rate_limit_error(error):
                     raise
                 logging.warning(
@@ -412,6 +418,7 @@ def validate_existing_outputs(
     model=EXTRACTION_MODEL,
     validation_max_chars=VALIDATION_MAX_CHARS,
 ):
+    """Re-validate an existing adsorption_data.json with the strict correction pass."""
     setup_logging()
     if not MISTRAL_API_KEY:
         raise RuntimeError("MISTRAL_API_KEY is not set. Add it to .env or .env.example.")
@@ -450,16 +457,26 @@ def _print_usage(usage):
 
 
 def main():
+    """CLI entry point for the extraction module."""
     parser = argparse.ArgumentParser(description="Extract structured adsorption data from OCR text files.")
     parser.add_argument("--text-dir", default=str(TEXT_DIR), help="Directory containing OCR .txt files.")
     parser.add_argument("--output-dir", default=str(EXTRACTION_DIR), help="Directory for JSON and Excel outputs.")
     parser.add_argument("--model", default=EXTRACTION_MODEL, help="Mistral chat model for extraction.")
-    parser.add_argument("--max-chars", type=int, default=EXTRACTION_MAX_CHARS, help="Maximum characters sent per text file.")
-    parser.add_argument("--validation-max-chars", type=int, default=VALIDATION_MAX_CHARS, help="Maximum evidence characters for validation pass.")
+    parser.add_argument(
+        "--max-chars", type=int, default=EXTRACTION_MAX_CHARS,
+        help="Maximum characters sent per text file.",
+    )
+    parser.add_argument(
+        "--validation-max-chars", type=int, default=VALIDATION_MAX_CHARS,
+        help="Maximum evidence characters for validation pass.",
+    )
     parser.add_argument("--limit", type=int, default=None, help="Process only the first N text files.")
     parser.add_argument("--dry-run", action="store_true", help="List files without calling the LLM API.")
     parser.add_argument("--no-second-pass", action="store_true", help="Skip strict validation pass.")
-    parser.add_argument("--validate-existing", help="Run only the strict validation pass on an existing adsorption_data.json.")
+    parser.add_argument(
+        "--validate-existing",
+        help="Run only the strict validation pass on an existing adsorption_data.json.",
+    )
     args = parser.parse_args()
 
     text_files = sorted(Path(args.text_dir).glob("*.txt"))

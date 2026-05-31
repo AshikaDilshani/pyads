@@ -74,7 +74,7 @@ def extract_text_from_pdf(pdf_path: Path, return_usage: bool = False):
         text = "\n\n".join(_page_markdown(page) for page in pages or [])
         usage = _ocr_usage_dict(pdf_response)
         return (text, usage) if return_usage else text
-    except Exception as exc:
+    except Exception as exc:  # pylint: disable=broad-exception-caught
         logging.error("Failed to process %s: %s", pdf_path, exc)
         return (None, {}) if return_usage else None
 

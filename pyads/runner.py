@@ -34,6 +34,8 @@ from pyads.cif_finder import (
     unique_material_rows,
     write_report,
 )
+from pyads.extractor import process_text_files
+from pyads.ocr import process_pdfs
 
 
 DEFAULT_CIF_INPUT_JSON = EXTRACTION_DIR / "adsorption_data.json"
@@ -73,8 +75,7 @@ def _list_pdfs_for_ocr(pdf_dir: Path) -> list[Path]:
 
 
 def run_ocr(args: argparse.Namespace) -> None:
-    from pyads.ocr import process_pdfs
-
+    """Run the Mistral OCR stage and print page and byte counts."""
     pdf_dir = Path(args.pdf_dir)
     _list_pdfs_for_ocr(pdf_dir)
 
@@ -89,8 +90,7 @@ def run_ocr(args: argparse.Namespace) -> None:
 
 
 def run_extraction(args: argparse.Namespace) -> None:
-    from pyads.extractor import process_text_files
-
+    """Run the LLM extraction stage and print token usage and output paths."""
     _, outputs, usage = process_text_files(
         text_dir=args.text_dir,
         output_dir=args.output_dir,
@@ -118,6 +118,7 @@ def run_extraction(args: argparse.Namespace) -> None:
 
 
 def run_cif_download(args: argparse.Namespace) -> None:
+    """Search COD and download CIF files for each material in the extraction output."""
     input_path = Path(args.cif_input)
     output_dir = Path(args.cif_output_dir)
     report_path = Path(args.cif_download_report)
@@ -148,6 +149,7 @@ def run_cif_download(args: argparse.Namespace) -> None:
 
 
 def run_cif_analysis(args: argparse.Namespace) -> None:
+    """Analyse downloaded CIF files with gemmi/pymatgen and write the analysis report."""
     analyzer_args = [
         "--cif-dir",
         str(args.cif_dir),
@@ -165,6 +167,7 @@ def run_cif_analysis(args: argparse.Namespace) -> None:
 
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
+    """Parse command-line arguments for the full pyads pipeline."""
     parser = argparse.ArgumentParser(description="Run the full pyads workflow.")
     parser.add_argument("--skip-ocr", action="store_true", help="Skip Mistral OCR.")
     parser.add_argument(
@@ -278,6 +281,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
 
 
 def main(argv: list[str] | None = None) -> None:
+    """Run the full pyads pipeline: OCR → extraction → CIF download → CIF analysis."""
     args = parse_args(argv)
     pdf_dir = Path(args.pdf_dir)
 

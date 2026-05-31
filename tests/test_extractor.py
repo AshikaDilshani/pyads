@@ -96,6 +96,10 @@ class NormalizeRecordTests(unittest.TestCase):
         record = self._normalize({})
         self.assertEqual(record["source_file"], "test.txt")
 
+    def test_schema_version_is_always_1(self):
+        record = self._normalize({})
+        self.assertEqual(record["schema_version"], 1)
+
 
 class ExtractDataFromTextTests(unittest.TestCase):
     """Integration-style tests for extract_data_from_text with a mocked client."""

@@ -1,6 +1,3 @@
-"""
-pyads: A Python package for adsorption data processing from PDFs.
-"""
+"""pyads: adsorption data extraction and CIF analysis pipeline."""
 
 __version__ = "0.1.0"
-

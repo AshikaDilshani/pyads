@@ -1,6 +1,4 @@
-"""
-Configuration for the Mistral PDF OCR runner.
-"""
+"""Configuration and environment loading for the pyads pipeline."""
 
 import ast
 import os
@@ -15,9 +13,10 @@ ENV_EXAMPLE_PATH = PROJECT_ROOT / ".env.example"
 
 
 def _candidate_env_paths():
-    """
-    Load env files from both execution context and project folder.
-    This helps when users run an installed entrypoint from a cloned repo.
+    """Load candidate .env file paths in priority order.
+
+    Includes both the current working directory and the project root so
+    installed entry points can still find the .env from a cloned repo.
     """
     cwd = Path.cwd()
     candidates = [
@@ -52,9 +51,9 @@ def _has_dotenv_assignments(path):
 
 
 def _read_legacy_api_key(path):
-    """
-    Support the current .env shape: api_key = "...".
-    This parses assignments only and does not execute the file.
+    """Read an api_key assignment from a Python-style .env file.
+
+    Parses AST assignments only; never executes the file.
     """
     if not path.exists():
         return None
@@ -79,12 +78,9 @@ def _read_legacy_api_key(path):
 
 
 def _load_env_files():
-    """
-    Load environment files in precedence order:
-    1) cwd/.env
-    2) cwd/.env.example
-    3) project/.env
-    4) project/.env.example
+    """Load environment files in precedence order.
+
+    Order: cwd/.env > cwd/.env.example > project/.env > project/.env.example.
     """
     for path in _candidate_env_paths():
         if _has_dotenv_assignments(path):

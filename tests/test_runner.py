@@ -74,15 +74,13 @@ class RunnerTests(unittest.TestCase):
 
         fake_outputs = {"json": "data.json", "excel": "data.xlsx", "usage": "usage.json"}
         fake_usage = {"total": {"prompt_tokens": 1, "completion_tokens": 2, "total_tokens": 3}}
-        fake_extractor_module = Mock(
-            process_text_files=Mock(return_value=([], fake_outputs, fake_usage))
-        )
+        mock_ptf = Mock(return_value=([], fake_outputs, fake_usage))
 
-        with patch.dict(sys.modules, {"pyads.extractor": fake_extractor_module}):
+        with patch.object(runner_module, "process_text_files", mock_ptf):
             with redirect_stdout(StringIO()):
                 runner_module.run_extraction(args)
 
-        fake_extractor_module.process_text_files.assert_called_once_with(
+        mock_ptf.assert_called_once_with(
             text_dir="text",
             output_dir="out",
             model="model",
