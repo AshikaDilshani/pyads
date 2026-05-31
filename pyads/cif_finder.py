@@ -1,7 +1,7 @@
-"""Download CIF files for materials listed in adsorption_data.json/xlsx,
-or for a single manually specified material.
+"""Download CIF files for materials listed in adsorption data.
 
-Open data source: Crystallography Open Database (COD), no API key required.
+Supports bulk download from adsorption_data.json/xlsx or a single manually
+specified material name. Uses the Crystallography Open Database (COD).
 """
 
 from __future__ import annotations
@@ -18,6 +18,8 @@ import pandas as pd
 import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
+
+from pyads.utils import GENERIC_MATERIAL_NAMES
 
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
@@ -38,24 +40,6 @@ MATERIAL_COLUMNS = (
 )
 DOI_COLUMNS = ("doi", "DOI", "Doi")
 TITLE_COLUMNS = ("title", "Title", "Title of article")
-
-GENERIC_MATERIALS = {
-    "",
-    "nan",
-    "none",
-    "not_found",
-    "not found",
-    "material",
-    "materials",
-    "cof",
-    "cofs",
-    "mof",
-    "mofs",
-    "covalent organic frameworks",
-    "covalent organic frameworks (cofs)",
-    "metal-organic framework",
-    "metal organic framework",
-}
 
 
 def clean_text(value: object) -> str:
@@ -97,7 +81,7 @@ def first_existing_column(
 def useful_material(material: str) -> bool:
     """Return True if the material name is specific enough to search for."""
     normalized = material.strip().lower()
-    return len(normalized) >= 3 and normalized not in GENERIC_MATERIALS
+    return len(normalized) >= 3 and normalized not in GENERIC_MATERIAL_NAMES
 
 
 def unique_material_rows(df: pd.DataFrame) -> list[dict[str, str]]:

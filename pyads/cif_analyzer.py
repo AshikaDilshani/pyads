@@ -1,10 +1,9 @@
-"""Analyze downloaded CIF files and flag whether they plausibly match
-the materials requested in cif_download_report.csv.
+"""Analyze downloaded CIF files against the requested material list.
 
-Libraries used:
-- gemmi: CIF syntax/structure validity
-- pymatgen: structure analysis and simulated XRD pattern
-- ase: optional structure read check
+Flags whether each CIF plausibly matches the material name from the
+extraction report using text similarity and token overlap.
+
+Libraries used: gemmi (structure validity), pymatgen (XRD simulation), ase (optional read check).
 """
 
 from __future__ import annotations
@@ -19,38 +18,14 @@ from difflib import SequenceMatcher
 from pathlib import Path
 from typing import Any
 
+from pyads.utils import GENERIC_MATERIAL_NAMES
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 DEFAULT_CIF_DIR = BASE_DIR / "cif_file"
 DEFAULT_DOWNLOAD_REPORT = DEFAULT_CIF_DIR / "cif_download_report.csv"
 DEFAULT_ANALYSIS_REPORT = DEFAULT_CIF_DIR / "cif_analysis_report.csv"
 DEFAULT_XRD_DIR = DEFAULT_CIF_DIR / "xrd_patterns"
-
-GENERIC_MATERIAL_NAMES = {
-    "",
-    "...",
-    "nan",
-    "none",
-    "not_found",
-    "not found",
-    "material",
-    "materials",
-    "mof",
-    "mofs",
-    "cof",
-    "cofs",
-    "metal-organic framework",
-    "metal-organic frameworks",
-    "metal organic framework",
-    "metal organic frameworks",
-    "metal-organic framework (mof)",
-    "metal-organic frameworks (mofs)",
-    "covalent organic framework",
-    "covalent organic frameworks",
-    "covalent organic framework (cof)",
-    "covalent organic frameworks (cofs)",
-    "nitrogen",
-}
 
 STOP_TOKENS = {
     "the",
@@ -221,7 +196,7 @@ def clean_cif_value(value: str) -> str:
 
 def gemmi_summary(cif_path: Path) -> dict[str, Any]:
     """Parse a CIF file with gemmi and return cell parameters and atom count."""
-    import gemmi
+    import gemmi  # pylint: disable=import-outside-toplevel
 
     document = gemmi.cif.read_file(str(cif_path))
     block = document.sole_block()
@@ -260,6 +235,7 @@ def gemmi_summary(cif_path: Path) -> dict[str, Any]:
 
 def pymatgen_summary(cif_path: Path, xrd_dir: Path, wavelength: str) -> dict[str, Any]:
     """Analyse a CIF with pymatgen; simulate and save an XRD pattern."""
+    # pylint: disable=import-outside-toplevel
     from pymatgen.analysis.diffraction.xrd import XRDCalculator
     from pymatgen.core import Structure
     from pymatgen.symmetry.analyzer import SpacegroupAnalyzer
@@ -306,7 +282,7 @@ def ase_summary(cif_path: Path) -> dict[str, Any]:
     if importlib.util.find_spec("ase") is None:
         return {"ase_readable": "not_installed", "ase_formula": "", "ase_atoms": ""}
 
-    from ase.io import read
+    from ase.io import read  # pylint: disable=import-outside-toplevel
 
     with warnings.catch_warnings():
         warnings.filterwarnings(
@@ -565,7 +541,7 @@ def main(argv: list[str] | None = None) -> None:
         cif_path = Path(clean_text(row.get("cif_file")))
         try:
             analyzed_rows.append(analyze_cif(row, xrd_dir, args.wavelength))
-        except Exception as exc:
+        except Exception as exc:  # pylint: disable=broad-exception-caught
             analyzed_rows.append(make_error_row(row, cif_path, str(exc)))
 
     saved_report = write_report(analyzed_rows, analysis_report)
