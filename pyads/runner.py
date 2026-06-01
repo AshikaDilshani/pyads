@@ -34,11 +34,67 @@ from pyads.cif_finder import (
     unique_material_rows,
     write_report,
 )
-from pyads.extractor import process_text_files
+from pyads.agent import adaptive_extract
+from pyads.extractor import _add_usage, save_outputs, process_text_files
 from pyads.ocr import process_pdfs
 
 
 DEFAULT_CIF_INPUT_JSON = EXTRACTION_DIR / "adsorption_data.json"
+
+
+def _run_agentic_extraction(args: argparse.Namespace) -> None:
+    """Run the agentic extraction loop and print token usage and output paths."""
+    import logging  # pylint: disable=import-outside-toplevel
+
+    try:
+        from mistralai import Mistral  # pylint: disable=import-outside-toplevel
+    except ImportError:
+        from mistralai.client import Mistral  # pylint: disable=import-outside-toplevel
+
+    from pyads.config import MISTRAL_API_KEY  # pylint: disable=import-outside-toplevel
+
+    if not MISTRAL_API_KEY:
+        raise RuntimeError("MISTRAL_API_KEY is not set. Add it to .env.")
+
+    text_dir = Path(args.text_dir)
+    text_files = sorted(text_dir.glob("*.txt"))
+    if args.limit:
+        text_files = text_files[: args.limit]
+    if not text_files:
+        raise FileNotFoundError(f"No .txt files found in {text_dir}")
+
+    client = Mistral(api_key=MISTRAL_API_KEY)
+    records = []
+    usage_total: dict = {
+        "total": {"prompt_tokens": 0, "completion_tokens": 0, "total_tokens": 0}
+    }
+
+    for text_path in text_files:
+        logging.info("Agentic extraction: %s", text_path.name)
+        text = text_path.read_text(encoding="utf-8", errors="replace")
+        record, _conf, usage = adaptive_extract(
+            text=text,
+            source_file=text_path.name,
+            client=client,
+            model=args.model,
+            max_chars=args.max_chars,
+            validation_max_chars=args.validation_max_chars,
+        )
+        _add_usage(usage_total["total"], usage)
+        records.append(record)
+
+    outputs = save_outputs(records, usage_total, args.output_dir)
+    print(f"Saved JSON: {outputs['json']}")
+    print(f"Saved Excel: {outputs['excel']}")
+    print(f"Saved usage summary: {outputs['usage']}")
+    flat = usage_total["total"]
+    if flat.get("total_tokens"):
+        print(
+            f"Mistral LLM tokens: {flat['prompt_tokens']} prompt, "
+            f"{flat['completion_tokens']} completion, "
+            f"{flat['total_tokens']} total."
+        )
+    _maybe_print_token_cost(usage_total)
 
 
 def _maybe_print_token_cost(usage: dict) -> None:
@@ -91,6 +147,9 @@ def run_ocr(args: argparse.Namespace) -> None:
 
 def run_extraction(args: argparse.Namespace) -> None:
     """Run the LLM extraction stage and print token usage and output paths."""
+    if getattr(args, "agentic", False):
+        _run_agentic_extraction(args)
+        return
     _, outputs, usage = process_text_files(
         text_dir=args.text_dir,
         output_dir=args.output_dir,
@@ -219,6 +278,14 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         "--second-pass",
         action="store_true",
         help="Run strict validation pass after first extraction.",
+    )
+    parser.add_argument(
+        "--agentic",
+        action="store_true",
+        help=(
+            "Use the agentic extraction loop: two-pass + targeted retry for "
+            "low-confidence fields and known-material range validation."
+        ),
     )
     parser.add_argument(
         "--limit",

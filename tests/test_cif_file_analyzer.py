@@ -74,5 +74,95 @@ _chemical_formula_sum            'C14 H8 N12 O9 Zn4'
         self.assertEqual(result["match_label"], "reject_generic_material_name")
 
 
+class NormalizeAndTokenTests(unittest.TestCase):
+    """Tests for text-normalisation and tokenisation helpers."""
+
+    def test_normalize_text_lowercases_and_strips(self):
+        # Hyphens are replaced with spaces by normalize_text.
+        result = cif_analyzer.normalize_text("  ZIF-8  ")
+        self.assertEqual(result, "zif 8")
+
+    def test_normalize_text_collapses_whitespace(self):
+        result = cif_analyzer.normalize_text("MIL  101  Cr")
+        self.assertNotIn("  ", result)
+
+    def test_tokens_returns_meaningful_words(self):
+        # "material" is in STOP_TOKENS and is excluded; "porous" and "zif" remain.
+        result = cif_analyzer.tokens("ZIF-8 porous framework")
+        self.assertIn("zif", result)
+        self.assertIn("porous", result)
+
+    def test_tokens_excludes_short_words(self):
+        # Single-character tokens are noise — the function should skip them.
+        result = cif_analyzer.tokens("a b c ZIF")
+        for tok in result:
+            self.assertGreater(len(tok), 1)
+
+
+class SafeFloatTests(unittest.TestCase):
+    """Tests for safe_float parsing."""
+
+    def test_parses_valid_float_string(self):
+        self.assertAlmostEqual(cif_analyzer.safe_float("3.14"), 3.14)
+
+    def test_returns_none_for_non_numeric(self):
+        self.assertIsNone(cif_analyzer.safe_float("?"))
+
+    def test_returns_none_for_empty_string(self):
+        self.assertIsNone(cif_analyzer.safe_float(""))
+
+    def test_parses_integer_string(self):
+        self.assertEqual(cif_analyzer.safe_float("42"), 42.0)
+
+
+class MakeErrorRowTests(unittest.TestCase):
+    """Tests for make_error_row output structure."""
+
+    def test_error_row_has_all_expected_keys(self):
+        row = cif_analyzer.make_error_row(
+            {"material": "ZIF-8", "source": "doi:10.0/x", "identifier": "1234567"},
+            Path("bad.cif"),
+            "parse failed",
+        )
+        self.assertIn("material", row)
+        self.assertIn("cif_file", row)
+        self.assertIn("notes", row)
+        self.assertEqual(row["material"], "ZIF-8")
+        self.assertEqual(row["notes"], "parse failed")
+
+    def test_error_row_cell_fields_are_empty(self):
+        row = cif_analyzer.make_error_row(
+            {"material": "ZIF-8", "source": "", "identifier": ""},
+            Path("bad.cif"),
+            "error",
+        )
+        # Cell parameter cells should be empty strings, not None or 0.
+        for key in ("cell_a", "cell_b", "cell_c", "cell_alpha", "cell_beta", "cell_gamma"):
+            self.assertEqual(row.get(key, ""), "")
+
+
+class CifTextMetadataTests(unittest.TestCase):
+    """Additional tests for CIF metadata extraction edge cases."""
+
+    def test_publication_title_is_extracted(self):
+        cif_text = (
+            "data_test\n"
+            "_publ_section_title 'Gas adsorption in ZIF-8'\n"
+        )
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            cif_path = Path(tmp_dir) / "test.cif"
+            cif_path.write_text(cif_text, encoding="utf-8")
+            metadata = cif_analyzer.cif_text_metadata(cif_path)
+        self.assertIn("ZIF-8", metadata.get("publication_title", ""))
+
+    def test_missing_fields_default_to_empty_string(self):
+        cif_text = "data_minimal\n_cell_length_a 10.0\n"
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            cif_path = Path(tmp_dir) / "minimal.cif"
+            cif_path.write_text(cif_text, encoding="utf-8")
+            metadata = cif_analyzer.cif_text_metadata(cif_path)
+        self.assertEqual(metadata.get("chemical_name", ""), "")
+
+
 if __name__ == "__main__":
     unittest.main()

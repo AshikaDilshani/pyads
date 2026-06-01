@@ -322,7 +322,8 @@ def _format_temperatures(temperatures):
     return "; ".join(f"{temp.get('value')} {temp.get('unit')}" for temp in temperatures or [])
 
 
-def _flatten_record(record):
+def flatten_record(record):
+    """Return a flat dict representation of *record* suitable for Excel/CSV output."""
     return {
         "source_file": record.get("source_file"),
         "doi": record.get("doi"),
@@ -350,7 +351,7 @@ def save_outputs(records, usage, output_dir):
     usage_path = output_dir / "usage_summary.json"
 
     json_path.write_text(json.dumps(records, indent=2, ensure_ascii=False), encoding="utf-8")
-    pd.DataFrame([_flatten_record(record) for record in records]).to_excel(excel_path, index=False)
+    pd.DataFrame([flatten_record(record) for record in records]).to_excel(excel_path, index=False)
     usage_path.write_text(json.dumps(usage, indent=2), encoding="utf-8")
 
     return {"json": json_path, "excel": excel_path, "usage": usage_path}

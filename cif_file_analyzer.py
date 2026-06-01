@@ -1,7 +1,13 @@
-"""Backward-compatible entry point; logic lives in pyads.cif_analyzer."""
+"""Backward-compatible entry point; all CIF-analysis logic lives in pyads.cif_analyzer.
 
-from pyads.cif_analyzer import main  # noqa: F401
-from pyads.cif_analyzer import *  # noqa: F401, F403
+Run CIF analysis with:
+    python cif_file_analyzer.py --cif-dir cif_file/
+
+Or use the installed console script:
+    pyads-cif-analyze --cif-dir cif_file/
+"""
+
+from pyads.cif_analyzer import main
 
 if __name__ == "__main__":
     main()

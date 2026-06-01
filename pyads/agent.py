@@ -42,6 +42,7 @@ import logging
 from typing import Any
 
 from pyads.confidence import compute_confidence
+from pyads.known_materials import find_known_material, validate_known_material
 from pyads.extractor import (
     VALIDATION_MAX_CHARS,
     _add_usage,
@@ -153,6 +154,21 @@ def adaptive_extract(
 
     confidence = compute_confidence(first_record, second_record)
     low_fields = _low_confidence_numeric_fields(confidence)
+
+    # Also trigger a targeted pass when the known-materials validator flags
+    # out-of-range values — the two passes can agree on a plausible-looking
+    # but physically wrong number (e.g. Langmuir area reported as BET).
+    material_name = second_record.get("material") or ""
+    if not low_fields and material_name and find_known_material(material_name):
+        range_warnings = validate_known_material(material_name, second_record)
+        if range_warnings:
+            for warning in range_warnings:
+                logging.info("Agent: known-material range warning for %s: %s", source_file, warning)
+            low_fields = [
+                f
+                for f in _NUMERIC_FIELDS
+                if any(f.replace("_", " ").split()[0] in w for w in range_warnings)
+            ] or list(_NUMERIC_FIELDS)
 
     if low_fields:
         logging.info(

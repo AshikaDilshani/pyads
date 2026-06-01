@@ -1,6 +1,8 @@
 """Unit tests for pyads.runner — offline, no network or API calls."""
 
+import os
 import sys
+import tempfile
 import unittest
 from contextlib import redirect_stdout
 from io import StringIO
@@ -71,6 +73,7 @@ class RunnerTests(unittest.TestCase):
         args.validation_max_chars = 50
         args.second_pass = True
         args.limit = 1
+        args.agentic = False
 
         fake_outputs = {"json": "data.json", "excel": "data.xlsx", "usage": "usage.json"}
         fake_usage = {"total": {"prompt_tokens": 1, "completion_tokens": 2, "total_tokens": 3}}
@@ -89,6 +92,89 @@ class RunnerTests(unittest.TestCase):
             second_pass=True,
             limit=1,
         )
+
+
+class DryRunTests(unittest.TestCase):
+    """Tests for the --dry-run flag in main."""
+
+    def test_dry_run_lists_pdfs_without_calling_stages(self):
+        with tempfile.TemporaryDirectory() as pdf_dir:
+            pdf_path = Path(pdf_dir) / "paper.pdf"
+            pdf_path.write_bytes(b"%PDF-1.4 test")
+
+            with patch.object(runner_module, "run_ocr") as run_ocr, \
+                    patch.object(runner_module, "run_extraction") as run_extraction:
+                output = StringIO()
+                with redirect_stdout(output):
+                    runner_module.main(["--dry-run", "--pdf-dir", pdf_dir])
+
+        run_ocr.assert_not_called()
+        run_extraction.assert_not_called()
+        self.assertIn("paper.pdf", output.getvalue())
+
+    def test_dry_run_raises_when_no_pdfs(self):
+        with tempfile.TemporaryDirectory() as empty_dir:
+            with self.assertRaises(FileNotFoundError):
+                runner_module.main(["--dry-run", "--pdf-dir", empty_dir])
+
+    def test_dry_run_raises_when_dir_missing(self):
+        with self.assertRaises(FileNotFoundError):
+            runner_module.main(["--dry-run", "--pdf-dir", "/nonexistent/path"])
+
+
+class MaybePrintTokenCostTests(unittest.TestCase):
+    """Tests for the optional Mistral cost estimation output."""
+
+    def test_prints_nothing_when_no_tokens(self):
+        usage = {"total": {"prompt_tokens": 0, "completion_tokens": 0, "total_tokens": 0}}
+        output = StringIO()
+        with redirect_stdout(output):
+            runner_module._maybe_print_token_cost(usage)
+        self.assertEqual(output.getvalue(), "")
+
+    def test_prints_nothing_when_prices_not_set(self):
+        usage = {"total": {"prompt_tokens": 1000, "completion_tokens": 500, "total_tokens": 1500}}
+        env_without_prices = {k: v for k, v in os.environ.items()
+                              if k not in ("MISTRAL_PROMPT_PRICE_PER_MTOK",
+                                           "MISTRAL_COMPLETION_PRICE_PER_MTOK")}
+        with patch.dict(os.environ, env_without_prices, clear=True):
+            output = StringIO()
+            with redirect_stdout(output):
+                runner_module._maybe_print_token_cost(usage)
+        self.assertEqual(output.getvalue(), "")
+
+    def test_prints_cost_when_prices_are_set(self):
+        usage = {"total": {"prompt_tokens": 1_000_000, "completion_tokens": 0, "total_tokens": 1_000_000}}
+        with patch.dict(os.environ, {"MISTRAL_PROMPT_PRICE_PER_MTOK": "0.5",
+                                      "MISTRAL_COMPLETION_PRICE_PER_MTOK": "0.0"}):
+            output = StringIO()
+            with redirect_stdout(output):
+                runner_module._maybe_print_token_cost(usage)
+        self.assertIn("0.5", output.getvalue())
+
+
+class ParseArgsTests(unittest.TestCase):
+    """Additional argument parsing tests."""
+
+    def test_second_pass_flag_defaults_to_false(self):
+        args = runner_module.parse_args([])
+        self.assertFalse(args.second_pass)
+
+    def test_agentic_flag_can_be_set(self):
+        args = runner_module.parse_args(["--agentic"])
+        self.assertTrue(args.agentic)
+
+    def test_limit_is_none_by_default(self):
+        args = runner_module.parse_args([])
+        self.assertIsNone(args.limit)
+
+    def test_limit_can_be_set(self):
+        args = runner_module.parse_args(["--limit", "3"])
+        self.assertEqual(args.limit, 3)
+
+    def test_dry_run_defaults_to_false(self):
+        args = runner_module.parse_args([])
+        self.assertFalse(args.dry_run)
 
 
 if __name__ == "__main__":

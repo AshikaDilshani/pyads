@@ -1,6 +1,4 @@
-"""
-Command-line wrapper for pyads.extractor.
-"""
+"""Command-line wrapper for pyads.extractor; all logic lives in the package."""
 
 from pyads.extractor import main
 

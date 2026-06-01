@@ -3,12 +3,30 @@
 **pyads** extracts structured adsorption data from scientific PDF papers and
 cross-references the results against crystallographic databases.
 
+> **Domain**: porous materials science — MOFs, COFs, zeolites, and activated
+> carbons.  The tool extracts BET surface area, pore volume, pore size, gas
+> adsorbates, and isotherm temperatures from peer-reviewed papers.  Basic
+> familiarity with adsorption science is helpful for interpreting the output.
+
 The four-stage pipeline:
 
 1. **OCR** — upload PDFs to the Mistral OCR API; save extracted text to `data/text/`.
 2. **Extraction** — send OCR text to a Mistral LLM; parse adsorption properties into a validated JSON schema.
 3. **CIF download** — query the Crystallography Open Database (COD) for each material; download matching CIF files.
 4. **CIF analysis** — parse CIF files with gemmi and pymatgen; simulate XRD patterns; score material-name matches.
+
+---
+
+## Prerequisites
+
+| Requirement | Notes |
+|---|---|
+| Python 3.11+ | Required by `pyproject.toml` |
+| Mistral API key | Free tier available at [console.mistral.ai](https://console.mistral.ai) |
+| Internet access | OCR upload and COD CIF download stages need network access |
+| ~2 GB disk | pymatgen + ase are large scientific packages |
+
+The test suite and `--dry-run` mode work **without** a Mistral API key.
 
 ---
 
@@ -50,9 +68,25 @@ All other settings have working defaults and can be overridden:
 
 ---
 
+## Entry points
+
+| Command | Description |
+|---|---|
+| `python runner.py` | Full pipeline (recommended for most users) |
+| `pyads` | Same as above, requires `pip install -e .` |
+| `pyads-extract` | Extraction stage only |
+| `pyads-cif-find` | CIF download stage only |
+| `pyads-cif-analyze` | CIF analysis stage only |
+
+Root-level scripts (`runner.py`, `extractor.py`, `cif_file_finder.py`,
+`cif_file_analyzer.py`) are thin wrappers around the `pyads` package.
+All logic lives in `pyads/`.
+
+---
+
 ## Running the pipeline
 
-Place PDF files in `data/pdfs/` or `PDF/`, then:
+Place PDF files in `data/pdfs/`, then:
 
 ```powershell
 # Full pipeline
@@ -194,6 +228,20 @@ pre-saved OCR text file.
 
 ---
 
+## Agentic mode
+
+The `--agentic` flag enables a third LLM query when numeric fields are
+low-confidence or fall outside known literature ranges:
+
+```powershell
+python runner.py --skip-ocr --agentic
+```
+
+The agentic loop (observe → reason → act) fires at most once per record and
+only when needed, so it adds no cost to well-extracted papers.
+
+---
+
 ## Running the tests
 
 ```powershell
@@ -201,17 +249,52 @@ python test.py
 ```
 
 All tests are offline (no Mistral or COD network calls). The Mistral client is
-mocked using `unittest.mock`.
+mocked using `unittest.mock`.  The suite covers: extractor, agent, confidence,
+known_materials, OCR, CIF finder, CIF analyzer, and runner.
 
 ---
 
 ## Lint and code quality
 
 ```powershell
+# Run all three tools at once (covers pyads/ + root-level scripts)
+python quality_check.py
+
+# Or individually
 pylint pyads/
 pycodestyle pyads/
 pydocstyle pyads/
 ```
+
+The project maintains **pylint 10/10**, zero pycodestyle violations, and zero
+pydocstyle violations.  Configuration is in `.pylintrc` and `setup.cfg`.
+
+---
+
+## Troubleshooting
+
+**`MISTRAL_API_KEY not set`**
+Copy `.env.example` to `.env` and add your key.  Get a free key at
+[console.mistral.ai](https://console.mistral.ai).
+
+**`No PDF files found in data/pdfs`**
+Create the directory and copy your PDFs: `New-Item -ItemType Directory -Force data/pdfs`
+
+**`ModuleNotFoundError: No module named 'gemmi'` (or pymatgen/ase)**
+Run `python -m pip install -e .` from the repo root to install all dependencies.
+On Windows, use the conda environment from `environment.yml` if pip install fails.
+
+**Mistral 429 rate-limit errors**
+The extraction module retries automatically with backoff.  If you hit persistent
+limits, reduce throughput with `--limit 1` and re-run for remaining files.
+
+**`No CIF found in COD` for a material**
+The material name may not match COD's naming conventions.  Try the `--material`
+flag with an alternative name: `pyads-cif-find --material "Zinc imidazolate framework"`
+
+**Low confidence scores across all fields**
+The OCR text may be too short or the paper may not contain adsorption data.
+Check `data/text/<stem>.txt` to verify the OCR output quality.
 
 ---
 
@@ -302,3 +385,12 @@ See [DESIGN.md](DESIGN.md) for the full reasoning behind each decision, and
 ## Python version
 
 Python 3.11 or newer is required (see `pyproject.toml`).
+
+---
+
+## Further reading
+
+- [DESIGN.md](DESIGN.md) — rationale for every architectural decision.
+- [RESULTS.md](RESULTS.md) — verified pipeline output on three published papers.
+- [CHANGELOG.md](CHANGELOG.md) — version history.
+- [CONTRIBUTING.md](CONTRIBUTING.md) — development setup, test and lint instructions.

@@ -19,7 +19,7 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from pyads.extractor import extract_data_from_text, _flatten_record  # noqa: E402
+from pyads.extractor import extract_data_from_text, flatten_record  # noqa: E402
 
 # ---------------------------------------------------------------------------
 # Simulated OCR text (as if Mistral OCR had processed a PDF)
@@ -103,7 +103,7 @@ def main() -> None:
     print(json.dumps(record, indent=2, ensure_ascii=False))
 
     print("\nFlattened row (as it appears in the Excel output):")
-    flat = _flatten_record(record)
+    flat = flatten_record(record)
     for key, value in flat.items():
         print(f"  {key}: {value!r}")
 
