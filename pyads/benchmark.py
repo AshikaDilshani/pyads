@@ -86,6 +86,27 @@ def _find_matching_material(
     return None
 
 
+def _score_numeric(gt_val: Any, ext_val: Any, tolerance: float) -> str:
+    """Return a score label for one numeric measurement field."""
+    if gt_val is None:
+        return "correct" if ext_val is None else "extra"
+    if ext_val is None:
+        return "missing"
+    return "correct" if _within_tolerance(ext_val, gt_val, tolerance) else "wrong"
+
+
+def _score_gases(gt_gases: set, ext_gases: set) -> str:
+    """Return a score label for the gases list field."""
+    if not gt_gases:
+        return "correct" if not ext_gases else "extra"
+    if not ext_gases:
+        return "missing"
+    overlap = gt_gases & ext_gases
+    if overlap == gt_gases:
+        return "correct"
+    return "partial" if overlap else "wrong"
+
+
 def evaluate_material(
     extracted_mat: dict[str, Any] | None,
     gt_mat: dict[str, Any],
@@ -111,31 +132,15 @@ def evaluate_material(
         scores["material"] = "wrong"
 
     for field in NUMERIC_FIELDS:
-        gt_val = _numeric_value(gt_mat.get(field))
-        ext_val = _numeric_value(extracted_mat.get(field))
-        if gt_val is None:
-            scores[field] = "correct" if ext_val is None else "extra"
-        elif ext_val is None:
-            scores[field] = "missing"
-        elif _within_tolerance(ext_val, gt_val, tolerance):
-            scores[field] = "correct"
-        else:
-            scores[field] = "wrong"
+        scores[field] = _score_numeric(
+            _numeric_value(gt_mat.get(field)),
+            _numeric_value(extracted_mat.get(field)),
+            tolerance,
+        )
 
     gt_gases = {g.lower() for g in (gt_mat.get("gases") or [])}
     ext_gases = {g.lower() for g in (extracted_mat.get("gases") or [])}
-    if not gt_gases:
-        scores["gases"] = "correct" if not ext_gases else "extra"
-    elif not ext_gases:
-        scores["gases"] = "missing"
-    else:
-        overlap = gt_gases & ext_gases
-        if overlap == gt_gases:
-            scores["gases"] = "correct"
-        elif overlap:
-            scores["gases"] = "partial"
-        else:
-            scores["gases"] = "wrong"
+    scores["gases"] = _score_gases(gt_gases, ext_gases)
 
     return scores
 
