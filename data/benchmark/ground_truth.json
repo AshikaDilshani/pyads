@@ -1,0 +1,98 @@
+{
+  "version": 1,
+  "description": "Ground-truth adsorption properties for 5 published papers (7 material records), manually verified against the original publications. Includes one multi-material entry to validate schema v2 multi-record extraction.",
+  "papers": [
+    {
+      "doi": "10.1073/pnas.0602439103",
+      "title": "Exceptional chemical and thermal stability of zeolitic imidazolate frameworks",
+      "year": 2006,
+      "source_hint": "Park et al. (2006) — ZIF-8 N2 physisorption at 77 K. BET and pore volume from Table 1.",
+      "materials": [
+        {
+          "material": "ZIF-8",
+          "surface_area": {"value": 1630.0, "unit": "m2/g"},
+          "pore_volume": {"value": 0.636, "unit": "cm3/g"},
+          "pore_size": {"value": 11.6, "unit": "A"},
+          "gases": ["N2"],
+          "isotherm_temperatures": [{"value": 77, "unit": "K"}]
+        }
+      ]
+    },
+    {
+      "doi": "10.1002/anie.200462786",
+      "title": "Strategies for hydrogen storage in metal-organic frameworks",
+      "year": 2005,
+      "source_hint": "Rowsell & Yaghi (2005) — multi-material H2 storage comparison. HKUST-1 and MOF-177 BET from Tables 1–2.",
+      "materials": [
+        {
+          "material": "HKUST-1",
+          "surface_area": {"value": 1507.0, "unit": "m2/g"},
+          "pore_volume": {"value": 0.75, "unit": "cm3/g"},
+          "pore_size": null,
+          "gases": ["H2"],
+          "isotherm_temperatures": [{"value": 77, "unit": "K"}]
+        },
+        {
+          "material": "MOF-177",
+          "surface_area": {"value": 4500.0, "unit": "m2/g"},
+          "pore_volume": {"value": 1.69, "unit": "cm3/g"},
+          "pore_size": null,
+          "gases": ["H2"],
+          "isotherm_temperatures": [{"value": 77, "unit": "K"}]
+        }
+      ]
+    },
+    {
+      "doi": "10.1126/science.1067208",
+      "title": "Systematic design of pore size and functionality in isoreticular MOFs",
+      "year": 2002,
+      "source_hint": "Eddaoudi et al. (2002) — MOF-5 CH4 storage at 298 K. BET=2900 (not Langmuir=4400). Hardest case: first-pass LLM often confuses BET with Langmuir.",
+      "materials": [
+        {
+          "material": "MOF-5",
+          "surface_area": {"value": 2900.0, "unit": "m2/g"},
+          "pore_volume": {"value": 1.04, "unit": "cm3/g"},
+          "pore_size": {"value": 15.1, "unit": "A"},
+          "gases": ["CH4"],
+          "isotherm_temperatures": [{"value": 298, "unit": "K"}]
+        }
+      ]
+    },
+    {
+      "doi": "10.1021/ja8057953",
+      "title": "A new zirconium inorganic building brick forming metal organic frameworks with exceptional stability",
+      "year": 2008,
+      "source_hint": "Cavka et al. (2008) JACS — UiO-66. BET 1187 m2/g and Vp 0.40 cm3/g from Table 1 and SI.",
+      "materials": [
+        {
+          "material": "UiO-66",
+          "surface_area": {"value": 1187.0, "unit": "m2/g"},
+          "pore_volume": {"value": 0.40, "unit": "cm3/g"},
+          "pore_size": {"value": 6.0, "unit": "A"},
+          "gases": ["N2"],
+          "isotherm_temperatures": [{"value": 77, "unit": "K"}]
+        }
+      ]
+    },
+    {
+      "doi": "10.1039/c3ce40583f",
+      "title": "Selective CO2 capture by ZIF-8 at low partial pressures",
+      "year": 2014,
+      "source_hint": "ZIF-8 CO2/N2 selectivity paper. Multi-gas isotherm at 273 K and 298 K. Matches sample_ocr.txt in data/samples/.",
+      "materials": [
+        {
+          "material": "ZIF-8",
+          "surface_area": {"value": 1621.0, "unit": "m2/g"},
+          "pore_volume": {"value": 0.636, "unit": "cm3/g"},
+          "pore_size": {"value": 11.4, "unit": "A"},
+          "gases": ["CO2", "N2"],
+          "isotherm_temperatures": [
+            {"value": 273, "unit": "K"},
+            {"value": 298, "unit": "K"},
+            {"value": 77, "unit": "K"}
+          ]
+        }
+      ]
+    }
+  ]
+}

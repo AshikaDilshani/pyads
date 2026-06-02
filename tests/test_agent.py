@@ -14,6 +14,7 @@ from pyads.agent import (  # noqa: E402
     _low_confidence_numeric_fields,
     adaptive_extract,
 )
+from pyads.extractor import _empty_material  # noqa: E402
 
 
 def _make_client(response_json: str) -> MagicMock:
@@ -53,6 +54,20 @@ def _confidence(surface_area="high", pore_volume="high", pore_size="absent"):
     }
 
 
+def _make_paper(materials=None):
+    """Return a minimal v2 paper dict for testing."""
+    if materials is None:
+        materials = []
+    return {
+        "schema_version": 2,
+        "source_file": "test.txt",
+        "doi": None,
+        "title": None,
+        "year": None,
+        "materials": materials,
+    }
+
+
 class LowConfidenceFieldsTests(unittest.TestCase):
     """Tests for identifying which numeric fields need a targeted retry."""
 
@@ -73,16 +88,13 @@ class LowConfidenceFieldsTests(unittest.TestCase):
 
 
 class ApplyTargetedTests(unittest.TestCase):
-    """Tests for merging targeted extraction results into the base record."""
+    """Tests for merging targeted extraction results into a material dict."""
 
     def _base(self):
-        return {
-            "source_file": "test.txt",
-            "schema_version": 1,
-            "surface_area": {"value": None, "unit": None},
-            "pore_volume": {"value": 0.55, "unit": "cm3/g"},
-            "pore_size": {"value": None, "unit": None},
-        }
+        mat = _empty_material()
+        mat["source_file"] = "test.txt"
+        mat["pore_volume"] = {"value": 0.55, "unit": "cm3/g"}
+        return mat
 
     def test_valid_surface_area_is_merged(self):
         base = self._base()
@@ -104,72 +116,93 @@ class ApplyTargetedTests(unittest.TestCase):
 
 
 class AdaptiveExtractTests(unittest.TestCase):
-    """Integration tests for the full adaptive_extract loop."""
+    """Integration tests for the full adaptive_extract loop (returns paper, usage)."""
 
-    _HIGH_CONF_RESPONSE = (
-        '{"doi": null, "title": null, "year": null, "material": "ZIF-8",'
-        ' "surface_area": {"value": 1621.0, "unit": "m2/g"},'
-        ' "pore_volume": {"value": 0.636, "unit": "cm3/g"},'
-        ' "pore_size": {"value": null, "unit": null},'
-        ' "gases": ["CO2"], "isotherm_temperatures": [{"value": 298, "unit": "K"}]}'
-    )
+    _HIGH_CONF_MAT = {
+        "material": "ZIF-8",
+        "surface_area": {"value": 1621.0, "unit": "m2/g"},
+        "pore_volume": {"value": 0.636, "unit": "cm3/g"},
+        "pore_size": {"value": None, "unit": None},
+        "gases": ["CO2"],
+        "isotherm_temperatures": [{"value": 298, "unit": "K"}],
+    }
 
-    def test_no_targeted_pass_when_confidence_is_high(self):
-        client = _make_client(self._HIGH_CONF_RESPONSE)
-        record, conf, usage = adaptive_extract(
-            "BET 1621 m2/g", "test.txt", client, "mistral-small-latest"
-        )
-        self.assertEqual(conf["overall"], "high")
-        self.assertEqual(record["material"], "ZIF-8")
+    def _high_conf_response(self):
+        import json  # pylint: disable=import-outside-toplevel
+        return json.dumps({
+            "doi": None, "title": None, "year": None,
+            "materials": [self._HIGH_CONF_MAT],
+        })
+
+    def test_returns_paper_and_usage_tuple(self):
+        client = _make_client(self._high_conf_response())
+        result = adaptive_extract("BET 1621 m2/g", "test.txt", client, "mistral-small-latest")
+        self.assertIsInstance(result, tuple)
+        self.assertEqual(len(result), 2)
+
+    def test_paper_has_schema_version_2(self):
+        client = _make_client(self._high_conf_response())
+        paper, _ = adaptive_extract("BET 1621 m2/g", "test.txt", client, "mistral-small-latest")
+        self.assertEqual(paper["schema_version"], 2)
+
+    def test_material_extracted_correctly(self):
+        client = _make_client(self._high_conf_response())
+        paper, _ = adaptive_extract("BET 1621 m2/g", "test.txt", client, "mistral-small-latest")
+        self.assertEqual(len(paper["materials"]), 1)
+        self.assertEqual(paper["materials"][0]["material"], "ZIF-8")
+
+    def test_confidence_embedded_per_material(self):
+        client = _make_client(self._high_conf_response())
+        paper, _ = adaptive_extract("BET 1621 m2/g", "test.txt", client, "mistral-small-latest")
+        mat = paper["materials"][0]
+        self.assertIn("confidence", mat)
+        self.assertIn("overall", mat["confidence"])
+
+    def test_usage_has_token_counts(self):
+        client = _make_client(self._high_conf_response())
+        _, usage = adaptive_extract("BET 1621 m2/g", "test.txt", client, "mistral-small-latest")
         self.assertIn("total_tokens", usage)
 
-    def test_targeted_pass_runs_when_surface_area_low(self):
-        low_conf_response = (
-            '{"doi": null, "title": null, "year": null, "material": "ZIF-8",'
-            ' "surface_area": {"value": 0.636, "unit": "cm3/g"},'
-            ' "pore_volume": {"value": 0.636, "unit": "cm3/g"},'
-            ' "pore_size": {"value": null, "unit": null},'
-            ' "gases": [], "isotherm_temperatures": []}'
-        )
-        targeted_response = '{"surface_area": {"value": 1621.0, "unit": "m2/g"}}'
+    def test_no_targeted_pass_when_all_fields_high_confidence(self):
+        """When both passes agree, only 2 LLM calls should be made (no targeted pass)."""
+        client = _make_client(self._high_conf_response())
+        adaptive_extract("BET 1621 m2/g", "test.txt", client, "mistral-small-latest")
+        self.assertEqual(client.chat.complete.call_count, 2)
 
-        # patch extract_data_from_text and validate_record_from_text to return
-        # a low-confidence record, then check the targeted LLM call fires.
+    def test_targeted_pass_runs_when_surface_area_low(self):
+        """When validation rejects surface_area, a third targeted call should fire."""
+        import json  # pylint: disable=import-outside-toplevel
+
+        first_mat = {
+            "material": "ZIF-8",
+            "surface_area": {"value": 0.636, "unit": "cm3/g"},  # wrong unit
+            "pore_volume": {"value": 0.636, "unit": "cm3/g"},
+            "pore_size": {"value": None, "unit": None},
+            "gases": [], "isotherm_temperatures": [],
+        }
+        second_mat = {
+            "material": "ZIF-8",
+            "surface_area": {"value": None, "unit": None},  # rejected by validation
+            "pore_volume": {"value": 0.636, "unit": "cm3/g"},
+            "pore_size": {"value": None, "unit": None},
+            "gases": [], "isotherm_temperatures": [],
+        }
+        first_paper = _make_paper(materials=[first_mat])
+        second_paper = _make_paper(materials=[second_mat])
+        targeted_result = {"surface_area": {"value": 1621.0, "unit": "m2/g"}}
+
         with patch("pyads.agent.extract_data_from_text") as mock_extract, \
              patch("pyads.agent.validate_record_from_text") as mock_validate, \
              patch("pyads.agent._chat_json_with_retries") as mock_targeted:
 
-            # First pass: wrong unit for surface_area
-            first_record = {
-                "schema_version": 1, "source_file": "test.txt",
-                "material": "ZIF-8",
-                "surface_area": {"value": 0.636, "unit": "cm3/g"},
-                "pore_volume": {"value": 0.636, "unit": "cm3/g"},
-                "pore_size": {"value": None, "unit": None},
-                "doi": None, "title": None, "year": None,
-                "gases": [], "isotherm_temperatures": [],
-            }
-            # Validation pass: surface_area rejected (wrong unit → null)
-            second_record = {
-                "schema_version": 1, "source_file": "test.txt",
-                "material": "ZIF-8",
-                "surface_area": {"value": None, "unit": None},
-                "pore_volume": {"value": 0.636, "unit": "cm3/g"},
-                "pore_size": {"value": None, "unit": None},
-                "doi": None, "title": None, "year": None,
-                "gases": [], "isotherm_temperatures": [],
-            }
-            mock_extract.return_value = (first_record, {"prompt_tokens": 10, "completion_tokens": 5, "total_tokens": 15})
-            mock_validate.return_value = (second_record, {"prompt_tokens": 10, "completion_tokens": 5, "total_tokens": 15})
-            mock_targeted.return_value = (
-                {"surface_area": {"value": 1621.0, "unit": "m2/g"}},
-                {"prompt_tokens": 10, "completion_tokens": 5, "total_tokens": 15},
-            )
+            mock_extract.return_value = (first_paper, {"prompt_tokens": 10, "completion_tokens": 5, "total_tokens": 15})
+            mock_validate.return_value = (second_paper, {"prompt_tokens": 10, "completion_tokens": 5, "total_tokens": 15})
+            mock_targeted.return_value = (targeted_result, {"prompt_tokens": 10, "completion_tokens": 5, "total_tokens": 15})
 
-            client = MagicMock()
-            record, conf, _ = adaptive_extract("text", "test.txt", client, "mistral-small-latest")
-            mock_targeted.assert_called_once()
-            self.assertEqual(record["surface_area"]["value"], 1621.0)
+            paper, _ = adaptive_extract("text", "test.txt", MagicMock(), "mistral-small-latest")
+
+        mock_targeted.assert_called_once()
+        self.assertEqual(paper["materials"][0]["surface_area"]["value"], 1621.0)
 
 
 if __name__ == "__main__":

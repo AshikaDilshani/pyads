@@ -35,7 +35,7 @@ from pyads.cif_finder import (
     write_report,
 )
 from pyads.agent import adaptive_extract
-from pyads.extractor import _add_usage, save_outputs, process_text_files
+from pyads.extractor import add_usage, save_outputs, process_text_files
 from pyads.ocr import process_pdfs
 
 
@@ -72,7 +72,7 @@ def _run_agentic_extraction(args: argparse.Namespace) -> None:
     for text_path in text_files:
         logging.info("Agentic extraction: %s", text_path.name)
         text = text_path.read_text(encoding="utf-8", errors="replace")
-        record, _conf, usage = adaptive_extract(
+        paper, usage = adaptive_extract(
             text=text,
             source_file=text_path.name,
             client=client,
@@ -80,8 +80,8 @@ def _run_agentic_extraction(args: argparse.Namespace) -> None:
             max_chars=args.max_chars,
             validation_max_chars=args.validation_max_chars,
         )
-        _add_usage(usage_total["total"], usage)
-        records.append(record)
+        add_usage(usage_total["total"], usage)
+        records.append(paper)
 
     outputs = save_outputs(records, usage_total, args.output_dir)
     print(f"Saved JSON: {outputs['json']}")

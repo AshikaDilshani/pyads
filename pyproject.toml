@@ -20,11 +20,15 @@ dependencies = [
   "ase>=3.28.0",
 ]
 
+[project.optional-dependencies]
+app = ["streamlit>=1.35.0"]
+
 [project.scripts]
 pyads = "pyads.runner:main"
 pyads-extract = "pyads.extractor:main"
 pyads-cif-find = "pyads.cif_finder:main"
 pyads-cif-analyze = "pyads.cif_analyzer:main"
+pyads-benchmark = "pyads.benchmark:main"
 
 [tool.setuptools]
 packages = ["pyads"]

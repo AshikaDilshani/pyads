@@ -59,11 +59,26 @@ def safe_filename(value: str, max_length: int = 120) -> str:
 
 
 def read_input_table(input_path: Path) -> pd.DataFrame:
-    """Read adsorption data from a JSON or Excel file into a DataFrame."""
+    """Read adsorption data from a JSON or Excel file into a flat DataFrame.
+
+    Handles both schema v1 (flat records) and schema v2 (papers with a
+    ``materials`` list).  For v2 papers each material is expanded into its own
+    row with the paper-level fields (doi, title, year) repeated.
+    """
     suffix = input_path.suffix.lower()
     if suffix == ".json":
-        records = json.loads(input_path.read_text(encoding="utf-8"))
-        return pd.json_normalize(records)
+        data = json.loads(input_path.read_text(encoding="utf-8"))
+        rows = []
+        for item in data:
+            if isinstance(item, dict) and "materials" in item:
+                paper_fields = {k: v for k, v in item.items() if k != "materials"}
+                for mat in item.get("materials") or []:
+                    row = dict(paper_fields)
+                    row.update(mat)
+                    rows.append(row)
+            else:
+                rows.append(item)
+        return pd.DataFrame(rows) if rows else pd.DataFrame()
     return pd.read_excel(input_path)
 
 

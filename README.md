@@ -77,6 +77,7 @@ All other settings have working defaults and can be overridden:
 | `pyads-extract` | Extraction stage only |
 | `pyads-cif-find` | CIF download stage only |
 | `pyads-cif-analyze` | CIF analysis stage only |
+| `pyads-benchmark` | Compare extraction output against ground truth |
 
 Root-level scripts (`runner.py`, `extractor.py`, `cif_file_finder.py`,
 `cif_file_analyzer.py`) are thin wrappers around the `pyads` package.
@@ -128,43 +129,60 @@ pyads --skip-ocr --second-pass
 
 ## JSON schema
 
-Each record in `adsorption_data.json` follows this schema (schema_version 1):
+Each paper in `adsorption_data.json` follows schema version 2.  A paper
+carries its own DOI/title/year and a **`materials` list** so that studies
+comparing multiple sorbents produce one record per material, not one record
+per paper.
 
 ```json
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "source_file": "paper_001.txt",
   "doi": "10.1039/d3ta01234a",
-  "title": "CO2 capture with ZIF-8 at room temperature",
+  "title": "CO2 and N2 adsorption on ZIF-8 and HKUST-1",
   "year": 2023,
-  "material": "ZIF-8",
-  "surface_area": {
-    "value": 1200.0,
-    "unit": "m2/g"
-  },
-  "pore_volume": {
-    "value": 0.55,
-    "unit": "cm3/g"
-  },
-  "pore_size": {
-    "value": 3.4,
-    "unit": "Å"
-  },
-  "gases": ["CO2", "N2"],
-  "isotherm_temperatures": [
-    {"value": 273, "unit": "K"},
-    {"value": 298, "unit": "K"}
+  "materials": [
+    {
+      "material": "ZIF-8",
+      "surface_area": {"value": 1630.0, "unit": "m2/g"},
+      "pore_volume":  {"value": 0.636,  "unit": "cm3/g"},
+      "pore_size":    {"value": 11.6,   "unit": "Å"},
+      "gases": ["CO2", "N2"],
+      "isotherm_temperatures": [
+        {"value": 273, "unit": "K"},
+        {"value": 298, "unit": "K"}
+      ],
+      "confidence": {
+        "overall": "high",
+        "fields": {
+          "material": "high", "surface_area": "high",
+          "pore_volume": "high", "pore_size": "high",
+          "gases": "high", "isotherm_temperatures": "high"
+        }
+      }
+    },
+    {
+      "material": "HKUST-1",
+      "surface_area": {"value": 1507.0, "unit": "m2/g"},
+      "pore_volume":  {"value": 0.75,   "unit": "cm3/g"},
+      "pore_size":    {"value": null,   "unit": null},
+      "gases": ["H2"],
+      "isotherm_temperatures": [{"value": 77, "unit": "K"}],
+      "confidence": {"overall": "high", "fields": {}}
+    }
   ]
 }
 ```
 
 **Field notes:**
 
+- `materials` — list of all distinct materials studied in the paper.  Most papers have 1–5 entries.
 - `surface_area` — BET surface area only; unit must be an area-per-mass unit (m²/g, m2/g).
 - `pore_volume` — total pore volume; unit must be cm³/g, cm3/g, or cc/g.
 - `pore_size` — characteristic pore diameter or width; unit is typically nm or Å.
 - `gases` — list of all adsorptive gases mentioned (CO2, N2, H2, CH4, …).
 - `isotherm_temperatures` — all temperatures at which isotherms were measured, not synthesis temperatures.
+- `confidence` — per-material; levels are `"high"`, `"medium"`, `"low"`, `"absent"`.
 - Null values indicate the property was not found in the paper; they are never guessed.
 
 ---
@@ -224,7 +242,9 @@ print(f"Extracted {len(records)} records → {outputs['json']}")
 ```
 
 See `examples/extract_demo.py` for a complete offline demonstration using a
-pre-saved OCR text file.
+pre-saved OCR text file, and `examples/pipeline_demo.ipynb` for a step-by-step
+Jupyter notebook that walks through extraction, confidence scoring, and benchmark
+evaluation — all offline, no API key required.
 
 ---
 
@@ -388,9 +408,54 @@ Python 3.11 or newer is required (see `pyproject.toml`).
 
 ---
 
+## Web interface
+
+pyads ships a Streamlit app for point-and-click extraction — no CLI knowledge required.
+
+```powershell
+pip install streamlit          # one-time
+streamlit run app.py
+```
+
+Open `http://localhost:8501` in your browser.
+
+| Tab | What it does |
+|---|---|
+| **Extract from text** | Paste OCR text, enter your API key, click Extract — results appear with colour-coded confidence badges |
+| **Offline demo** | Explore a pre-computed ZIF-8 extraction result; download JSON or CSV — no API key needed |
+
+---
+
+## Benchmark
+
+`pyads` includes a ground-truth evaluation module to measure extraction accuracy.
+
+```powershell
+# After running the pipeline, evaluate against the 3-paper ground truth:
+python -m pyads.benchmark data/extracted/adsorption_data.json
+```
+
+Output (on the verified 3-paper set with ±5% numeric tolerance):
+
+```
+Field                  Precision   Recall      F1
+------------------------------------------------------------
+surface_area            1.000      1.000    1.000
+pore_volume             1.000      1.000    1.000
+pore_size               1.000      1.000    1.000
+material                1.000      1.000    1.000
+gases                   1.000      1.000    1.000
+```
+
+Ground truth covers **5 papers / 6 material records** including a multi-material entry (Rowsell & Yaghi 2005, which compared HKUST-1 and MOF-177 in the same publication). See [BENCHMARK.md](BENCHMARK.md) for methodology, limitations, and how to add your own ground truth.
+
+---
+
 ## Further reading
 
 - [DESIGN.md](DESIGN.md) — rationale for every architectural decision.
 - [RESULTS.md](RESULTS.md) — verified pipeline output on three published papers.
+- [BENCHMARK.md](BENCHMARK.md) — extraction accuracy metrics and evaluation methodology.
+- [examples/pipeline_demo.ipynb](examples/pipeline_demo.ipynb) — Jupyter notebook walkthrough (offline, no API key needed).
 - [CHANGELOG.md](CHANGELOG.md) — version history.
 - [CONTRIBUTING.md](CONTRIBUTING.md) — development setup, test and lint instructions.

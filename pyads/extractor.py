@@ -31,30 +31,36 @@ SCHEMA_TEXT = """
   "doi": string or null,
   "title": string or null,
   "year": integer or null,
-  "material": string or null,
-  "surface_area": {"value": number or null, "unit": string or null},
-  "pore_volume": {"value": number or null, "unit": string or null},
-  "pore_size": {"value": number or null, "unit": string or null},
-  "gases": [string],
-  "isotherm_temperatures": [{"value": number, "unit": string}]
+  "materials": [
+    {
+      "material": string or null,
+      "surface_area": {"value": number or null, "unit": string or null},
+      "pore_volume": {"value": number or null, "unit": string or null},
+      "pore_size": {"value": number or null, "unit": string or null},
+      "gases": [string],
+      "isotherm_temperatures": [{"value": number, "unit": string}]
+    }
+  ]
 }
 """.strip()
 
 
 PROMPT_TEMPLATE = """
 You are extracting adsorption-material properties from scientific paper OCR text.
+Many papers study multiple materials. Extract ALL distinct materials reported.
 
 Return exactly one valid JSON object using this schema:
 {{SCHEMA}}
 
 Rules:
+- Extract ALL distinct materials mentioned (e.g. both a novel MOF and a reference ZIF-8).
 - Use null when a value is not explicitly present in the text.
 - Do not guess missing values.
 - Treat surface_area as BET surface area only.
 - BET surface area must use an area-normalized unit such as m2/g, m^2/g, or m²/g.
 - Never put pore volume units such as cm3/g or cm³/g in surface_area.
 - Pore volume must use volume-normalized units such as cm3/g or cm³/g.
-- Extract all reported isotherm measurement temperatures, not just one.
+- Extract all reported isotherm measurement temperatures for each material, not just one.
 - Return JSON only. Do not include markdown fences or explanation.
 
 Source file: {{SOURCE_FILE}}
@@ -65,7 +71,7 @@ OCR text:
 
 
 STRICT_VALIDATION_PROMPT = """
-You are doing a strict validation pass for adsorption extraction.
+You are doing a strict validation pass for multi-material adsorption extraction.
 
 Return exactly one corrected JSON object using this schema:
 {{SCHEMA}}
@@ -77,16 +83,17 @@ Evidence from OCR text:
 {{TEXT}}
 
 Strict correction rules:
-- Keep DOI, title, year, and material only if supported by the evidence.
-- surface_area is BET surface area only. Valid units are area units such as m2/g, m^2/g, or m²/g.
-- If surface_area has cm3/g, cm³/g, cc/g, nm, A, Å, K, C, or °C units, it is wrong.
-  Set surface_area to null unless a real BET area is present.
-- If a value with cm3/g or cm³/g is a total pore volume, put it in pore_volume.
-- Pore size should use length units such as nm or Å.
-- Extract every isotherm adsorption temperature reported in the evidence, for example 77 K; 87 K; 195 K; 273 K; 298 K.
-- Do not include synthesis, activation, calcination, hydrothermal, or catalytic reaction
-  temperatures unless they are explicitly adsorption/isotherm measurement temperatures.
-- Do not guess missing values. Use null or an empty list when unsupported.
+- Preserve all materials found; add any missed materials from the evidence.
+- Keep DOI, title, year only if supported by the evidence.
+- For each material:
+  - surface_area is BET surface area only. Valid units: m2/g, m^2/g, m²/g.
+    If surface_area has cm3/g, cm³/g, cc/g, nm, Å, K, or °C units, it is wrong.
+    Set to null unless a real BET area is present.
+  - If a value with cm3/g is a total pore volume, put it in pore_volume.
+  - Pore size should use length units such as nm or Å.
+  - Extract every isotherm adsorption temperature (e.g. 77 K, 87 K, 195 K, 273 K, 298 K).
+  - Do not include synthesis, activation, or catalytic reaction temperatures.
+- Do not guess missing values. Use null or empty list when unsupported.
 - Return JSON only.
 """.strip()
 
@@ -106,19 +113,27 @@ def setup_logging():
     )
 
 
-def _empty_record(source_file):
+def _empty_material():
+    """Return an empty material entry for schema v2."""
     return {
-        "schema_version": 1,
-        "source_file": source_file,
-        "doi": None,
-        "title": None,
-        "year": None,
         "material": None,
         "surface_area": {"value": None, "unit": None},
         "pore_volume": {"value": None, "unit": None},
         "pore_size": {"value": None, "unit": None},
         "gases": [],
         "isotherm_temperatures": [],
+    }
+
+
+def _empty_record(source_file):
+    """Return an empty paper record (schema v2) with a materials list."""
+    return {
+        "schema_version": 2,
+        "source_file": source_file,
+        "doi": None,
+        "title": None,
+        "year": None,
+        "materials": [],
     }
 
 
@@ -174,7 +189,8 @@ def _usage_dict(response):
     }
 
 
-def _add_usage(total, usage):
+def add_usage(total, usage):
+    """Accumulate token counts from *usage* into the *total* dict in place."""
     for key in ("prompt_tokens", "completion_tokens", "total_tokens"):
         total[key] = int(total.get(key) or 0) + int(usage.get(key) or 0)
 
@@ -231,24 +247,47 @@ def _normalize_temperatures(record):
     return normalized
 
 
-def _normalize_record(record, source_file):
-    normalized = _empty_record(source_file)
-    for key in ("doi", "title", "year", "material", "gases"):
-        if key in record:
-            normalized[key] = record[key]
-    normalized["surface_area"] = _normalize_measure(
-        record.get("surface_area"),
+def _normalize_material(raw):
+    """Normalise one material entry from raw LLM output."""
+    mat = _empty_material()
+    if not isinstance(raw, dict):
+        return mat
+    mat["material"] = raw.get("material")
+    mat["surface_area"] = _normalize_measure(
+        raw.get("surface_area"),
         allowed_units=("m2/g", "m^2/g", "m²/g", "sqm/g"),
     )
-    normalized["pore_volume"] = _normalize_measure(
-        record.get("pore_volume"),
+    mat["pore_volume"] = _normalize_measure(
+        raw.get("pore_volume"),
         allowed_units=("cm3/g", "cm^3/g", "cm³/g", "cc/g"),
     )
-    normalized["pore_size"] = _normalize_measure(record.get("pore_size"))
-    normalized["isotherm_temperatures"] = _normalize_temperatures(record)
-    if not isinstance(normalized["gases"], list):
-        normalized["gases"] = [str(normalized["gases"])]
-    return normalized
+    mat["pore_size"] = _normalize_measure(raw.get("pore_size"))
+    mat["isotherm_temperatures"] = _normalize_temperatures(raw)
+    gases = raw.get("gases", [])
+    mat["gases"] = [str(gases)] if not isinstance(gases, list) else gases
+    return mat
+
+
+def _normalize_record(raw, source_file):
+    """Normalise a raw LLM response into a schema v2 paper record.
+
+    Accepts both the new multi-material format (``materials`` list) and the
+    legacy v1 flat format (single material fields at the top level), so the
+    pipeline degrades gracefully when the LLM does not follow the new prompt.
+    """
+    paper = _empty_record(source_file)
+    if not isinstance(raw, dict):
+        return paper
+    for key in ("doi", "title", "year"):
+        if key in raw:
+            paper[key] = raw[key]
+    raw_materials = raw.get("materials")
+    if isinstance(raw_materials, list):
+        paper["materials"] = [_normalize_material(m) for m in raw_materials if isinstance(m, dict)]
+    elif any(k in raw for k in ("material", "surface_area", "gases")):
+        # Backward compat: LLM returned a v1-style flat object — wrap it.
+        paper["materials"] = [_normalize_material(raw)]
+    return paper
 
 
 def _chat_json(client, model, prompt, system_message):
@@ -284,24 +323,24 @@ def _chat_json_with_retries(client, model, prompt, system_message, retries=2, ba
 
 
 def extract_data_from_text(text, source_file, client, model):
-    """Send OCR text to Mistral and return a normalised adsorption record."""
+    """Send OCR text to Mistral and return a normalised paper record (schema v2)."""
     prompt = (
         PROMPT_TEMPLATE
         .replace("{{SCHEMA}}", SCHEMA_TEXT)
         .replace("{{SOURCE_FILE}}", source_file)
         .replace("{{TEXT}}", text)
     )
-    record, usage = _chat_json_with_retries(
+    raw, usage = _chat_json_with_retries(
         client,
         model,
         prompt,
-        "Extract structured adsorption data and return strict JSON only.",
+        "Extract structured adsorption data for all materials and return strict JSON only.",
     )
-    return _normalize_record(record, source_file), usage
+    return _normalize_record(raw, source_file), usage
 
 
 def validate_record_from_text(record, text, client, model, max_chars=VALIDATION_MAX_CHARS):
-    """Run a strict second-pass correction and return a normalised record."""
+    """Run a strict second-pass correction and return a normalised paper record."""
     source_file = record.get("source_file") or "unknown.txt"
     prompt = (
         STRICT_VALIDATION_PROMPT
@@ -313,7 +352,7 @@ def validate_record_from_text(record, text, client, model, max_chars=VALIDATION_
         client,
         model,
         prompt,
-        "Validate adsorption extraction. Correct impossible units. Return strict JSON only.",
+        "Validate multi-material adsorption extraction. Correct impossible units. Return strict JSON only.",
     )
     return _normalize_record(corrected, source_file), usage
 
@@ -322,27 +361,67 @@ def _format_temperatures(temperatures):
     return "; ".join(f"{temp.get('value')} {temp.get('unit')}" for temp in temperatures or [])
 
 
-def flatten_record(record):
-    """Return a flat dict representation of *record* suitable for Excel/CSV output."""
-    return {
-        "source_file": record.get("source_file"),
-        "doi": record.get("doi"),
-        "title": record.get("title"),
-        "year": record.get("year"),
-        "material": record.get("material"),
-        "bet_surface_area_value": (record.get("surface_area") or {}).get("value"),
-        "bet_surface_area_unit": (record.get("surface_area") or {}).get("unit"),
-        "pore_volume_value": (record.get("pore_volume") or {}).get("value"),
-        "pore_volume_unit": (record.get("pore_volume") or {}).get("unit"),
-        "pore_size_value": (record.get("pore_size") or {}).get("value"),
-        "pore_size_unit": (record.get("pore_size") or {}).get("unit"),
-        "gases": "; ".join(record.get("gases") or []),
-        "isotherm_temperatures": _format_temperatures(record.get("isotherm_temperatures")),
+def flatten_record(paper):
+    """Return a list of flat dicts from a v2 paper record, one row per material.
+
+    Each row repeats the paper-level fields (doi, title, year) alongside the
+    material-level fields so the Excel output has one complete row per material.
+    """
+    paper_fields = {
+        "source_file": paper.get("source_file"),
+        "doi": paper.get("doi"),
+        "title": paper.get("title"),
+        "year": paper.get("year"),
     }
+    materials = paper.get("materials") or []
+    if not materials:
+        return [{
+            **paper_fields,
+            "material": None,
+            "bet_surface_area_value": None,
+            "bet_surface_area_unit": None,
+            "pore_volume_value": None,
+            "pore_volume_unit": None,
+            "pore_size_value": None,
+            "pore_size_unit": None,
+            "gases": None,
+            "isotherm_temperatures": None,
+            "confidence_overall": None,
+        }]
+    rows = []
+    for mat in materials:
+        row = dict(paper_fields)
+        row.update({
+            "material": mat.get("material"),
+            "bet_surface_area_value": (mat.get("surface_area") or {}).get("value"),
+            "bet_surface_area_unit": (mat.get("surface_area") or {}).get("unit"),
+            "pore_volume_value": (mat.get("pore_volume") or {}).get("value"),
+            "pore_volume_unit": (mat.get("pore_volume") or {}).get("unit"),
+            "pore_size_value": (mat.get("pore_size") or {}).get("value"),
+            "pore_size_unit": (mat.get("pore_size") or {}).get("unit"),
+            "gases": "; ".join(mat.get("gases") or []),
+            "isotherm_temperatures": _format_temperatures(mat.get("isotherm_temperatures")),
+            "confidence_overall": (mat.get("confidence") or {}).get("overall"),
+        })
+        rows.append(row)
+    return rows
 
 
-def save_outputs(records, usage, output_dir):
-    """Write records to JSON/Excel and usage to JSON; return a dict of output paths."""
+def _attach_material_confidence(first_paper, second_paper):
+    """Attach per-material confidence scores to second_paper's materials in place."""
+    first_by_name = {
+        (m.get("material") or "").lower(): m
+        for m in first_paper.get("materials", [])
+    }
+    for mat in second_paper.get("materials", []):
+        name = (mat.get("material") or "").lower()
+        first_mat = first_by_name.get(name, _empty_material())
+        mat["confidence"] = compute_confidence(first_mat, mat)
+    return second_paper
+
+
+def save_outputs(papers, usage, output_dir):
+    """Write papers to JSON/Excel and usage to JSON; return a dict of output paths."""
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -350,8 +429,9 @@ def save_outputs(records, usage, output_dir):
     excel_path = output_dir / "adsorption_data.xlsx"
     usage_path = output_dir / "usage_summary.json"
 
-    json_path.write_text(json.dumps(records, indent=2, ensure_ascii=False), encoding="utf-8")
-    pd.DataFrame([flatten_record(record) for record in records]).to_excel(excel_path, index=False)
+    json_path.write_text(json.dumps(papers, indent=2, ensure_ascii=False), encoding="utf-8")
+    rows = [row for paper in papers for row in flatten_record(paper)]
+    pd.DataFrame(rows).to_excel(excel_path, index=False)
     usage_path.write_text(json.dumps(usage, indent=2), encoding="utf-8")
 
     return {"json": json_path, "excel": excel_path, "usage": usage_path}
@@ -379,7 +459,7 @@ def process_text_files(
         raise FileNotFoundError(f"No .txt files found in {text_dir}")
 
     client = Mistral(api_key=MISTRAL_API_KEY)
-    records = []
+    papers = []
     usage_total = {
         "first_pass": {"prompt_tokens": 0, "completion_tokens": 0, "total_tokens": 0},
         "second_pass": {"prompt_tokens": 0, "completion_tokens": 0, "total_tokens": 0},
@@ -389,21 +469,21 @@ def process_text_files(
     for text_path in text_files:
         logging.info("Extracting structured data from %s", text_path.name)
         full_text = _read_text(text_path)
-        first_record, usage = extract_data_from_text(
+        first_paper, usage = extract_data_from_text(
             full_text[:max_chars], text_path.name, client, model
         )
-        _add_usage(usage_total["first_pass"], usage)
-        _add_usage(usage_total["total"], usage)
+        add_usage(usage_total["first_pass"], usage)
+        add_usage(usage_total["total"], usage)
 
-        record = first_record
+        paper = first_paper
         if second_pass:
             logging.info("Running strict validation pass for %s", text_path.name)
             try:
-                record, usage = validate_record_from_text(
-                    first_record, full_text, client, model, validation_max_chars
+                paper, usage = validate_record_from_text(
+                    first_paper, full_text, client, model, validation_max_chars
                 )
-                _add_usage(usage_total["second_pass"], usage)
-                _add_usage(usage_total["total"], usage)
+                add_usage(usage_total["second_pass"], usage)
+                add_usage(usage_total["total"], usage)
             except Exception as error:  # pylint: disable=broad-exception-caught
                 if not _is_rate_limit_error(error):
                     raise
@@ -412,11 +492,11 @@ def process_text_files(
                     text_path.name,
                 )
 
-        record["confidence"] = compute_confidence(first_record, record)
-        records.append(record)
+        paper = _attach_material_confidence(first_paper, paper)
+        papers.append(paper)
 
-    outputs = save_outputs(records, usage_total, output_dir)
-    return records, outputs, usage_total
+    outputs = save_outputs(papers, usage_total, output_dir)
+    return papers, outputs, usage_total
 
 
 def validate_existing_outputs(
@@ -431,24 +511,24 @@ def validate_existing_outputs(
     if not MISTRAL_API_KEY:
         raise RuntimeError("MISTRAL_API_KEY is not set. Add it to .env or .env.example.")
 
-    records = json.loads(Path(input_json).read_text(encoding="utf-8"))
+    papers = json.loads(Path(input_json).read_text(encoding="utf-8"))
     client = Mistral(api_key=MISTRAL_API_KEY)
-    corrected_records = []
+    corrected_papers = []
     usage_total = {"prompt_tokens": 0, "completion_tokens": 0, "total_tokens": 0}
 
-    for record in records:
-        source_file = record.get("source_file")
+    for paper in papers:
+        source_file = paper.get("source_file")
         text_path = Path(text_dir) / source_file
         if not text_path.exists():
             raise FileNotFoundError(f"Missing text file for validation: {text_path}")
         logging.info("Running strict validation pass for %s", source_file)
         text = _read_text(text_path)
-        corrected, usage = validate_record_from_text(record, text, client, model, validation_max_chars)
-        corrected_records.append(corrected)
-        _add_usage(usage_total, usage)
+        corrected, usage = validate_record_from_text(paper, text, client, model, validation_max_chars)
+        corrected_papers.append(corrected)
+        add_usage(usage_total, usage)
 
-    outputs = save_outputs(corrected_records, {"second_pass": usage_total}, output_dir)
-    return corrected_records, outputs, {"second_pass": usage_total}
+    outputs = save_outputs(corrected_papers, {"second_pass": usage_total}, output_dir)
+    return corrected_papers, outputs, {"second_pass": usage_total}
 
 
 def _print_usage(usage):
