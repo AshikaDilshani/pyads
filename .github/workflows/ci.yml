@@ -16,10 +16,10 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install lightweight dependencies
+      - name: Install dependencies
         run: |
           pip install --upgrade pip
-          pip install pandas openpyxl requests python-dotenv \
+          pip install pandas openpyxl requests python-dotenv mistralai \
                       pylint pycodestyle pydocstyle
 
       - name: Run unit tests
