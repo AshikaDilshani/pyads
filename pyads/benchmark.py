@@ -160,10 +160,10 @@ def aggregate_scores(
     summary: dict[str, dict[str, Any]] = {}
     for field in fields:
         tp = sum(1 for s in all_scores if s.get(field) == "correct")
-        fp = sum(1 for s in all_scores if s.get(field) in ("wrong", "extra")) + \
-             sum(0.5 for s in all_scores if s.get(field) == "partial")
-        fn = sum(1 for s in all_scores if s.get(field) in ("wrong", "missing")) + \
-             sum(0.5 for s in all_scores if s.get(field) == "partial")
+        fp = (sum(1 for s in all_scores if s.get(field) in ("wrong", "extra"))
+              + sum(0.5 for s in all_scores if s.get(field) == "partial"))
+        fn = (sum(1 for s in all_scores if s.get(field) in ("wrong", "missing"))
+              + sum(0.5 for s in all_scores if s.get(field) == "partial"))
         precision = tp / (tp + fp) if (tp + fp) > 0 else 0.0
         recall = tp / (tp + fn) if (tp + fn) > 0 else 0.0
         f1 = 2 * precision * recall / (precision + recall) if (precision + recall) > 0 else 0.0
